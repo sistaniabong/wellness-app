@@ -54,7 +54,7 @@ const typeDefs = gql`
   type Query {
     reminders: [Reminder]
     todos: [Todo]
-    users:[User]
+    users: [User]
     user(username: String!): User
     activities(username: String): [Activity]
     activity(activityId: ID!): Activity
@@ -62,20 +62,26 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    # connect with sistania for mutations.js file
-    
+    signup(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 
-
-
-  // NOT NEEDED AT THE MOMENT
-  // type Mood {
-  //   _id: ID
-  //   title: String
-  //   scale: Int
-  //   # a field that will return an array of Users that have this mood
-  //   users: [User]
-  // }
-
 `;
+
+// we cannot comment inside typeDefs!
+// type Mutation {
+//     # connect with sistania for mutations.js file
+
+//   }
+
+
+
+//   // NOT NEEDED AT THE MOMENT
+//   // type Mood {
+//   //   _id: ID
+//   //   title: String
+//   //   scale: Int
+//   //   # a field that will return an array of Users that have this mood
+//   //   users: [User]
+//   // }
 module.exports = typeDefs;
