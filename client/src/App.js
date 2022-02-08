@@ -7,8 +7,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 // import ToDoList from './pages/ToDoList';
 // import Summary from './pages/Summary'
 
-import Header from './component/Header';
-import Footer from './component/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -21,12 +21,11 @@ function App() {
         <Router> 
           <div className="background flex-column justify-center align-center min-100-vh bg-primary">
             <Header />
-              <Switch>
+              {/* <Switch>
                 <Route exact path="/">
                   <Home />
                 </Route>
                 <Route exact path="/dashboard/:userid">
-                  {/* use <Link> to connect each activities */}
                   <Dashboard />
                 </Route>
                 <Route exact path="/proplan/:userid">
@@ -41,7 +40,7 @@ function App() {
                 <Route exact path="/summary/:activityid">
                   <Summary />
                 </Route>
-              </Switch>
+              </Switch> */}
             <Footer />
           </div>   
         </Router> 
