@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Create React app",
+        "status": false
+    },
+    {
+        "name": "Create models",
+        "status": false
+    },
+    {
+        "name": "Must seeds data",
+        "status": false
+    },
+    {
+        "name": "Debug issue #34",
+        "status": false
+    }
+  ]
+  

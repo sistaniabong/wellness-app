@@ -13,10 +13,10 @@ const typeDefs = gql`
     _id: ID
     title: String
     time_interval: Int
-    complete_count:
+    complete_count: Int
     skip_count: Int
     createdAt: String
-    activities: [Activity]
+    activity: Activity
   }
 
   type Activity {
@@ -27,7 +27,8 @@ const typeDefs = gql`
     createdAt: String
     comments: [Comment]
     reminders: [Reminder]
-    users: [User]
+    todos: [Todo]
+    user: [User]
   }
 
   type Comment {
@@ -41,7 +42,7 @@ const typeDefs = gql`
     name: String
     status: Boolean
     createdAt: String
-    activities: [Activity]
+    activity: Activity
   }
 
 
@@ -52,13 +53,17 @@ const typeDefs = gql`
 
   type Query {
     reminders: [Reminder]
-    activities: [Activity]
     todos: [Todo]
     users:[User]
+    user(username: String!): User
+    activities(username: String): [Activity]
+    activity(activityId: ID!): Activity
+    me: User
   }
 
   type Mutation {
     # connect with sistania for mutations.js file
+    
   }
 
 
