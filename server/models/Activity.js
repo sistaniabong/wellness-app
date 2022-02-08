@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const activitySchema = new Schema({
     title: {
@@ -6,8 +7,9 @@ const activitySchema = new Schema({
         required: true,
     },
     duration: {
-        type: String,
+        type: Number, 
         required: true,
+        default: 0,
     },
     likes: {
         type: Number,
@@ -21,36 +23,35 @@ const activitySchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-        },
-        comments: [
-            {
-                commentText: {
-                    type: String,
-                    required: true,
-                    minlength: 1,
-                    maxlength: 280,
-                },
-                createdAt: {
-                    type: Date,
-                    default: Date.now,
-                    get: (timestamp) => dateFormat(timestamp),
-                },
+    },
+    comments: [
+        {
+            commentText: {
+                type: String,
+                required: true,
+                minlength: 1,
+                maxlength: 280,
             },
-        ],
-        reminders: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Reminder'
-            }
-        ],
-        todos: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Todo'
-            }
-        ]
-    }
-);
+            createdAt: {
+                type: Date,
+                default: Date.now,
+                get: (timestamp) => dateFormat(timestamp),
+            },
+        },
+    ],
+    reminders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Reminder'
+        }
+    ],
+    todos: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Todo'
+        }
+    ]
+});
 
 const Activity = model('Activity', activitySchema);
 
