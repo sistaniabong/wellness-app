@@ -5,17 +5,9 @@ const { signToken } = require('../utils/auth');
 
 // Query and mutation, export to use in client
 const resolvers = {
-    Query: {
-        users: () => {
-            return await User.find();
 
-            
-        }
-    },
-
-
-    // add the authentication 
     Mutation: {
+      // add the signup and login mutations
         signup: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
