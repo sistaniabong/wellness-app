@@ -16,17 +16,17 @@ const resolvers = {
 
     // add the authentication 
     Mutation: {
-        addUser: async (parent, args) => {
+        signup: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
       
             return { token, user };
           },
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+        login: async (parent, { username, password }) => {
+            const user = await User.findOne({ username });
       
-            if ( user) {
-              throw new AuthenticationError('No user with this email found!');
+            if (user) {
+              throw new AuthenticationError('No user with this username found!');
             }
       
             const correctPw = await user.isCorrectPassword(password);
@@ -37,8 +37,7 @@ const resolvers = {
       
             const token = signToken (user);
             return { token, user };
-          },
-        signup: asynce (pare)
+          }
     }
 }
 
