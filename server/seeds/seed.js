@@ -11,10 +11,12 @@ db.once('open', async () => {
         await Activity.deleteMany({});
         await User.deleteMany({});
         await Todo.deleteMany({});
+        await Reminder.deleteMany({});
 
 
         await User.create(userSeeds);
         const todos = await Todo.insertMany(todoSeeds);
+        console.log(todos)
         const reminders = await Reminder.insertMany(reminderSeeds);
 
 
@@ -33,6 +35,8 @@ db.once('open', async () => {
             const tempTodo = todos[Math.floor(Math.random() * todos.length)];
             tempTodo.activity = _id
             await tempTodo.save();
+            
+
             // add todo to activity
             const todo = await Activity.findOneAndUpdate(
                 { _id: _id },
@@ -42,7 +46,7 @@ db.once('open', async () => {
                     },
                 }
             );
-
+            
             //   add reminder and associate reminder with an activity
             const tempReminder = reminders[Math.floor(Math.random() * reminders.length)];
             tempReminder.activity = _id
