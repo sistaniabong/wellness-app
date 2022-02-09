@@ -35,6 +35,11 @@ const resolvers = {
         activity: async (parent, { activityId }) => {
             return Activity.findOne({ _id: activityId }).populate(['reminders','todos']);
         },
+        allActivities: async () => {
+            console.log('allActivities')
+            console.log(Activity.find().populate(['reminders','todos']));
+            return Activity.find().populate(['reminders','todos']).sort({ createdAt: -1 });
+        },
 
         reminder: async (parent, { activityId }) => {
             return Reminder.find({ activity: activityId}).populate(['activities']);

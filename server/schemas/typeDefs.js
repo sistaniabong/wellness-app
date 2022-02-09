@@ -54,6 +54,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    allActivities: [Activity]
     activities(username: String!): [Activity]
     activity(activityId: ID!): Activity
     reminders: [Reminder]
