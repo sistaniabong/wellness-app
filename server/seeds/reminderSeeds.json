@@ -1,0 +1,15 @@
+[
+    {
+        "title": "Walk",
+        "time_interval": 20
+    },
+    {
+        "title": "Drink water",
+        "time_interval": 25
+    },
+    {
+        "title": "Stand",
+        "time_interval": 15
+    }
+  ]
+  
