@@ -7,6 +7,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 // import Countdown from './pages/Countdown';
 // import Setup from './pages/Setup';
 // import Summary from './pages/Summary'
+// import Login from ...
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -17,6 +18,12 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // const [token, setToken] = useState();
+
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
+
   return (
     <ApolloProvider client={client}>
         <Router> 
