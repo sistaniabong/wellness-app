@@ -1,16 +1,46 @@
 import { gql } from '@apollo/client';
 
-export const GET_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+export const GET_USERS = gql`
+  query getUsers {
+    users {
       _id
       username
       email
-      activities {
+    }
+  }
+`;
+
+export const GET_SINGLE_USER = gql`
+  query getSingleUser($userId: ID!) {
+    user (userId: $userId)
+      _id
+      username
+      email
+      activites {
         _id
         title
-        durations
-      }
+        user
+        likes
+        createdAt
+        comments {
+          _id
+          commentText
+          createdAt
+        }
+        reminders {
+          _id
+          title
+          time_interval
+          complete_count
+          skip_count
+          createdAt
+        }
+        todos {
+          _id
+          name
+          status
+          createdAt
+        }
     }
   }
 `
@@ -62,6 +92,7 @@ export const GET_ACTIVITIES = gql`
     activites {
       _id
       title
+      duration
       user
       likes
       createdAt
@@ -93,7 +124,8 @@ export const GET_SINGLE_ACTIVITY = gql`
   query getSingleActivity($activityId: ID!) {
     activity (activityId: $activityId) {
       _id
-      name
+      title
+      duration
       user
       comments {
         _id
@@ -155,7 +187,19 @@ export const QUERY_ME = gql`
 `;
 
 
-// may not need - double check with team
+export const GET_TODOS = gql`
+
+`;
+
+export const GET_SINGLE_TODO = gql`
+
+`;
+
+
+
+
+
+// Will come back for future developments: -KP
 
 // export const GET_MOOD = gql`
 //   query getMood {
