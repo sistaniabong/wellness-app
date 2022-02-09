@@ -46,8 +46,9 @@ const Login = () => {
   
 return (
     <div className="login">
-
+            {/*  login button and modal trigger */}
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" className="m-2 waves-effect waves-light btn-large login" style="border-radius: 10px;" onclick={showModal}>Login</button>
+
                     {/* <!-- login modal --> */}
                     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div className="modal-dialog">

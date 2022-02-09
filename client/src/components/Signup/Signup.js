@@ -19,6 +19,8 @@ const Signup = () => {
     setIsOpen(false);
   };
 
+  const [formState, setFormState] = useState({ email: '', password: '' }); // change to username?
+  const [addUser] = useMutation(ADD_USER);
   // handles signup submit btn
   const handleSignupBtn = async (event) => {
     event.preventDefault();
@@ -42,8 +44,6 @@ const Signup = () => {
       [name]: value,
     });
   };
-
-//   fix the too many or not enough divs
 
   return (
     <div>
