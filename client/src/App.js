@@ -1,17 +1,41 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 // import Home from './pages/Home';
 // import Dashboard from './pages/Dashboar';
 // import Activity from './pages/Activity';
 // import Countdown from './pages/Countdown';
-// import Setup from './pages/Setup';
+import Setup from './pages/Setup';
 // import Summary from './pages/Summary'
 // import Login from ...
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
+// for authentication
+// const httpLink = createHttpLink({
+//   uri: '/graphql',
+// });
+
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = localStorage.getItem('id_token');
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
+
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
+// can be deleted if we add authentication
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -46,7 +70,6 @@ function App() {
                   <Setup />
                 </Route>
 
-                
                 <Route exact path="/activity/:activityId">
                   <Countdown />
                 </Route> 
@@ -59,6 +82,12 @@ function App() {
                   <Summary />
                 </Route>
               </Switch> */}
+
+              {/* test for Jing setup page */}
+              {/* <Route exact path="/activitysetup/:activityId">
+                  <Setup />
+                </Route> */}
+                
             <Footer />
           </div>   
         </Router> 

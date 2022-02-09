@@ -188,11 +188,25 @@ export const QUERY_ME = gql`
 
 
 export const GET_TODOS = gql`
-
+  query getTodos($activityId: ID!) {
+    todos(activityId: $activityId) {
+      _id
+      name
+      // status
+      createdAt
+    }
+  }
 `;
 
 export const GET_SINGLE_TODO = gql`
-
+    query getSingleTodo($todoId: ID!) {
+        todo(todoId: $todoId ){
+          _id
+          name
+          status
+          createdAt
+        }        
+  }
 `;
 
 
