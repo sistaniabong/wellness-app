@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 // import Home from './pages/Home';
-// import Dashboar from './pages/Dashboar';
-// import SetUpReminder from './pages/Setupreminder';
-// import ToDoList from './pages/ToDoList';
+// import Dashboard from './pages/Dashboar';
+// import Activity from './pages/Activity';
+// import Countdown from './pages/Countdown';
+// import Setup from './pages/Setup';
 // import Summary from './pages/Summary'
 
 import Header from './components/Header/Header';
@@ -23,21 +24,31 @@ function App() {
             <Header />
               {/* <Switch>
                 <Route exact path="/">
-                  <Home />
+                  <Home />  
                 </Route>
-                <Route exact path="/dashboard/:userid">
+
+                <Route exact path="/dashboard/:username">
                   <Dashboard />
+                </Route> 
+
+                <Route exact path="/activitysetup/:username">
+                  <Activity />
                 </Route>
-                <Route exact path="/proplan/:userid">
+
+                <Route exact path="/activitysetup/:activityId">
+                  <Setup />
+                </Route>
+
+                
+                <Route exact path="/activity/:activityId">
+                  <Countdown />
+                </Route> 
+
+                <Route exact path="/proplan/:username">
                   <ProPlan />
                 </Route>
-                <Route exact path="/setupreminder/:activityid">
-                  <SetUpReminder />
-                </Route>
-                <Route exact path="/todolist/:activityid">
-                  <ToDoList />
-                </Route>
-                <Route exact path="/summary/:activityid">
+
+                <Route exact path="/summary/:activityId">
                   <Summary />
                 </Route>
               </Switch> */}
@@ -47,5 +58,25 @@ function App() {
     </ApolloProvider>
   );
 }
+
+{/* to display all users' activities + the set new acitivity + progress buttons
+  <Route exact path="/dashboard/:username">
+                  <Dashboard />
+                </Route>  */} 
+
+                // create activity  ->activityform
+                // <Route exact path="/activitysetup/:username">
+                //   <Activity />
+                // </Route>
+
+              // create reminders and todos  -> todoform reminderform
+                // <Route exact path="/activitysetup/:activityId">
+                //   <Setup />
+                // </Route>
+  
+{/* FOR activity countdown page,consists of todoform (consists of 2 fx createtodo and updatetodo) and reminderform (consists of 2 fx createreminder and updatereminder)components
+  <Route exact path="/activity/:activityId">
+<Countdown />
+</Route>  */}
 
 export default App;
