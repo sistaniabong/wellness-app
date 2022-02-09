@@ -5,30 +5,58 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find().populate('activities');
+            return User.find().populate('activities')
+            .populate({
+                path: 'activities',
+                populate: ['reminders', 'todos']});
         },
 
+        // user: async (parent, { username }) => {
+        //     return User.findOne({ username }).populate('activities')
+        //     .populate({
+        //         path: 'activities',
+        //         populate: 'reminders',
+        //     }).populate({
+        //         path: 'activities',
+        //         populate: 'todos',
+        //     });
+        // },
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('activities').populate({
+            return User.findOne({ username }).populate('activities')
+            .populate({
                 path: 'activities',
-                populate: 'reminders',
-            }).populate({
-                path: 'activities',
-                populate: 'todos',
-            });
+                populate: ['reminders', 'todos']
+                        })
         },
 
         activities: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Activity.find(params).sort({ createdAt: -1 });
+            return Activity.find({user: username}).populate(['reminders','todos']).sort({ createdAt: -1 });
         },
         activity: async (parent, { activityId }) => {
-            return Activity.findOne({ _id: activityId });
+            return Activity.findOne({ _id: activityId }).populate(['reminders','todos']);
+        },
+
+        reminder: async (parent, { activityId }) => {
+            return Reminder.find({ activity: activityId}).populate(['activities']);
+        },
+        reminders: async () => {
+            return Reminder.find().sort({ createdAt: -1 });
+        },
+
+        todo: async (parent, { activityId }) => {
+            return Todo.find({ activity: activityId}).populate(['activities']);
+        },
+        todos: async () => {
+            return Todo.find().sort({ createdAt: -1 });
         },
 
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('activities');
+                return User.findOne({ _id: context.user._id }).populate('activities')
+                .populate({
+                    path: 'activities',
+                    populate: ['reminders','todos']
+                });
             }
             throw new AuthenticationError('You need to be logged in!');
         },

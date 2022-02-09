@@ -28,7 +28,7 @@ const typeDefs = gql`
     comments: [Comment]
     reminders: [Reminder]
     todos: [Todo]
-    user: [User]
+    user: User
   }
 
   type Comment {
@@ -38,7 +38,7 @@ const typeDefs = gql`
   }
 
   type Todo {
-    id: ID
+    _id: ID
     name: String
     status: Boolean
     createdAt: String
@@ -52,12 +52,14 @@ const typeDefs = gql`
   }
 
   type Query {
-    reminders: [Reminder]
-    todos: [Todo]
     users: [User]
     user(username: String!): User
-    activities(username: String): [Activity]
+    activities(username: String!): [Activity]
     activity(activityId: ID!): Activity
+    reminders: [Reminder]
+    reminder(activityId: ID!): [Reminder]
+    todos: [Todo]
+    todo(activityId: ID!): [Todo]
     me: User
   }
 
