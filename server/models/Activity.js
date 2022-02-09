@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/helpers');
+const { Schema, model, SchemaType } = require('mongoose');
+const { dateFormat } = require('../utils/helpers');
 
 const activitySchema = new Schema({
     title: {
@@ -21,7 +21,7 @@ const activitySchema = new Schema({
         get: (timestamp) => dateFormat(timestamp),
     },
     user: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
         trim: true,
     },
