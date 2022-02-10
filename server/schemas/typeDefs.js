@@ -50,6 +50,7 @@ const typeDefs = gql`
     token: ID!
     users: [User]
   }
+  
 
   type Query {
     users: [User]
@@ -64,22 +65,21 @@ const typeDefs = gql`
     me: User
   }
 
+
   type Mutation {
     signup(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addActivity(title: String!, duration: Int!, user: String!): Activity
+    addLikeActivity( activityId: ID! ): Activity 
+    addTodo(activityId: ID!, name: String!): Todo
+    updateTodo(todoId: ID!, status: Boolean): Todo
+    updateCompleteReminder(reminderId: ID!): Reminder
+    addReminder(title: String!, time_interval: Int, activityId: ID!): Reminder
+    addComment(activityId: ID!, commentText: String!): Activity
   }
-
 `;
 
-// we cannot comment inside typeDefs!
-// type Mutation {
-//     # connect with sistania for mutations.js file
-
-//   }
-
-
-
-//   // NOT NEEDED AT THE MOMENT
+//   // NOT NEEDED AT THE MOMENT 
 //   // type Mood {
 //   //   _id: ID
 //   //   title: String

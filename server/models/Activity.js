@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+
+const { Schema, model, SchemaType } = require('mongoose');
 const { dateFormat } = require('../utils/helpers');
 
 const activitySchema = new Schema({
