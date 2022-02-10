@@ -90,7 +90,40 @@ const resolvers = {
 
             const token = signToken(user);
             return { token, user };
-        }
+        },
+        addActivity: async (parent, { user, title, duration, createdAt }) => {
+            return (await Activity.create({ user, title, duration, createdAt }));
+        },
+        //Will work on this asap! -KP
+        updateActivity: async (parent, { activityId, title, duration }) => {
+            return Activity.findOneAndUpdate(
+              { _id: activityId },
+              {
+                $addToSet: { activities: { title, duration } },
+              },
+              {
+                new: true,
+                runValidators: true,
+              }
+            );
+          },
+          addTodo: async (parent, { activity, name, status, createdAt }) => {
+            return (await Todo.create({ activity, name, status, createdAt }));
+        },
+        //Will work on this asap! -KP
+        updateTodo: async (parent, { todoId, name, status }) => {
+            return Todo.findOneAndUpdate(
+              { _id: todoId },
+              {
+                $addToSet: { todos: { name, status } },
+              },
+              {
+                new: true,
+                runValidators: true,
+              }
+            );
+          },
+    
     }
 
 
