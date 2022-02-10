@@ -92,9 +92,16 @@ const resolvers = {
             return { token, user };
         },
         addActivity: async (parent, { user, title, duration, createdAt }) => {
-            return (await Activity.create({ user, title, duration, createdAt }));
+            const { _id } = await Activity.create({ user, title, duration, createdAt });
+            const current_user = await User.findOneAndUpdate(
+                { username: user },
+                {
+                    $addToSet: {
+                        activities: _id,
+                    },
+                }
+            );
         },
-        //Will work on this asap! -KP
         updateActivity: async (parent, { activityId, title, duration }) => {
             return Activity.findOneAndUpdate(
               { _id: activityId },
@@ -107,10 +114,9 @@ const resolvers = {
               }
             );
           },
-          addTodo: async (parent, { activity, name, status, createdAt }) => {
+        addTodo: async (parent, { activity, name, status, createdAt }) => {
             return (await Todo.create({ activity, name, status, createdAt }));
         },
-        //Will work on this asap! -KP
         updateTodo: async (parent, { todoId, name, status }) => {
             return Todo.findOneAndUpdate(
               { _id: todoId },
@@ -123,7 +129,9 @@ const resolvers = {
               }
             );
           },
-    
+        addReminder: async (parent, { activity, title, time_interval, complete_count, skip_count }) => {
+            return (await Reminder.create({ activity, title, time_interval, complete_count, skip_count }));
+        },
     }
 
 

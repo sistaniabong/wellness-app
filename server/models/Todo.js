@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/helpers');
+const { dateFormat } = require('../utils/helpers');
 
 const todoSchema = new Schema({
     name: {

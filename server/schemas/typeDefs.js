@@ -70,11 +70,11 @@ const typeDefs = gql`
     signup(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addActivity(title: String!, duration: Int, createdAt: String, user: String!): Activity
-    updateActivity(title: String!, duration: Int, user: ID!): Activity 
+    updateActivity(title: String!, duration: Int, user: ID!, ): Activity 
     addTodo(name: String!, status: Boolean, createdAt: String, activity: ID!): Todo
     updateTodo(name: String!, status: Boolean, activity: ID!): Todo
+    addReminder(title: String!, time_interval: Int, complete_count: Int, skip_count: Int, activity: ID!): Reminder
   }
-
 `;
 
 //   // NOT NEEDED AT THE MOMENT 
