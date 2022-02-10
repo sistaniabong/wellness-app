@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
-// import bootstrap from bootstrap;
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Signup = () => {
 
