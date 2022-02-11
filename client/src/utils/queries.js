@@ -69,37 +69,37 @@ export const GET_SINGLE_USER = gql`
 `
 // may not need since this will get us similar data as GET_SINGLE_USER
 export const GET_ACTIVITIES_SINGLE_USER = gql`
-query getActivitiesSingleUser($username: String!) {
-  activities (username: $username)
-    _id
-    title
-    user{
-      id
-      username
-      email
-    }
-    likes
-    createdAt
-    comments {
-      _id
-      commentText
-      createdAt
-    }
-    reminders {
+  query getActivitiesSingleUser($username: String!) {
+    activities (username: $username)
       _id
       title
-      time_interval
-      complete_count
-      skip_count
+      user{
+        id
+        username
+        email
+      }
+      likes
       createdAt
+      comments {
+        _id
+        commentText
+        createdAt
+      }
+      reminders {
+        _id
+        title
+        time_interval
+        complete_count
+        skip_count
+        createdAt
+      }
+      todos {
+        _id
+        name
+        status
+        createdAt
+      }
     }
-    todos {
-      _id
-      name
-      status
-      createdAt
-    }
-  }
 }
 `
 
@@ -112,7 +112,7 @@ export const GET_ACTIVITIES_ALL_USERS = gql`
       _id
       title
       duration
-      user{
+      user {
         id
         username
         email

@@ -62,16 +62,16 @@ const resolvers = {
             return Todo.findOne({ _id: todoId }).populate(['activity']);
         },
 
-        me: async (parent, args, context) => {
-            if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('activities')
-                    .populate({
-                        path: 'activities',
-                        populate: ['reminders', 'todos']
-                    });
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
+        // me: async (parent, args, context) => {
+        //     if (context.user) {
+        //         return User.findOne({ _id: context.user._id }).populate('activities')
+        //             .populate({
+        //                 path: 'activities',
+        //                 populate: ['reminders', 'todos']
+        //             });
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
 
     },
     Mutation: {
