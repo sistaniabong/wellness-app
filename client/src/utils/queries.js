@@ -30,13 +30,14 @@ export const GET_USERS = gql`
           status
           createdAt
         }
+      }
     }
   }
 `;
 
 export const GET_SINGLE_USER = gql`
   query getSingleUser($username: String!) {
-    user (username: $username)
+    user (username: $username){
       _id
       username
       email
@@ -64,17 +65,18 @@ export const GET_SINGLE_USER = gql`
           status
           createdAt
         }
+      }
     }
   }
 `
 // may not need since this will get us similar data as GET_SINGLE_USER
 export const GET_ACTIVITIES_SINGLE_USER = gql`
   query getActivitiesSingleUser($username: String!) {
-    activities (username: $username)
+    activities (username: $username){
       _id
       title
       user{
-        id
+        _id
         username
         email
       }
@@ -100,6 +102,8 @@ export const GET_ACTIVITIES_SINGLE_USER = gql`
         createdAt
       }
     }
+      
+
 }
 `
 
@@ -113,7 +117,7 @@ export const GET_ACTIVITIES_ALL_USERS = gql`
       title
       duration
       user {
-        id
+        _id
         username
         email
       }
@@ -151,7 +155,7 @@ export const GET_SINGLE_ACTIVITY = gql`
       title
       duration
       user{
-        id
+        _id
         username
         email
       }
@@ -215,7 +219,7 @@ export const GET_SINGLE_ACTIVITY = gql`
 //   }
 // `;
 
-
+// Somehow Graphql don't like the title of the activity.But the activity _id is working
 export const GET_ALL_TODOS = gql`
   query getAllTodos {
     allTodos {
@@ -224,7 +228,7 @@ export const GET_ALL_TODOS = gql`
       status
       createdAt
       activity {
-        _id
+        _id 
         title
       }
     }
