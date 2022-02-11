@@ -48,7 +48,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
-    users: [User]
+    user: User
   }
   
 
@@ -58,10 +58,12 @@ const typeDefs = gql`
     allActivities: [Activity]
     activities(username: String!): [Activity]
     activity(activityId: ID!): Activity
-    reminders: [Reminder]
-    reminder(activityId: ID!): [Reminder]
-    todos: [Todo]
-    todo(activityId: ID!): [Todo]
+    allReminders: [Reminder]
+    activityReminders(activityId: ID!): [Reminder]
+    reminder(reminderId: ID!): Reminder
+    allTodos: [Todo]
+    activityTodos(activityId: ID!): [Todo]
+    todo(todoId: ID!): Todo
     me: User
   }
 
@@ -74,8 +76,10 @@ const typeDefs = gql`
     addTodo(activityId: ID!, name: String!): Todo
     updateTodo(todoId: ID!, status: Boolean): Todo
     updateCompleteReminder(reminderId: ID!): Reminder
-    addReminder(title: String!, time_interval: Int, activityId: ID!): Reminder
+    addReminder(title: String!, time_interval: Int!, activityId: ID!): Reminder
     addComment(activityId: ID!, commentText: String!): Activity
+    removeReminder(reminderId: ID!): Reminder
+    removeTodo(todoId: ID!): Todo
   }
 `;
 
