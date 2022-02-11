@@ -5,6 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
+            console.log('here')
             return User.find().populate('activities')
                 .populate({
                     path: 'activities',
@@ -12,16 +13,7 @@ const resolvers = {
                 });
         },
 
-        // user: async (parent, { username }) => {
-        //     return User.findOne({ username }).populate('activities')
-        //     .populate({
-        //         path: 'activities',
-        //         populate: 'reminders',
-        //     }).populate({
-        //         path: 'activities',
-        //         populate: 'todos',
-        //     });
-        // },
+
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate('activities')
                 .populate({
@@ -30,30 +22,44 @@ const resolvers = {
                 })
         },
 
+        // activities by user
         activities: async (parent, { username }) => {
             return Activity.find({ user: username }).populate(['reminders', 'todos', 'comments']).sort({ createdAt: -1 });
         },
+        // activity by activity id
         activity: async (parent, { activityId }) => {
             return Activity.findOne({ _id: activityId }).populate(['reminders', 'todos','comments']);
         },
+        // all activities across users
         allActivities: async () => {
-            console.log('allActivities')
-            console.log(Activity.find().populate(['reminders', 'todos']));
             return Activity.find().populate(['reminders', 'todos', 'comments']).sort({ createdAt: -1 });
         },
 
-        reminder: async (parent, { activityId }) => {
-            return Reminder.find({ activity: activityId }).populate(['activities']);
+        // reminder by activity id
+        activityReminders: async (parent, { activityId }) => {
+            return Reminder.find({ activity: activityId }).populate(['activity']);
         },
-        reminders: async () => {
-            return Reminder.find().sort({ createdAt: -1 });
+        //all reminders
+        allReminders: async () => {
+            return Reminder.find().sort({ createdAt: -1 }).populate(['activity']);
         },
 
-        todo: async (parent, { activityId }) => {
-            return Todo.find({ activity: activityId }).populate(['activities']);
+        // single reminder by reminder id
+        reminder: async (parent, { reminderId }) => {
+            return Reminder.findOne({ _id: reminderId }).populate(['activity']);
         },
-        todos: async () => {
+
+        // todo by acitivity id
+        activityTodos: async (parent, { activityId }) => {
+            return Todo.find({ activity: activityId }).populate(['activity']);
+        },
+        // all todos
+        allTodos: async () => {
             return Todo.find().sort({ createdAt: -1 });
+        },
+        // single todo by reminder id
+        todo: async (parent, { todoId }) => {
+            return Todo.findOne({ _id: todoId }).populate(['activity']);
         },
 
         me: async (parent, args, context) => {
@@ -105,9 +111,6 @@ const resolvers = {
             return activity;
         },
         addLikeActivity: async (parent, { activityId }) => {
-            // const tempActivity = Activity.findbyId( activityId )
-            // const increment = tempActivity.likes + 1;
-            // console.log(increment)
 
             return Activity.findOneAndUpdate(
                 { _id: activityId },

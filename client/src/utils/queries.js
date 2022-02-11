@@ -6,20 +6,43 @@ export const GET_USERS = gql`
       _id
       username
       email
+      activities {
+        _id
+        title
+        likes
+        createdAt
+        comments {
+          _id
+          commentText
+          createdAt
+        }
+        reminders {
+          _id
+          title
+          time_interval
+          complete_count
+          skip_count
+          createdAt
+        }
+        todos {
+          _id
+          name
+          status
+          createdAt
+        }
     }
   }
 `;
 
 export const GET_SINGLE_USER = gql`
-  query getSingleUser($userId: ID!) {
-    user (userId: $userId)
+  query getSingleUser($username: String!) {
+    user (username: $username)
       _id
       username
       email
-      activites {
+      activities {
         _id
         title
-        user
         likes
         createdAt
         comments {
@@ -44,89 +67,58 @@ export const GET_SINGLE_USER = gql`
     }
   }
 `
-// will not need this as we are getting reminders from activities
-
-// export const GET_REMINDERS = gql`
-//   query getReminders($reminderId: ID!) {
-//     reminders (reminderId: $reminderId) {
-//       _id
-//       name
-//       users {
-//         _id
-//         username
-//       }
-//     }
-//   }
-// `;
-
-//  should get reminder(s) per activity id  not the reminder id
-// export const GET_SINGLE_REMINDER = gql`
-//   query getSingleReminder($reminderId: ID!) {
-//     reminder (reminderId: $reminderId) {
-//       _id
-//       name
-//       users {
-//         _id
-//         username
-//       }
-//     }
-//   }
-// `;
-
-
-// export const GET_ACTIVITIES = gql`
-//   query getActivities {
-//     activites {
-//       _id
-//       title
-//       user {
-//         _id
-//         username
-//       }
-//     }
-//   }
-// `;
-
-export const GET_ACTIVITIES = gql`
-  query getActivities {
-    activites {
+// may not need since this will get us similar data as GET_SINGLE_USER
+export const GET_ACTIVITIES_SINGLE_USER = gql`
+query getActivitiesSingleUser($username: String!) {
+  activities (username: $username)
+    _id
+    title
+    user{
+      id
+      username
+      email
+    }
+    likes
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+    reminders {
       _id
       title
-      duration
-      user
-      likes
+      time_interval
+      complete_count
+      skip_count
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
+    }
+    todos {
+      _id
+      name
+      status
+      createdAt
     }
   }
-`;
+}
+`
 
 
-// export const GET_SINGLE_ACTIVITY = gql`
-//   query getSingleActivity($activityId: ID!) {
-//     activity (activityId: $activityId) {
-//       _id
-//       name
-//       users {
-//         username
-//         // will this arrary return properly?
-//        reminders
-//       }
-//     }
-//   }
-// `;
 
-export const GET_SINGLE_ACTIVITY = gql`
-  query getSingleActivity($activityId: ID!) {
-    activity (activityId: $activityId) {
+
+export const GET_ACTIVITIES_ALL_USERS = gql`
+  query getActivitiesAllUsers {
+    allActivities {
       _id
       title
       duration
-      user
+      user{
+        id
+        username
+        email
+      }
+      likes
+      createdAt
       comments {
         _id
         commentText
@@ -150,54 +142,111 @@ export const GET_SINGLE_ACTIVITY = gql`
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
-    me {
+
+
+export const GET_SINGLE_ACTIVITY = gql`
+  query getSingleActivity($activityId: ID!) {
+    activity (activityId: $activityId) {
       _id
-      username
-      email
-      activites {
+      title
+      duration
+      user{
+        id
+        username
+        email
+      }
+      comments {
+        _id
+        commentText
+        createdAt
+      }
+      reminders {
         _id
         title
-        user
-        likes
+        time_interval
+        complete_count
+        skip_count
         createdAt
-        comments {
-          _id
-          commentText
-          createdAt
-        }
-        reminders {
-          _id
-          title
-          time_interval
-          complete_count
-          skip_count
-          createdAt
-        }
-        todos {
-          _id
-          name
-          status
-          createdAt
-        }
+      }
+      todos {
+        _id
+        name
+        status
+        createdAt
       }
     }
   }
 `;
 
+// may not need
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       _id
+//       username
+//       email
+//       activites {
+//         _id
+//         title
+//         user
+//         likes
+//         createdAt
+//         comments {
+//           _id
+//           commentText
+//           createdAt
+//         }
+//         reminders {
+//           _id
+//           title
+//           time_interval
+//           complete_count
+//           skip_count
+//           createdAt
+//         }
+//         todos {
+//           _id
+//           name
+//           status
+//           createdAt
+//         }
+//       }
+//     }
+//   }
+// `;
 
-export const GET_TODOS = gql`
-  query getTodos($activityId: ID!) {
-    todos(activityId: $activityId) {
+
+export const GET_ALL_TODOS = gql`
+  query getAllTodos {
+    allTodos {
       _id
       name
-      // status
+      status
       createdAt
+      activity {
+        _id
+        title
+      }
     }
   }
 `;
 
+export const GET_SINGLE_ACTIVITY_TODOS = gql`
+  query getSingleActivityTodos($activityId: ID!) {
+    activityTodos(activityId: $activityId) {
+      _id
+      name
+      status
+      createdAt
+      activity {
+        _id
+        title
+      }
+    }
+  }
+`;
+
+// if needed we can get todo with the todo id
 export const GET_SINGLE_TODO = gql`
     query getSingleTodo($todoId: ID!) {
         todo(todoId: $todoId ){
@@ -205,9 +254,64 @@ export const GET_SINGLE_TODO = gql`
           name
           status
           createdAt
+          activity {
+            _id
+            title
+          }
         }        
   }
 `;
+
+
+export const GET_ALL_REMINDERS = gql`
+  query getAllReminders {
+    allReminders {
+      _id
+      title
+      time_interval
+      complete_count
+      createdAt
+      activity {
+        _id
+        title
+      }
+    }
+  }
+`;
+
+export const GET_SINGLE_ACTIVITY_REMINDERS = gql`
+  query getSingleActivityReminders($activityId: ID!) {
+    activityReminders(activityId: $activityId) {
+      _id
+      title
+      time_interval
+      complete_count
+      createdAt
+      activity {
+        _id
+        title
+      }
+    }
+  }
+`;
+
+// if needed we can get todo with the todo id
+export const GET_SINGLE_REMINDER = gql`
+    query getSingleReminder($reminderId: ID!) {
+      reminder(reminderId: $reminderId ){
+        _id
+        title
+        time_interval
+        complete_count
+        createdAt
+        activity {
+          _id
+          title
+        }
+        }        
+  }
+`;
+
 
 
 
