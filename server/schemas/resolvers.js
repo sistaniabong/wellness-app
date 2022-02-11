@@ -159,6 +159,24 @@ const resolvers = {
                 }
             );
         },
+        removeReminder: async (parent, { reminderId }) => {
+         return Reminder.findOneAndUpdate(
+                { _id: reminderId },
+                {
+                    $pull: { reminders: { _id: reminderId } },
+                },
+                { new: true }
+            );
+          },
+          removeTodo: async (parent, { todoId }) => {
+              return Todo.findOneAndUpdate(
+                { _id: todoId },
+                {
+                  $pull: {todos: { _id: todoId } },
+                },
+                { new: true }
+              );
+          },
 
     }
 
@@ -166,3 +184,6 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+
+// const reminder = await Reminder.findOneAndDelete({ _id: reminderId });
+//               await

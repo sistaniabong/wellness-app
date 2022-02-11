@@ -76,6 +76,8 @@ const typeDefs = gql`
     updateCompleteReminder(reminderId: ID!): Reminder
     addReminder(title: String!, time_interval: Int, activityId: ID!): Reminder
     addComment(activityId: ID!, commentText: String!): Activity
+    removeReminder(reminderId: ID!): Reminder
+    removeTodo(todoId: ID!): Todo
   }
 `;
 
