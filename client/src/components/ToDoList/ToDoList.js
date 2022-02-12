@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import Todo from './ToDo';
 
 const ToDoList = ({todos, setTodos}) =>{
-    // console.log(todos);
+    console.log(todos);
 
     return(
         <div className='todos-container'>
