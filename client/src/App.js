@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import Home from './pages/Home';
-// import Dashboard from './pages/Dashboar';
+// import Dashboard from './pages/Dashboard';
 // import Activity from './pages/Activity';
 // import Countdown from './pages/Countdown';
 import Setup from './pages/Setup';
 // import Summary from './pages/Summary'
+// import Login from ...
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -41,6 +42,12 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // const [token, setToken] = useState();
+
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
+
   return (
     <ApolloProvider client={client}>
         <Router> 
@@ -80,6 +87,10 @@ function App() {
               {/* <Route exact path="/activitysetup/:activityId">
                   <Setup />
                 </Route> */}
+
+                <Route exact path="/">
+                  <Home />
+                </Route>
                 
             <Footer />
           </div>   
