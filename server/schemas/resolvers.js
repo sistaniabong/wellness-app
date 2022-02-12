@@ -24,6 +24,7 @@ const resolvers = {
 
         // activities by user
         activities: async (parent, { username }) => {
+            console.log('sajfhajkf')
             return Activity.find({ user: username }).populate(['reminders', 'todos', 'comments']).sort({ createdAt: -1 });
         },
         // activity by activity id
@@ -100,7 +101,7 @@ const resolvers = {
             return { token, user };
         },
         addActivity: async (parent, { user, title, duration }) => {
-            const activity = await Activity.create({ user, title, duration });
+            const activity = await Activity.create({ user: user, title:title, duration:duration });
             const current_user = await User.findOneAndUpdate(
                 { username: user },
                 {

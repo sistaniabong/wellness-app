@@ -28,7 +28,7 @@ const typeDefs = gql`
     comments: [Comment]
     reminders: [Reminder]
     todos: [Todo]
-    user: User
+    user: String
   }
 
   type Comment {

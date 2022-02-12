@@ -75,11 +75,6 @@ export const GET_ACTIVITIES_SINGLE_USER = gql`
     activities (username: $username){
       _id
       title
-      user{
-        _id
-        username
-        email
-      }
       likes
       createdAt
       comments {
@@ -116,11 +111,7 @@ export const GET_ACTIVITIES_ALL_USERS = gql`
       _id
       title
       duration
-      user {
-        _id
-        username
-        email
-      }
+      user 
       likes
       createdAt
       comments {
@@ -154,11 +145,7 @@ export const GET_SINGLE_ACTIVITY = gql`
       _id
       title
       duration
-      user{
-        _id
-        username
-        email
-      }
+      user
       comments {
         _id
         commentText
@@ -301,19 +288,19 @@ export const GET_SINGLE_ACTIVITY_REMINDERS = gql`
 
 // if needed we can get reminder with the reminder id
 export const GET_SINGLE_REMINDER = gql`
-    query getSingleReminder($reminderId: ID!) {
-      reminder(reminderId: $reminderId ){
+  query getSingleReminder($reminderId: ID!) {
+    reminder(reminderId: $reminderId ){
+      _id
+      title
+      time_interval
+      complete_count
+      createdAt
+      activity {
         _id
         title
-        time_interval
-        complete_count
-        createdAt
-        activity {
-          _id
-          title
-        }
-        }        
-  }
+      }
+      }        
+}
 `;
 
 
