@@ -24,6 +24,7 @@ const resolvers = {
 
         // activities by user
         activities: async (parent, { username }) => {
+            console.log('sajfhajkf')
             return Activity.find({ user: username }).populate(['reminders', 'todos', 'comments']).sort({ createdAt: -1 });
         },
         // activity by activity id
@@ -55,7 +56,7 @@ const resolvers = {
         },
         // all todos
         allTodos: async () => {
-            return Todo.find().sort({ createdAt: -1 });
+            return Todo.find().sort({ createdAt: -1 }).populate(['activity']);
         },
         // single todo by reminder id
         todo: async (parent, { todoId }) => {
@@ -77,6 +78,7 @@ const resolvers = {
     Mutation: {
         // add the signup and login mutations
         signup: async (parent, args) => {
+            console.log('init signup')
             const user = await User.create(args);
             const token = signToken(user);
 
@@ -84,10 +86,10 @@ const resolvers = {
         },
         login: async (parent, { username, password }) => {
             const user = await User.findOne({ username });
-
-            if (user) {
+            if (!user) {
                 throw new AuthenticationError('No user with this username found!');
             }
+
 
             const correctPw = await user.isCorrectPassword(password);
 
@@ -99,7 +101,7 @@ const resolvers = {
             return { token, user };
         },
         addActivity: async (parent, { user, title, duration }) => {
-            const activity = await Activity.create({ user, title, duration });
+            const activity = await Activity.create({ user: user, title:title, duration:duration });
             const current_user = await User.findOneAndUpdate(
                 { username: user },
                 {
@@ -122,7 +124,17 @@ const resolvers = {
             );
         },
         addTodo: async (parent, { activityId, name }) => {
-            return (await Todo.create({ activityId, name }));
+            const todo = await Todo.create({ activity: activityId, name: name })
+            const activity = await Activity.findOneAndUpdate(
+                { _id: activityId },
+                {
+                    $addToSet: {
+                        todos: todo._id,
+                    },
+                }
+            ).populate("todos");
+            await Todo.populate(todo,{path:"activity"})
+            return todo;
         },
         updateTodo: async (parent, { todoId, status }) => {
             return Todo.findOneAndUpdate(
@@ -135,7 +147,17 @@ const resolvers = {
             );
         },
         addReminder: async (parent, { activityId, title, time_interval }) => {
-            return (await Reminder.create({ activityId, title, time_interval }));
+            const reminder = await Reminder.create({ activity: activityId, title: title, time_interval: time_interval })
+            const activity = await Activity.findOneAndUpdate(
+                { _id: activityId },
+                {
+                    $addToSet: {
+                        reminders: reminder._id,
+                    },
+                }
+            );
+            await Reminder.populate(reminder,{path:"activity"})
+            return reminder;
         },
         updateCompleteReminder: async (parent, { reminderId }) => {
             return Reminder.findOneAndUpdate(
@@ -162,23 +184,30 @@ const resolvers = {
                 }
             );
         },
-        removeReminder: async (parent, { reminderId }) => {
-         return Reminder.findOneAndUpdate(
-                { _id: reminderId },
-                {
-                    $pull: { reminders: { _id: reminderId } },
-                },
-                { new: true }
-            );
+        // removeReminder: async (parent, { reminderId }) => {
+        //  return Reminder.findOneAndUpdate(
+        //         { _id: reminderId },
+        //         {
+        //             $pull: { reminders: { _id: reminderId } },
+        //         },
+        //         { new: true }
+        //     );
+        //   },
+
+          removeReminder: async (parent, { reminderId }) => {
+            return Reminder.findOneAndDelete({ _id: reminderId });
           },
+        //   removeTodo: async (parent, { todoId }) => {
+        //       return Todo.findOneAndUpdate(
+        //         { _id: todoId },
+        //         {
+        //           $pull: {todos: { _id: todoId } },
+        //         },
+        //         { new: true }
+        //       );
+        //   },
           removeTodo: async (parent, { todoId }) => {
-              return Todo.findOneAndUpdate(
-                { _id: todoId },
-                {
-                  $pull: {todos: { _id: todoId } },
-                },
-                { new: true }
-              );
+            return Todo.findOneAndDelete({ _id: todoId });
           },
 
     }
