@@ -1,4 +1,6 @@
-import React from react;
+// import React from react;  reach missed the ''
+import React from 'react'; 
+
 
 // this will have different pictures describing our app, similar to how apps have 
 const Carousel = () => {

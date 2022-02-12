@@ -146,6 +146,19 @@ const resolvers = {
                 }
             );
         },
+        // addReminder: async (parent, { activityId, title, time_interval }) => {
+        //     const reminder = await Reminder.create({ activity: activityId, title: title, time_interval: time_interval })
+        //     const activity = await Activity.findOneAndUpdate(
+        //         { _id: activityId },
+        //         {
+        //             $addToSet: {
+        //                 reminders: reminder._id,
+        //             },
+        //         }
+        //     );
+        //     await Reminder.populate(reminder,{path:"activity"})
+        //     return reminder;
+        // },
         addReminder: async (parent, { activityId, title, time_interval }) => {
             const reminder = await Reminder.create({ activity: activityId, title: title, time_interval: time_interval })
             const activity = await Activity.findOneAndUpdate(
@@ -159,6 +172,7 @@ const resolvers = {
             await Reminder.populate(reminder,{path:"activity"})
             return reminder;
         },
+        
         updateCompleteReminder: async (parent, { reminderId }) => {
             return Reminder.findOneAndUpdate(
                 { _id: reminderId },

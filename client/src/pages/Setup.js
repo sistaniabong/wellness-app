@@ -5,6 +5,9 @@ import ReminderList from '../components/Reminder/ReminderList';
 import ToDoForm from '../components/ToDoList/ToDoForm';
 import ToDoList from '../components/ToDoList/ToDoList';
 
+import { ADD_ACTIVITY } from '../utils/mutations';
+
+
 const Setup = () => {
     
     const startTheActivity = (e) =>{
@@ -16,6 +19,7 @@ const Setup = () => {
           console.log(reminders);
           return {...reminders, reminder}
         }))
+
         // have an map func loop for todosList, for future ADD_Reminder query
         setTodos(todos.map(todo=>{
           // add every reminder into addReminder Mutation
@@ -34,12 +38,16 @@ const Setup = () => {
     const [todoState, setTodoState] = useState("");
     const [todos, setTodos] = useState([]);
 
+    // const activityId = window.location.href;
+    // console.log(activityId)
+
     return(
         <main>
         {/* for Reminder Setup */}
 
           {/* Reminder Selector */}
           <ReminderForm 
+            // activity={activityId}
             reminders={reminders} 
             setReminders={setReminders}
             typeState={typeState} 

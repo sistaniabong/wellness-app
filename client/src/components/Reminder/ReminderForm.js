@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 // import { useMutation } from '@apollo/client';
 
-const ReminderForm = ({reminders, setReminders, typeState, setTypeState, timeState, setTimeState}) =>{
+const ReminderForm = ({ reminders, setReminders, typeState, setTypeState, timeState, setTimeState}) =>{
     const addReminderHandler = (e) =>{
       // grab the option value
       // set a card says "{types} every {times}" + a remove button (set a remove function) 
       // showed in <div className='reminderList'>
         e.preventDefault();
+        // grab reminder id
+
+        // setReminders([
+        //     ...reminders, { title: typeState, time_interval: timeState, id: `${typeState}+${timeState}`}
+        // ])
         setReminders([
-            ...reminders, { title: typeState, time_interval: timeState, id: `${typeState}+${timeState}`}
+          ...reminders, { title: typeState, time_interval: timeState}
         ])
+
+        
         setTypeState("");
         setTimeState("");
     };
