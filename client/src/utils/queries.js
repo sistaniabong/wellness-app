@@ -299,7 +299,7 @@ export const GET_SINGLE_ACTIVITY_REMINDERS = gql`
   }
 `;
 
-// if needed we can get todo with the todo id
+// if needed we can get reminder with the reminder id
 export const GET_SINGLE_REMINDER = gql`
     query getSingleReminder($reminderId: ID!) {
       reminder(reminderId: $reminderId ){

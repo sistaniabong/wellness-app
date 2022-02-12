@@ -70,7 +70,7 @@ const typeDefs = gql`
 
   type Mutation {
     signup(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     addActivity(title: String!, duration: Int!, user: String!): Activity
     addLikeActivity( activityId: ID! ): Activity 
     addTodo(activityId: ID!, name: String!): Todo
