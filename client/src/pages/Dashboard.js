@@ -1,35 +1,30 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_SINGLE_USER} from '../utils/queries'
-import AccompList from '../components/AccompList/AccompList'
-// import useState
-// import route to route to the pages
-
-
+import DashboardList from '../components/DashboardList/DashboardList'
 
 // use activity from MERN #20
 
 const Dashboard = () => {
     
     // *function to get all the data for the accomplishment from the completion page
-    const [getAccomp, { error}] = useQuery(GET_SINGLE_USER. {
-        update(cache, { data: {getAccomp } }) {
-            try {
-             const { users } = cache.readQuery({ query: GET_SINGLE_USER });   
-            } catch {
-                console.error(e);
-            }
-        }
+    // const [getAccomp, { error}] = useQuery(GET_SINGLE_USER. {
+    //     update(cache, { data: {getAccomp } }) {
+    //         try {
+    //          const { users } = cache.readQuery({ query: GET_SINGLE_USER });   
+    //         } catch {
+    //             console.error(e);
+    //         }
+    //     }
         
-       
-    })
+    // })
     
 
     // handlebuttons for reminder page and pro plan page
     
     return (
         <div>
-            <AccompList accomplist={accomplist} />
+            <DashboardList dashboardlist={dashboardlist} />
 
             {/* set a reminder button */}
 

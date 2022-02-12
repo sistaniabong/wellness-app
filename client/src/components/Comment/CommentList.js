@@ -2,33 +2,39 @@ import React from "react";
 
 
 // component for comment modal
-const Comment = ({ comments, title}) => {
+const CommentList = ({ comments = [] }) => {
 
-    if (!profiles.length) {
-        return <h3>No Profiles Yet</h3>;
-      }
-    
-      // list container
-      return (
-        <div>
-          <h3 className="text-primary">{title}</h3>
-          <div className="flex-row justify-space-between my-4">
-            {profiles &&
-              profiles.map((profile) => (
-                <div key={profile._id} className="col-12 col-xl-6">
-                  <div className="card mb-3">
-                    <h4 className="card-header bg-dark text-light p-2 m-0">
-                      {profile.name} <br />
-                      <span className="text-white" style={{ fontSize: '1rem' }}>
-                        currently has {profile.skills ? profile.skills.length : 0}{' '}
-                        endorsed skill
-                        {profile.skills && profile.skills.length === 1 ? '' : 's'}
-                      </span>
-                    </h4>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      );
+  console.log(comments);
+  if (!comments.length) {
+    return <h3>No Comments Yet</h3>;
+  }
+
+  return (
+    <>
+      <h3
+        className="p-5 display-inline-block"
+        style={{ borderBottom: '1px dotted #1a1a1a' }}
+      >
+        Comments
+      </h3>
+      <div className="flex-row my-4">
+        {comments &&
+          comments.map((comment) => (
+            <div key={comment._id} className="col-12 mb-3 pb-3">
+              <div className="p-3 waves-effect waves-light text-light">
+                <h5 className="card-header">
+                  {comment.user} commented {' '}
+                  <span style={{ fontSize: '0.825rem' }}>
+                    on {comment.createdAt}
+                  </span>
+                </h5>
+                <p className="card-body">{comment.commentText}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+    </>
+  );
 }
+
+export default CommentList;

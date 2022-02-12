@@ -5,10 +5,13 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { LOGIN_USER } from "../utils/mutations"; // for login
 import { Signup } from '../Signup/Signup';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Login = () => {
+  // example of a way to open the modal if using state doesnt work
+  // myModal.addEventListener('shown.bs.modal', function () {
+  //   myInput.focus()
+  // })
   const [isOpen, setIsOpen] = React.useState(false);
   // opens modal
   const showModal = () => {

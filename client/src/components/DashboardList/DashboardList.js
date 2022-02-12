@@ -1,11 +1,9 @@
-// import use Mutation for the comments
 import CommentList from '../components/Comment/CommentList'
 import React, { useState } from 'react';
-// import { renderMatches } from 'react-router';
 import bubble from '../../../Sample/comment.png'
 import like from '../../../Sample/thumb-up.png'
 
-const AccompList = () => {
+const DashboardList = () => {
     // * function for the like count button
     const [likeState, setlikeState] = useState(0)
 
@@ -22,6 +20,7 @@ const AccompList = () => {
     // const handleCommentBtn = () => {
     //     <CommentForm />
     // } 
+    
     return (
         <div>
             <div class="container-fluid">
@@ -38,15 +37,15 @@ const AccompList = () => {
             <div className="card-body bg-light p-2">{users &&
                     users.map((user) => (
                         <div key={users.reminders}>
-                            <p>{user.reminders[i]}</p>
-              <p>{users.reminders[i].complete_count}</p>
+                            <p>{user.reminders}</p>
+              <p>{users.reminders.complete_count}</p>
                         </div>
                     ))} 
             </div>
             <div>
                 {/* comment and like button */}
                 <img src={like}><p>{likeState}</p></img>
-                <button onClick={Co}><img src={bubble}></img></button>
+                <button onClick={(event) => <CommentForm />}><img src={bubble}></img></button>
             </div>
           </div>
         ))}
@@ -62,4 +61,4 @@ const AccompList = () => {
     )
 }
 
-export default AccompList;
+export default DashboardList;

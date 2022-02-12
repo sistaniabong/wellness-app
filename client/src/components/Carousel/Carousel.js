@@ -1,6 +1,6 @@
 import React from react;
 
-
+// this will have different pictures describing our app, similar to how apps have 
 const Carousel = () => {
 
 
