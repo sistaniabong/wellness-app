@@ -1,17 +1,16 @@
-// import { setLogVerbosity } from "@apollo/client";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
-import { LOGIN_USER } from "../utils/mutations"; // for login
-import { Signup } from '../Signup/Signup';
-
+import Auth from "../../utils/auth";
+import { LOGIN_USER } from "../../utils/mutations";
+// import { Signup } from "../Signup/Signup";
 
 const Login = () => {
   // example of a way to open the modal if using state doesnt work
   // myModal.addEventListener('shown.bs.modal', function () {
   //   myInput.focus()
   // })
+  
   const [isOpen, setIsOpen] = React.useState(false);
   // opens modal
   const showModal = () => {
@@ -59,7 +58,7 @@ const Login = () => {
         data-bs-target="#exampleModal"
         data-bs-whatever="@mdo"
         className="m-2 waves-effect waves-light btn-large login"
-        style="border-radius: 10px;"
+        style={"border-radius: 10px;"}
         onclick={showModal}
       >
         Login
@@ -88,8 +87,6 @@ const Login = () => {
               ></button>
             </div>
             <div className="modal-body">
-              {/* How to link to the signup page */}
-              <Link to={Signup}>← Go to Signup</Link>
               <form onSubmit={handleLoginBtn}>
                 <div className="input-group mb-3">
                   <span

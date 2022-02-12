@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import Auth from '../../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Login } from '../Login/Login'
 
 const Signup = () => {
 
@@ -50,7 +49,7 @@ const Signup = () => {
     <div>
 
         {/* <!-- signup button --> */}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style="border-radius: 10px;" onClick={showModal}>Sign Up</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style={"border-radius: 10px;"} onClick={showModal}>Sign Up</button>
          {/* <!-- Signup modal --> */}
          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div className="modal-dialog">
@@ -60,7 +59,6 @@ const Signup = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={hideModal}></button>
                           </div>
                           <div className="modal-body">
-                          <Link to={Login}>← Go to Login</Link>
                             <form onSubmit={handleSignupBtn}>
                               <div className="input-group mb-3">
                                 <span className="input-group-text" id="inputGroup-sizing-default">First Name</span>

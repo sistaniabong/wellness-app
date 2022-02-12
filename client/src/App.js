@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import Home from './pages/Home';
+import Home from './pages/Home';
 // import Dashboard from './pages/Dashboard';
 // import Activity from './pages/Activity';
 // import Countdown from './pages/Countdown';
-import Setup from './pages/Setup';
+// import Setup from './pages/Setup';
 // import Summary from './pages/Summary'
 // import Login from ...
 
@@ -53,6 +53,7 @@ function App() {
         <Router> 
           <div className="background flex-column justify-center align-center min-100-vh bg-primary">
             <Header />
+            
               {/* <Switch>
                 <Route exact path="/">
                   <Home />  
@@ -84,20 +85,21 @@ function App() {
               </Switch> */}
 
               {/* test for Jing setup page */}
-              {/* <Route exact path="/activitysetup/:activityId">
-                  <Setup />
-                </Route> */}
-
+              {/* <Switch>
                 <Route exact path="/">
                   <Home />
                 </Route>
-                
+              </Switch> */}
+
+              <Home />
+
             <Footer />
           </div>   
         </Router> 
     </ApolloProvider>
   );
 }
+
 
 {/* to display all users' activities + the set new acitivity + progress buttons
   <Route exact path="/dashboard/:username">

@@ -5,6 +5,7 @@ import Signup from "../components/Signup/Signup"
 import Carousel from "../components/Carousel/Carousel"
 // import auth file
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 
 
 const Home = () => {
@@ -12,9 +13,10 @@ const Home = () => {
 
   return (
     <div className="container">
-      <Carousel />
-      <Login />
-      <Signup />
+      <p>hey</p>
+      {/* <Carousel /> */}
+      {/* <Login /> */}
+      {/* <Signup /> */}
     </div>
   );
 };
