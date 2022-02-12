@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
+// import Auth from '../utils/auth'; //commented-auth is not yet in utils
 import { ADD_USER } from '../../utils/mutations';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import  Login  from '../Login/Login';
 
 const Signup = () => {
 
@@ -34,7 +34,8 @@ const Signup = () => {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    //had to comment this out because Auth is not added yet
+    // Auth.login(token);
     
   }
   const handleChange = (event) => {
