@@ -1,3 +1,5 @@
+import React from 'react';
+
 
 // component for comment modal
 const CommentForm = () => {
