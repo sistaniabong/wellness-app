@@ -5,8 +5,8 @@ import { useMutation } from '@apollo/client';
 // import { ADD_USER } from '../utils/mutations'; // incorrect path
 import { ADD_USER } from '../../utils/mutations';
 // import 'bootstrap/dist/css/bootstrap.min.css'; //this caused error so I commented this out, not sure where you're supposed to add this tho
-// import  { Signup }  from '../Signup/Signup'; //Login did not need to be deconstruct
-import  Signup  from '../Signup/Signup';
+// import  { Login }  from '../Login/Login'; //Login did not need to be deconstruct
+import  Login  from '../Login/Login';
 
 const Signup = () => {
 

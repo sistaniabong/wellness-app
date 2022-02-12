@@ -5,8 +5,8 @@ import { useMutation } from "@apollo/client";
 // import Auth from "../utils/auth"; //commented-auth is not yet in utils
 // import { LOGIN_USER } from "../utils/mutations"; // incorrect path
 import { LOGIN_USER } from "../../utils/mutations";
-// import  { Login }  from '../Login/Login'; //Signup did not need to be deconstruct
-import  Login  from '../Login/Login';
+// import  {Signup}  from '../Signup/Signup'; //Signup did not need to be deconstruct
+import  Signup  from '../Signup/Signup';
 
 
 const Login = () => {
