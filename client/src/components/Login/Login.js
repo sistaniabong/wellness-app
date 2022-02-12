@@ -2,9 +2,11 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
-import { LOGIN_USER } from "../utils/mutations"; // for login
-import { Signup } from '../Signup/Signup';
+// import Auth from "../utils/auth"; //commented-auth is not yet in utils
+// import { LOGIN_USER } from "../utils/mutations"; // incorrect path
+import { LOGIN_USER } from "../../utils/mutations";
+// import  { Login }  from '../Login/Login'; //Signup did not need to be deconstruct
+import  Login  from '../Login/Login';
 
 
 const Login = () => {
@@ -35,7 +37,7 @@ const Login = () => {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      Auth.login(token); // route to the dashboard
+      // Auth.login(token); // route to the dashboard //had to comment this out because Auth is not added yet
     } catch (e) {
       console.log(e);
     }

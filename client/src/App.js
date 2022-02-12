@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import Home from './pages/Home';
+import Home from './pages/Home';
 // import Dashboard from './pages/Dashboard';
 import Activity from './pages/Activity';
 import Countdown from './pages/Countdown';
@@ -54,7 +54,6 @@ function App() {
           <div className="background flex-column justify-center align-center min-100-vh bg-primary">
             <Header />
             {/* <Activity /> */}
-            <Summary />
             {/* <Countdown /> */}
             {/* <Setup /> */}
               {/* <Switch>
@@ -86,6 +85,21 @@ function App() {
                   <Summary />
                 </Route>
               </Switch> */}
+
+              {/* test for Jing setup page */}
+              <div>
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/activitysetup/:activityId">
+                  <Setup />
+                </Route>
+                <Route exact path="/summary">
+                  <Summary />
+                </Route>
+              </Switch>
+              </div>  
             <Footer />
           </div>   
         </Router> 

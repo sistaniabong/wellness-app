@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Login } from '../Login/Login'
+// import Auth from '../utils/auth'; //commented-auth is not yet in utils
+// import { ADD_USER } from '../utils/mutations'; // incorrect path
+import { ADD_USER } from '../../utils/mutations';
+// import 'bootstrap/dist/css/bootstrap.min.css'; //this caused error so I commented this out, not sure where you're supposed to add this tho
+// import  { Signup }  from '../Signup/Signup'; //Login did not need to be deconstruct
+import  Signup  from '../Signup/Signup';
 
 const Signup = () => {
 
@@ -35,7 +37,8 @@ const Signup = () => {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    //had to comment this out because Auth is not added yet
+    // Auth.login(token);
     
   }
   const handleChange = (event) => {
