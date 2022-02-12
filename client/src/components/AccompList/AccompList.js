@@ -1,7 +1,9 @@
 // import use Mutation for the comments
 import CommentList from '../components/Comment/CommentList'
 import React, { useState } from 'react';
-import { renderMatches } from 'react-router';
+// import { renderMatches } from 'react-router';
+import bubble from '../../../Sample/comment.png'
+import like from '../../../Sample/thumb-up.png'
 
 const AccompList = () => {
     // * function for the like count button
@@ -33,23 +35,25 @@ const AccompList = () => {
                             accomplished this goal on {users.reminders.createdAt}
                         </span>
                          </h4>
-            <div className="card-body bg-light p-2">
-              *{forEach => (
-              <p>{users.reminders[i]}</p>
+            <div className="card-body bg-light p-2">{users &&
+                    users.map((user) => (
+                        <div key={users.reminders}>
+                            <p>{user.reminders[i]}</p>
               <p>{users.reminders[i].complete_count}</p>
-              )} 
-
+                        </div>
+                    ))} 
             </div>
             <div>
                 {/* comment and like button */}
+                <img src={like}><p>{likeState}</p></img>
+                <button onClick={Co}><img src={bubble}></img></button>
             </div>
           </div>
         ))}
             </div>  
             <a className="comments" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Comments</a>
-               {/* Put inside the hide option of the accomplishment container */}
                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                   <CommentList commentlist={commentlist} /> 
+                   <CommentList /> 
                </div>
             
             
