@@ -1,6 +1,6 @@
 
 // component for comment modal
-const Comment = () => {
+const CommentForm = () => {
 
     // function to use mutation to add a comment
 
@@ -13,3 +13,5 @@ const Comment = () => {
         </div>
     )
 }
+
+export default CommentForm;

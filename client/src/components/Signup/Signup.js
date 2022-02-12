@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Login } from '../Login/Login'
 
 const Signup = () => {
 
@@ -59,7 +60,7 @@ const Signup = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={hideModal}></button>
                           </div>
                           <div className="modal-body">
-                          <Link to="/login">← Go to Login</Link>
+                          <Link to={Login}>← Go to Login</Link>
                             <form onSubmit={handleSignupBtn}>
                               <div className="input-group mb-3">
                                 <span className="input-group-text" id="inputGroup-sizing-default">First Name</span>

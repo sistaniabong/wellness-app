@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
-import { LOGIN } from "../utils/mutations"; // for login
+import { LOGIN_USER } from "../utils/mutations"; // for login
+import { Signup } from '../Signup/Signup';
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const Login = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -20,7 +22,7 @@ const Login = () => {
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   // will take login from mutations when finished
-  const [login, { error }] = useMutation(LOGIN);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   // handles login submit btn
   const handleLoginBtn = async (event) => {
@@ -30,7 +32,7 @@ const Login = () => {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      Auth.login(token); // route to the dashboard
     } catch (e) {
       console.log(e);
     }
@@ -83,7 +85,8 @@ const Login = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <Link to="/signup">← Go to Signup</Link>
+              {/* How to link to the signup page */}
+              <Link to={Signup}>← Go to Signup</Link>
               <form onSubmit={handleLoginBtn}>
                 <div className="input-group mb-3">
                   <span

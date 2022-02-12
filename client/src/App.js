@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import Home from './pages/Home';
-// import Dashboard from './pages/Dashboar';
+// import Dashboard from './pages/Dashboard';
 // import Activity from './pages/Activity';
 // import Countdown from './pages/Countdown';
 import Setup from './pages/Setup';
@@ -87,6 +87,10 @@ function App() {
               {/* <Route exact path="/activitysetup/:activityId">
                   <Setup />
                 </Route> */}
+
+                <Route exact path="/">
+                  <Home />
+                </Route>
                 
             <Footer />
           </div>   
