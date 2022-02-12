@@ -1,52 +1,87 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-
-import { ToDoList } from '../components/ToDoList/ToDoList';
+import React, { useState }from 'react';
+import { useMutation } from '@apollo/client';
+import ReminderForm from '../components/Reminder/ReminderForm';
+import ReminderList from '../components/Reminder/ReminderList';
 import ToDoForm from '../components/ToDoList/ToDoForm';
-
-import { GET_TODOS } from '../utils/queries';
-
-// add the reminder setup in this page
-
+import ToDoList from '../components/ToDoList/ToDoList';
 
 const Setup = () => {
-    const { loading, data } = useQuery(GET_TODOS);
-    const todos = data?.todos || [];
+    
+    const startTheActivity = (e) =>{
+       e.preventDefault();
+        // have a map func to loop for the remindersList, for future ADD_TODO query
+        setReminders(reminders.map(reminder => {
+          // add every reminder into addReminder Mutation,e.g. 18 ThoughtForm
+          // mutation addReminder ($activityId: ID!, $title: String!, $time_interval: Int!)
+          console.log(reminders);
+          return {...reminders, reminder}
+        }))
+        // have an map func loop for todosList, for future ADD_Reminder query
+        setTodos(todos.map(todo=>{
+          // add every reminder into addReminder Mutation
+          // mutation addTodo ($activityId: ID!, $name: String!)
+          console.log(todos);
+          return {...todos, todo}
+        }))
+        // redirect the page to next page
+    };
+
+    // useState for manipulate the Reminder section
+    const [typeState, setTypeState] = useState("");
+    const [timeState, setTimeState] = useState("");
+    const [reminders, setReminders] = useState([]);
+    // useState for manipulate the TodoList section
+    const [todoState, setTodoState] = useState("");
+    const [todos, setTodos] = useState([]);
 
     return(
         <main>
-          {/* need to add the reminder setup here */}
-        <div className="flex-row justify-center">
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <ToDoForm />
-          </div>
-          <div className="col-12 col-md-8 mb-3">
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <ToDoList
-                todos={todos}
-                title="Let's get it done!"
-              />
-            )}
-          </div>
-          {/* the button to start the activity */}
-          <div class="m-5 flex-column justify-center align-center text-center">
-            <Link to="/activity/:activityId">
-              <button class="btn-floating btn-large red lighten-2" style="width:100px; height:100px">Start</button>
-            </Link>
-                
-          </div>
-        </div>
+        {/* for Reminder Setup */}
+
+          {/* Reminder Selector */}
+          <ReminderForm 
+            reminders={reminders} 
+            setReminders={setReminders}
+            typeState={typeState} 
+            setTypeState={setTypeState} 
+            timeState={timeState}
+            setTimeState={setTimeState}
+          />
+
+          {/* Reminder List */}
+            <ReminderList 
+            reminders={reminders} 
+            setReminders={setReminders}
+          /> 
+            
+            {/* for Todo Setup */}
+            <ToDoForm 
+              todos={todos}
+              setTodos={setTodos}
+              todoState={todoState}
+              setTodoState={setTodoState}
+            />
+
+            {/* Todos List */}
+            <ToDoList 
+              todos={todos}
+              setTodos={setTodos}
+            />
+
+            {/* The START Button for final generate all the reminders and todos */}
+            <div className="flex-column justify-center align-center text-center">
+                <button 
+                  className="btn-floating btn-large waves-effect waves-light red lighten-2" 
+                  style={{width:'100px', height:'100px'}}
+                  onClick={startTheActivity}
+                >
+                  START
+                </button>
+            </div>
       </main> 
     )
 }
-
-
-
+// the button need a <Link to={`/activity/:activityId`}></Link>
+// does we need to make a useState, and pass the activityId from page Activity to Setup?
 
 export default Setup;
-
