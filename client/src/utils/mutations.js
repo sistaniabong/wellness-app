@@ -30,8 +30,7 @@ export const ADD_ACTIVITY = gql`
         addActivity(title: $title, duration: $duration, user: $user) {
             _id
             title
-            likes
-            createdAt
+            duration
         }
     }
 `

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState }from 'react';
 import { useMutation } from '@apollo/client';
 
-const Timer = () =>{
+const Timer = ({duration}) =>{
     const [timerHours, setTimerHours] = useState('00');
     const [timerMinutes, setTimerMinutes] =useState('00');
     const [timerSeconds, setTimerSeconds] =useState('00');
@@ -61,3 +61,5 @@ const Timer = () =>{
 };
 
 export default Timer;
+
+ {/* redirect to the summary page */}
