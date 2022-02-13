@@ -5,12 +5,6 @@ import Carousel from "../components/Carousel/Carousel"
 
 const Home = () => {
 
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  // opens modal
-  const showModal = () => {
-    setIsOpen(true);
-  };
 
   return (
     <div className="container">
@@ -18,22 +12,19 @@ const Home = () => {
       <Carousel />
       {/* <Login /> */}
 
-      {/* <Signup 
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
-      /> */}
+      {/* <Signup /> */}
       
       <button 
-        className="m-1 waves-effect waves-light btn-floating" 
+        className="m-6 waves-effect waves-light btn-floating" 
         id="signup" 
         style={{borderRadius: '10px' }}
         data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
         login
         </button>
       <button 
-        className="m-1 waves-effect waves-light btn-floating" 
+        className="m-6 waves-effect waves-light btn-floating" 
         id="signup" 
-        style={{borderRadius: '10px' }}
+        style={{borderRadius: '10px', }}
         data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
         Sign Up
         </button>

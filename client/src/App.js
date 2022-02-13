@@ -89,7 +89,7 @@ function App() {
 
               {/* test for Jing setup page */}
               {/* <div>
-              <Routes>
+              <Switch>
                 <Route exact path="/">
                   <Home />
                 </Route>
@@ -99,7 +99,7 @@ function App() {
                 <Route exact path="/summary">
                   <Summary />
                 </Route>
-              </Routes>
+              <Switch>
               </div>   */}
             <Footer />
           </div>   
