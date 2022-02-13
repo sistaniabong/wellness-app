@@ -12,11 +12,6 @@ const DashboardList = () => {
         setlikeState(likeState++) 
     }
 
-    // outline for the cntainers and the list 
-
-    // will have the comment list function for props and useState
-
-    // handle comment button will trigger comment form modal
     // const handleCommentBtn = () => {
     //     <CommentForm />
     // } 
@@ -45,13 +40,13 @@ const DashboardList = () => {
             <div>
                 {/* comment and like button */}
                 <img src={like}><p>{likeState}</p></img>
-                <button onClick={(event) => <CommentForm />}><img src={bubble}></img></button>
+                <button onClick={( {activityId}) => <CommentForm />}><img src={bubble}></img></button>
             </div>
           </div>
         ))}
             </div>  
             <a className="comments" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Comments</a>
-               <div class="collapse multi-collapse" id="multiCollapseExample1">
+               <div className="collapse multi-collapse" id="multiCollapseExample1">
                    <CommentList /> 
                </div>
             

@@ -24,16 +24,16 @@ const Dashboard = () => {
     
     return (
         <div>
-            <DashboardList dashboardlist={dashboardlist} />
+            <DashboardList />
 
             {/* set a reminder button */}
 
-            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={}
+            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={'/setup'}
             onClick={}>Set a reminder</Link>
             {/* pro plan page Link */}
-            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={}onClick={}>Pro Plan</Link>
+            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={'/proplan'}onClick={}>Pro Plan</Link>
             {/* logout Link */}
-            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={} onClick={}>Logout</Link> */}
+            {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={'/'} onClick={}>Logout</Link> */}
         </div>
     )
 }

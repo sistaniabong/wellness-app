@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
+import { Link } from 'react-router-dom';
+
 
 const Signup = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -108,13 +110,13 @@ const Signup = () => {
           >
             Cancel
           </button>
-          <button
+          <Link
             className="m-6 waves-effect waves-light btn-floating"
             style={{ borderRadius: "10px", width: "50px" }}
-            type="submit"
+            type="submit" to={'/dashboard'}
           >
-            Login
-          </button>
+            Signup
+          </Link>
         </Modal.Footer>
       </Modal>
     </>
