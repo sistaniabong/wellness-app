@@ -6,15 +6,19 @@ import like from '../../../Sample/thumb-up.png'
 const DashboardList = () => {
     // * function for the like count button
     const [likeState, setlikeState] = useState(0)
+    const [commentState, setCommentState] = useState('')
+    const [comments, setComments] = useState([])
 
     const handleLikeBtn = (event) => {
         event.preventDefault();
         setlikeState(likeState++) 
     }
 
-    // const handleCommentBtn = () => {
-    //     <CommentForm />
-    // } 
+    setComments(comments.map(comment=>{
+        console.log(comments);
+        return {...comments, comment}
+      }))
+
     
     return (
         <div>
@@ -40,14 +44,14 @@ const DashboardList = () => {
             <div>
                 {/* comment and like button */}
                 <img src={like}><p>{likeState}</p></img>
-                <button onClick={( {activityId}) => <CommentForm />}><img src={bubble}></img></button>
+                <button onClick={( {activityId}) => <CommentForm commentState={setCommentState} />}><img src={bubble}></img></button>
             </div>
           </div>
         ))}
             </div>  
             <a className="comments" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Comments</a>
                <div className="collapse multi-collapse" id="multiCollapseExample1">
-                   <CommentList /> 
+                   <CommentList comments={setComments}/> 
                </div>
             
             
