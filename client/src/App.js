@@ -61,10 +61,10 @@ function App() {
                 <Route exact path="/">
                   <Home />  
                 </Route>
-
+{/* 
                 <Route exact path="/dashboard/:username">
                   <Dashboard />
-                </Route> 
+                </Route>  */}
 
                 <Route exact path="/activitysetup/:username">
                   <Activity />
@@ -78,9 +78,9 @@ function App() {
                   <Countdown />
                 </Route> 
 
-                <Route exact path="/proplan/:username">
+                {/* <Route exact path="/proplan/:username">
                   <ProPlan />
-                </Route>
+                </Route> */}
 
                 <Route exact path="/summary/:activityId">
                   <Summary />
