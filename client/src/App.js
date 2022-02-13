@@ -58,15 +58,15 @@ function App() {
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
-            <Dashboard />
-              {/* <Switch>
+            {/* <Dashboard /> */}
+              <Switch>
                 <Route exact path="/">
                   <Home />  
                 </Route>
-{/* 
-                <Route exact path="/dashboard/:username">
+
+                <Route exact path="/dashboard/">
                   <Dashboard />
-                </Route>  */}
+                </Route>
 
                 <Route exact path="/activitysetup/:username">
                   <Activity />
@@ -87,7 +87,7 @@ function App() {
                 <Route exact path="/summary/:activityId">
                   <Summary />
                 </Route>
-              </Switch> */}
+              </Switch> 
 
             <Footer />
           </div>   
