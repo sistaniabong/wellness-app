@@ -75,10 +75,21 @@ const DashboardList = ({ activities }) => {
                             <h4 className="card-header bg-primary text-light p-2 m-0">
                                 {activity.user} <br />
                                 <span style={{ fontSize: '1rem' }}>
-                                    accomplished this goal on {activity.createdAt}
-                                    for {activity.duration}
+                                    completed on {activity.createdAt} <br/>
+                                    for {activity.duration} mintues
                                 </span>
+                                
                             </h4>
+                            <div id='reminder-title'>
+                            {/* {reminders.map((reminders) => (
+                                <div key={reminders._id} id="reminder-title"> */}
+                                {/* Add for loop */}
+                                {activity.reminders[0].title} --
+                                complete_count :{activity.reminders[0].complete_count}  <br/>
+            
+                                {/* </div>
+                            ))} */}
+                            </div>
 
                         </div>
                     ))}

@@ -13,6 +13,8 @@ const Dashboard = () => {
     const activities = data?.allActivities || [];
     console.log(activities)
 
+    const reminders = data?.allActivities.reminders || [];
+
 
     
     // *function to get all the data for the accomplishment from the completion page
@@ -26,14 +28,13 @@ const Dashboard = () => {
     //     }
     // })
 
-    
-
     // handlebuttons for reminder page and pro plan page
     
     return (
         <div>
             <DashboardList
                 activities={activities}
+                reminders={reminders}
               />
 
               
