@@ -1,33 +1,39 @@
 import React from 'react';
 // import Login from "../components/Login/Login"
-import Signup from "../components/Signup/Signup"
+// import Signup from "../components/Signup/Signup"
 import Carousel from "../components/Carousel/Carousel"
+import Test from '../components/Signup/signuptest'
+import LoginTest from '../components/Login/logintest';
 
 const Home = () => {
+  // const showModal = {
+  //   var myModal = document.getElementById('login')
+  //   var myInput = document.getElementById('myInput')
 
+  //   myModal.addEventListener('shown.bs.modal', function () {
+  //   myInput.focus()
+  //   })  
+  // }
+
+  // const showModalsignup = {
+  //   var myModal = document.getElementById('signup')
+  //   var myInput = document.getElementById('myInput')
+
+  //   myModal.addEventListener('shown.bs.modal', function () {
+  //   myInput.focus()
+  //   })  
+  // }
 
   return (
     <div className="container">
       <p>hey</p>
       <Carousel />
-      {/* <Login /> */}
+      <Test />
+      <LoginTest />
 
+      {/* <Login /> */}
       {/* <Signup /> */}
       
-      <button 
-        className="m-6 waves-effect waves-light btn-floating" 
-        id="signup" 
-        style={{borderRadius: '10px' }}
-        data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-        login
-        </button>
-      <button 
-        className="m-6 waves-effect waves-light btn-floating" 
-        id="signup" 
-        style={{borderRadius: '10px', }}
-        data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-        Sign Up
-        </button>
     </div>
   );
 };

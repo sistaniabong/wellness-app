@@ -1,17 +1,20 @@
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-// import Auth from '../utils/auth'; //commented-auth is not yet in utils
 import { ADD_USER } from '../../utils/mutations';
-import  Login  from '../Login/Login';
 
 
-const Signup = () => {
+const Test = () => {
+    const [isOpen, setIsOpen] = React.useState(false);
 
+  const showModal = () => {
+    setIsOpen(true);
+  };
 
-
-
-  
+  const hideModal = () => {
+    setIsOpen(false);
+  };
 
   const [formState, setFormState] = useState({ email: '', password: '' }); // change to username?
   const [addUser] = useMutation(ADD_USER);
@@ -41,20 +44,14 @@ const Signup = () => {
   };
 
   return (
-    <div>
-
-        {/* <!-- signup button --> */}
-        <button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style={"border-radius: 10px;"} >Sign Up</button>
-         {/* <!-- Signup modal --> */}
-         <div className="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Signup</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div className="modal-body">
-                            <form onSubmit={handleSignupBtn}>
+    <>
+      <button className="m-6 waves-effect waves-light btn-floating" style={{borderRadius: '10px', width: '65px' }} onClick={showModal}>Sign up</button>
+      <Modal show={isOpen} onHide={hideModal}>
+        <Modal.Header>
+          <Modal.Title>SIGN UP</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <form onSubmit={handleSignupBtn}>
                               <div className="input-group mb-3">
                                 <span className="input-group-text" id="inputGroup-sizing-default">First Name</span>
                                 <input  
@@ -120,16 +117,14 @@ const Signup = () => {
                                 ></input>
                               </div>
                             </form>
-                          </div>
-                          <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Signup</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-    </div>
-  )
-};
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="m-6 waves-effect waves-light btn-floating" style={{borderRadius: '10px', width: '65px' }} onClick={hideModal}>Cancel</button>
+          <button className="m-6 waves-effect waves-light btn-floating" style={{borderRadius: '10px', width: '50px' }} type="submit">Login</button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
 
-export default Signup;
+export default Test;

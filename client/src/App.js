@@ -92,7 +92,7 @@ function App() {
               <Switch>
                 {/* <Route exact path="/">
                   <Home />
-                </Route> */}
+                </Route>
                 <Route exact path="/activitysetup/:activityId">
                   <Setup />
                 </Route>
@@ -100,7 +100,8 @@ function App() {
                   <Summary />
                 </Route>
               <Switch>
-              </div>   */}
+
+              </div>    */}
             <Footer />
           </div>   
         </Router> 

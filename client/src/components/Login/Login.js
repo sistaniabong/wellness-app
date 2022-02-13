@@ -9,21 +9,7 @@ import  Signup  from '../Signup/Signup';
 
 
 const Login = () => {
-  // example of a way to open the modal if using state doesnt work
-  // myModal.addEventListener('shown.bs.modal', function () {
-  //   myInput.focus()
-  // })
   
-  const [isOpen, setIsOpen] = React.useState(false);
-  // opens modal
-  const showModal = () => {
-    setIsOpen(true);
-  };
-
-  // closes modal
-  const hideModal = () => {
-    setIsOpen(false);
-  };
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   // will take login from mutations when finished
@@ -58,11 +44,11 @@ const Login = () => {
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#exampleModal1"
         data-bs-whatever="@mdo"
         className="m-2 waves-effect waves-light btn-large login"
         style={"border-radius: 10px;"}
-        onclick={showModal}
+        
       >
         Login
       </button>
@@ -86,7 +72,7 @@ const Login = () => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={hideModal}
+                
               ></button>
             </div>
             <div className="modal-body">
@@ -149,6 +135,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <div/>
     </div>
   );
 };
