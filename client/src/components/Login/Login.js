@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
-const LoginTest = () => {
+const Login = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const showModal = () => {
@@ -112,4 +112,4 @@ const LoginTest = () => {
   );
 };
 
-export default LoginTest;
+export default Login;
