@@ -53,6 +53,7 @@ function App() {
         <Router> 
           <div className="background flex-column justify-center align-center min-100-vh bg-primary">
             <Header />
+            <Home />
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
@@ -87,8 +88,8 @@ function App() {
               </Switch> */}
 
               {/* test for Jing setup page */}
-              <div>
-              <Switch>
+              {/* <div>
+              <Routes>
                 <Route exact path="/">
                   <Home />
                 </Route>
@@ -98,8 +99,8 @@ function App() {
                 <Route exact path="/summary">
                   <Summary />
                 </Route>
-              </Switch>
-              </div>  
+              </Routes>
+              </div>   */}
             <Footer />
           </div>   
         </Router> 

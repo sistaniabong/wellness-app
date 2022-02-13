@@ -50,7 +50,7 @@ const Signup = () => {
     <div>
 
         {/* <!-- signup button --> */}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style={"border-radius: 10px;"} onClick={showModal}>Sign Up</button>
+        <button type={isOpen} class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style={"border-radius: 10px;"} onClick={showModal}>Sign Up</button>
          {/* <!-- Signup modal --> */}
          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div className="modal-dialog">
