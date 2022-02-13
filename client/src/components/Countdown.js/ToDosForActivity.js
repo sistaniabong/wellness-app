@@ -11,7 +11,7 @@ const ToDosForActivity = ({todos}) =>{
             // }
 
             // test
-            
+
     }
 
     return (
@@ -43,7 +43,7 @@ const ToDosForActivity = ({todos}) =>{
                                         className='col-2 card-action' 
                                         style={{borderRadius: '10px'}}
                                         status={todo.status}
-                                        onClick={changeStatusHandler}
+                                        onClick={changeStatusHandler(todo)}
                                     >
                                         ✔️
                                     </button>
