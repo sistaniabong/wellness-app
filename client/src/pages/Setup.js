@@ -7,7 +7,6 @@ import ToDoList from '../components/ToDoList/ToDoList';
 
 import { ADD_ACTIVITY } from '../utils/mutations';
 
-
 const Setup = () => {
     
     const startTheActivity = (e) =>{
@@ -42,7 +41,9 @@ const Setup = () => {
     // console.log(activityId)
 
     return(
+      
         <main>
+          
         {/* for Reminder Setup */}
 
           {/* Reminder Selector */}
@@ -77,7 +78,7 @@ const Setup = () => {
             />
 
             {/* The START Button for final generate all the reminders and todos */}
-            <div className="flex-column justify-center align-center text-center">
+            <div className="position-absolute bottom-10 start-50 translate-middle-x">
                 <button 
                   className="btn-floating btn-large waves-effect waves-light red lighten-2" 
                   style={{width:'100px', height:'100px'}}
@@ -86,7 +87,9 @@ const Setup = () => {
                   START
                 </button>
             </div>
+         
       </main> 
+      
     )
 }
 // the button need a <Link to={`/activity/:activityId`}></Link>

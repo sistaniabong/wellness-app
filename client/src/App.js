@@ -51,8 +51,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
         <Router> 
-          <div className="background flex-column justify-center align-center min-100-vh bg-primary">
-            <Header />
+          <div className="background flex-column justify-center align-center min-vh-100">
+            <Header />  
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
@@ -87,21 +87,25 @@ function App() {
               </Switch> */}
 
               {/* test for Jing setup page */}
+              
               <div>
               <Switch>
-                {/* <Route exact path="/">
-                  <Home />
-                </Route> */}
-                <Route exact path="/activitysetup/:activityId">
-                  <Setup />
-                </Route>
-                <Route exact path="/summary">
-                  <Summary />
-                </Route>
+                  {/* <Route exact path="/">
+                    <Home />
+                  </Route> */}
+                  <Route exact path="/activitysetup/:activityId">
+                    <Setup />
+                  </Route>
+                  <Route exact path="/activity/:activityId">
+                    <Countdown />
+                  </Route>
+                  <Route exact path="/summary">
+                    <Summary />
+                  </Route>
               </Switch>
-              </div>  
-            <Footer />
-          </div>   
+              </div> 
+            <Footer />   
+          </div> 
         </Router> 
     </ApolloProvider>
   );

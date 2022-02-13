@@ -1,7 +1,7 @@
 import React, { useState }from 'react';
 import { useMutation } from '@apollo/client';
 import Timer from '../components/Countdown.js/Timer';
-import ToDoList from '../components/ToDoList/ToDoList';
+// import ToDoList from '../components/ToDoList/ToDoList';
 
 const Countdown = () =>{
     return (
@@ -10,7 +10,7 @@ const Countdown = () =>{
             <Timer />
 
             {/* Todo List */}
-            <ToDoList />
+            {/* <ToDoList /> */}
             
             {/* Reminder Popup thing  */}
 
