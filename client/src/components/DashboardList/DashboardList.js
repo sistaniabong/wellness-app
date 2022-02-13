@@ -66,6 +66,17 @@ const DashboardList = ({ activities }) => {
     //     </div>
     // )
 
+    const displayReminders = () =>{
+        const remind = activities.reminders[i]
+        for (var i=0; i < remind.length; i++){
+            return `
+                {activity.reminders[0].title} --
+                                complete_count :{activity.reminders[0].complete_count}  <br/>
+            
+            `
+        }
+    }
+
     return (
         <div>
             <div class="container-fluid">
@@ -80,12 +91,12 @@ const DashboardList = ({ activities }) => {
                                 </span>
                                 
                             </h4>
-                            <div id='reminder-title'>
+                            <div id='reminder-title' onLoad={displayReminders}>
                             {/* {reminders.map((reminders) => (
                                 <div key={reminders._id} id="reminder-title"> */}
                                 {/* Add for loop */}
-                                {activity.reminders[0].title} --
-                                complete_count :{activity.reminders[0].complete_count}  <br/>
+                                {/* {activity.reminders[0].title} --
+                                complete_count :{activity.reminders[0].complete_count}  <br/> */}
             
                                 {/* </div>
                             ))} */}

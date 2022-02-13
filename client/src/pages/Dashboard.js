@@ -13,10 +13,6 @@ const Dashboard = () => {
     const activities = data?.allActivities || [];
     console.log(activities)
 
-    const reminders = data?.allActivities.reminders || [];
-
-
-    
     // *function to get all the data for the accomplishment from the completion page
     // const [dashList, { error}] = useQuery(GET_SINGLE_USER. {
     //     update(cache, { data: {dashList } }) {
@@ -34,7 +30,6 @@ const Dashboard = () => {
         <div>
             <DashboardList
                 activities={activities}
-                reminders={reminders}
               />
 
               
