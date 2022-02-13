@@ -24,7 +24,7 @@ const Dashboard = () => {
     
     return (
         <div>
-            <DashboardList  />
+            {/* <DashboardList  /> */}
             <p> heyyyyyys</p>
             {/* set a reminder button */}
 
