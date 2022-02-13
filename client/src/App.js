@@ -12,6 +12,7 @@ import Summary from './pages/Summary';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Dashboard from './pages/Dashboard';
 
 // for authentication
 // const httpLink = createHttpLink({
@@ -57,7 +58,8 @@ function App() {
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
-              <Switch>
+            <Dashboard />
+              {/* <Switch>
                 <Route exact path="/">
                   <Home />  
                 </Route>
@@ -85,7 +87,7 @@ function App() {
                 <Route exact path="/summary/:activityId">
                   <Summary />
                 </Route>
-              </Switch>
+              </Switch> */}
 
             <Footer />
           </div>   

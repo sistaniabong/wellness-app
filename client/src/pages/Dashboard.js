@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_SINGLE_USER} from '../utils/queries'
-import DashboardList from '../components/DashboardList/DashboardList'
+// import DashboardList from '../components/DashboardList/DashboardList'
 
 // use activity from MERN #20
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
     
     return (
         <div>
-            {/* <DashboardList /> */}
+            
             <p> heyyyyyys</p>
             {/* set a reminder button */}
 
