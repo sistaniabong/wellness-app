@@ -2,6 +2,8 @@ import CommentList from '../Comment/CommentList'
 import React, { useState } from 'react';
 import bubble from '../../assets/comment.png'
 import like from '../../assets/heart.png'
+import { Link } from 'react-router-dom';
+
 
 const DashboardList = ({ activities }) => {
 
@@ -70,18 +72,25 @@ const DashboardList = ({ activities }) => {
         <div>
             <div class="container-fluid">
                 <h3>Hi, welcome!</h3>
-                    {activities.map((activity) => (
-                        <div key={activity._id} className="card mb-3">
-                            <h4 className="card-header bg-primary text-light p-2 m-0">
-                                {activity.user} <br />
-                                <span style={{ fontSize: '1rem' }}>
-                                    accomplished this goal on {activity.createdAt}
-                                    for {activity.duration}
-                                </span>
-                            </h4>
+                {activities.map((activity) => (
+                    <div key={activity._id} className="card mb-3">
+                        <h4 style={{ background: 'white' }} className="card-body text-dark p-2 m-0">
+                            <p class="card-text">{activity.user} </p>
+                            <p  style={{ fontSize: '1rem' }} class="card-text">accomplished {activity.title} for {activity.duration} min </p>
+                            {/* Create a link to this thought's page to view its comments using `<Link>` component */}
+                            <Link
+                                style={{ borderRadius: '10px', textDecoration: 'none', color: 'black', fontSize: '15px', width: '80px', backgoround: '#2b7870' }}
+                                // className="btn btn-primary btn-block btn-squared"
+                                className="m-2 waves-effect waves-light btn-floating "
+                                to={`/comments/${activity._id}`}
+                            >
+                                Comments
+                            </Link>
+                        </h4>
 
-                        </div>
-                    ))}
+
+                    </div>
+                ))}
             </div>
             {/* SB task */}
             {/* add links to each activity card and that page shows comments and commentform (maybe) */}
@@ -100,7 +109,7 @@ const DashboardList = ({ activities }) => {
     //             {activities.map(activity => (
     //                 {activity.user}
     //             ))}
-                
+
     //         </ul>  
     //     </div> 
     // )
