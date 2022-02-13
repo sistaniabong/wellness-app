@@ -24,8 +24,8 @@ const Dashboard = () => {
     
     return (
         <div>
-            <DashboardList />
-
+            {/* <DashboardList /> */}
+            <p> heyyyyyys</p>
             {/* set a reminder button */}
 
             {/* <Link className="m-2 waves-effect waves-light btn-large" style="border-radius: 10px;" to={'/setup'}
