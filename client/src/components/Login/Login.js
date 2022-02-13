@@ -1,15 +1,19 @@
-// import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-// import Auth from "../utils/auth"; //commented-auth is not yet in utils
-// import { LOGIN_USER } from "../utils/mutations"; // incorrect path
 import { LOGIN_USER } from "../../utils/mutations";
-// import  {Signup}  from '../Signup/Signup'; //Signup did not need to be deconstruct
-import  Signup  from '../Signup/Signup';
 
+const LoginTest = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-const Login = () => {
-  
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
+  };
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   // will take login from mutations when finished
@@ -38,106 +42,74 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      {/*  login button and modal trigger */}
+    <>
       <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal1"
-        data-bs-whatever="@mdo"
-        className="m-2 waves-effect waves-light btn-large login"
-        style={"border-radius: 10px;"}
-        
+        className="m-6 waves-effect waves-light btn-floating"
+        style={{ borderRadius: "10px", width: "50px" }}
+        onClick={showModal}
       >
         Login
       </button>
-
-      {/* <!-- login modal --> */}
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Login
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                
-              ></button>
+      <Modal show={isOpen} onHide={hideModal} dialogClassName="modal-90w">
+        <Modal.Header>
+          <Modal.Title>LOGIN</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handleLoginBtn}>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Username
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={handleChange}
+              ></input>
             </div>
-            <div className="modal-body">
-              <form onSubmit={handleLoginBtn}>
-                <div className="input-group mb-3">
-                  <span
-                    className="input-group-text"
-                    id="inputGroup-sizing-default"
-                  >
-                    Username
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default"
-                    onChange={handleChange}
-                  ></input>
-                </div>
-                <div className="input-group mb-3">
-                  <span
-                    className="input-group-text"
-                    id="inputGroup-sizing-default"
-                  >
-                    Password
-                  </span>
-                  <input
-                    className="form-control"
-                    aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default"
-                    placeholder="******"
-                    name="password"
-                    type="password"
-                    id="pwd"
-                    onChange={handleChange}
-                  ></input>
-                </div>
-              </form>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Password
+              </span>
+              <input
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              ></input>
             </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
-              {/* If there's an error */}
-              {error ? (
-                <div>
-                  <p className="error-text">
-                    The provided credentials are incorrect
-                  </p>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div/>
-    </div>
+            {error ? (
+              <div>
+                <p className="error-text">
+                  The provided credentials are incorrect
+                </p>
+              </div>
+            ) : null}
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className="m-6 waves-effect waves-light btn-floating"
+            style={{ borderRadius: "10px", width: "65px" }}
+            onClick={hideModal}
+          >
+            Cancel
+          </button>
+          <button
+            className="m-6 waves-effect waves-light btn-floating"
+            style={{ borderRadius: "10px", width: "50px" }}
+          >
+            Save
+          </button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
-export default Login;
+export default LoginTest;
