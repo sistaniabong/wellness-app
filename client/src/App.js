@@ -61,12 +61,12 @@ function App() {
                 <Route exact path="/">
                   <Home />  
                 </Route>
-{/* 
-                <Route exact path="/dashboard/:username">
+
+                {/* <Route exact path="/dashboard/:username">
                   <Dashboard />
                 </Route>  */}
-
-                <Route exact path="/activitysetup/:username">
+                 {/* change activitysetup with activitycreate  */}
+                <Route exact path="/activitycreate/:username">
                   <Activity />
                 </Route>
 
