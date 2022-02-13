@@ -90,9 +90,9 @@ function App() {
               {/* test for Jing setup page */}
               {/* <div>
               <Switch>
-                <Route exact path="/">
+                {/* <Route exact path="/">
                   <Home />
-                </Route>
+                </Route> */}
                 <Route exact path="/activitysetup/:activityId">
                   <Setup />
                 </Route>
