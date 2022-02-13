@@ -62,11 +62,11 @@ function App() {
                   <Home />  
                 </Route>
 
-                <Route exact path="/dashboard/:username">
+                {/* <Route exact path="/dashboard/:username">
                   <Dashboard />
-                </Route> 
-
-                <Route exact path="/activitysetup/:username">
+                </Route>  */}
+                 {/* change activitysetup with activitycreate  */}
+                <Route exact path="/activitycreate/:username">
                   <Activity />
                 </Route>
 
@@ -78,9 +78,9 @@ function App() {
                   <Countdown />
                 </Route> 
 
-                <Route exact path="/proplan/:username">
+                {/* <Route exact path="/proplan/:username">
                   <ProPlan />
-                </Route>
+                </Route> */}
 
                 <Route exact path="/summary/:activityId">
                   <Summary />

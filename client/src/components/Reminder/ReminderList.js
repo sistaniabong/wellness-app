@@ -2,19 +2,23 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import Reminder from './Reminder';
 
-const ReminderList=({reminders, setReminders})=>{
-    // console.log(reminders);
+const ReminderList=({reminders})=>{
+    console.log('reminders:')
+    console.log(reminders)
+    
 
+    if (!reminders.length) {
+        return <h3></h3>;
+    }
     return(
         <div className='reminders-container'>
             <ul className='reminders-list'>
                 {reminders.map(reminder => (
                     <Reminder 
-                        key={reminder.id} 
+                        // reminder = {reminder}
+                        reminderId={reminder._id} 
                         text={`${reminder.title} every ${reminder.time_interval} mins.`}
-                        reminders={reminders} 
-                        setReminders={setReminders}
-                        reminder={reminder}
+
                     />
                 ))}
                 
@@ -22,5 +26,31 @@ const ReminderList=({reminders, setReminders})=>{
         </div> 
     )
 }
+
+
+// const ReminderList=({reminders})=>{
+//     console.log('reminders:')
+//     console.log(reminders)
+    
+
+//     if (!reminders.length) {
+//         return <h3>No reminders yet</h3>;
+//     }
+//     return(
+//         <div className='reminders-container'>
+//             <ul className='reminders-list'>
+//                 {reminders.map(reminder => (
+//                     <Reminder 
+//                         reminder = {reminder}
+//                         // key={reminder._id} 
+//                         // text={`${reminder.title} every ${reminder.time_interval} mins.`}
+
+//                     />
+//                 ))}
+                
+//             </ul>  
+//         </div> 
+//     )
+// }
 
 export default ReminderList;
