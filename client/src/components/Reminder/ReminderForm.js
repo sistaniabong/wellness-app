@@ -114,6 +114,7 @@ const ReminderForm = ({ activity }) =>{
                     >
                     <option value="">Times</option>
                     <option value="0.08">5 Sec</option>
+                    <option value='0.16'>10 Sec</option>
                     <option value="5"> 5 Mins</option>
                     <option value="15"> 15 Mins</option>
                     <option value="30"> 30 Mins</option>
