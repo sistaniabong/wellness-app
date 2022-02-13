@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-// import Auth from '../utils/auth'; //commented-auth is not yet in utils
-// import { ADD_USER } from '../utils/mutations'; // incorrect path
-import { ADD_USER } from '../../utils/mutations';
-// import 'bootstrap/dist/css/bootstrap.min.css'; //this caused error so I commented this out, not sure where you're supposed to add this tho
-// import  { Login }  from '../Login/Login'; //Login did not need to be deconstruct
-import  Login  from '../Login/Login';
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
 
 const Signup = () => {
-
   const [isOpen, setIsOpen] = React.useState(false);
 
-    // opens modal
   const showModal = () => {
     setIsOpen(true);
   };
 
-  // closes modal
   const hideModal = () => {
     setIsOpen(false);
   };
 
-  const [formState, setFormState] = useState({ email: '', password: '' }); // change to username?
+  const [formState, setFormState] = useState({ email: "", password: "" }); // change to username?
   const [addUser] = useMutation(ADD_USER);
   // handles signup submit btn
   const handleSignupBtn = async (event) => {
@@ -32,15 +25,12 @@ const Signup = () => {
       variables: {
         email: formState.email,
         password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
       },
     });
     const token = mutationResponse.data.addUser.token;
     //had to comment this out because Auth is not added yet
     // Auth.login(token);
-    
-  }
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -50,96 +40,85 @@ const Signup = () => {
   };
 
   return (
-    <div>
-
-        {/* <!-- signup button --> */}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" class="m-2 waves-effect waves-light btn-large signup" style="border-radius: 10px;" onClick={showModal}>Sign Up</button>
-         {/* <!-- Signup modal --> */}
-         <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Signup</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={hideModal}></button>
-                          </div>
-                          <div className="modal-body">
-                          <Link to={Login}>← Go to Login</Link>
-                            <form onSubmit={handleSignupBtn}>
-                              <div className="input-group mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-default">First Name</span>
-                                <input  
-                                className="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default"
-                                placeholder="First"
-                                name="firstName"
-                                type="firstName"
-                                id="firstName"
-                                onChange={handleChange}
-                                ></input>
-                              </div>
-                              <div className="input-group mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Last Name</span>
-                                <input 
-                                className="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default"
-                                placeholder="Last"
-                                name="lastName"
-                                type="lastName"
-                                id="lastName"
-                                onChange={handleChange}
-                                ></input>
-                              </div>
-                              <div className="input-group mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Username</span>
-                                <input 
-                                type="username" 
-                                name="username"
-                                id="username"
-                                className="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default"
-                                onChange={handleChange}
-                                ></input>
-                              </div>
-                              <div className="input-group mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
-                                <input 
-                                className="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default"
-                                placeholder="youremail@test.com"
-                                name="email"
-                                type="email"
-                                id="email"
-                                onChange={handleChange}
-                                ></input>
-                              </div>
-                              <div className="input-group mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                <input  
-                                className="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default"
-                                placeholder="******"
-                                name="password"
-                                type="password"
-                                id="pwd"
-                                onChange={handleChange}
-                                ></input>
-                              </div>
-                            </form>
-                          </div>
-                          <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Signup</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-    </div>
-  )
+    <>
+      <button
+        className="m-6 waves-effect waves-light btn-floating"
+        style={{ borderRadius: "10px", width: "65px" }}
+        onClick={showModal}
+      >
+        Sign up
+      </button>
+      <Modal show={isOpen} onHide={hideModal}>
+        <Modal.Header>
+          <Modal.Title>SIGN UP</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handleSignupBtn}>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Username
+              </span>
+              <input
+                type="username"
+                name="username"
+                id="username"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Email
+              </span>
+              <input
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="youremail@test.com"
+                name="email"
+                type="email"
+                id="email"
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Password
+              </span>
+              <input
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              ></input>
+            </div>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className="m-6 waves-effect waves-light btn-floating"
+            style={{ borderRadius: "10px", width: "65px" }}
+            onClick={hideModal}
+          >
+            Cancel
+          </button>
+          <button
+            className="m-6 waves-effect waves-light btn-floating"
+            style={{ borderRadius: "10px", width: "50px" }}
+            type="submit"
+          >
+            Login
+          </button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 };
 
 export default Signup;

@@ -53,10 +53,11 @@ function App() {
         <Router> 
           <div className="background flex-column justify-center align-center min-100-vh bg-primary">
             <Header />
+            {/* <Home /> */}
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
-              {/* <Switch>
+              <Switch>
                 <Route exact path="/">
                   <Home />  
                 </Route>
@@ -84,28 +85,15 @@ function App() {
                 <Route exact path="/summary/:activityId">
                   <Summary />
                 </Route>
-              </Switch> */}
-
-              {/* test for Jing setup page */}
-              <div>
-              <Switch>
-                {/* <Route exact path="/">
-                  <Home />
-                </Route> */}
-                <Route exact path="/activitysetup/:activityId">
-                  <Setup />
-                </Route>
-                <Route exact path="/summary">
-                  <Summary />
-                </Route>
               </Switch>
-              </div>  
+
             <Footer />
           </div>   
         </Router> 
     </ApolloProvider>
   );
 }
+
 
 {/* to display all users' activities + the set new acitivity + progress buttons
   <Route exact path="/dashboard/:username">
