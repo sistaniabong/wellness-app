@@ -11,9 +11,8 @@ const CommentList = ({ comments = [] }) => {
 
   console.log(comments);
   if (!comments.length) {
-    console.log('fsdfgds')
     return (
-    <h3>No Comments Yet</h3>);
+    <h3></h3>);
   }
 
   return (

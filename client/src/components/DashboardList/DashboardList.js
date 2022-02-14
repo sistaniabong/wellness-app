@@ -12,13 +12,12 @@ const DashboardList = ({ activities }) => {
   const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
 
   const handleLikeBtn = async (activityId) => {
-
-    // On form submit, perform mutation and pass in form data object as arguments
-    // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
     try {
       const { data } = await addlike({
         variables: { ...likeState, activityId},
       });
+
+      setlikeState(addlike);
 
       window.location.reload();
     } catch (err) {
@@ -39,12 +38,17 @@ const DashboardList = ({ activities }) => {
             >
               {activity.user} <br />
               <span style={{ fontSize: "10px" }}>
-                completed on {activity.createdAt} <br />
-                during {activity.duration} minute work period
+                completed {activity.title} <br />
+                on {activity.createdAt} <br />
+                {activity.duration} minute work period
               </span>
             </h6>
+
             <div className="teal lighten-2 flex-row align-center">
               <a href="">
+                  <div id="likecount">
+                    {activity.likes}
+                  </div>
                 <img
                   className="dash-btn"
                   alt="like button"
@@ -52,24 +56,24 @@ const DashboardList = ({ activities }) => {
                   src={like}
                 />
               </a>
-              <a>
+              {/* <a>
                 <img className="dash-btn" alt="comment buttnn" src={bubble} />
-              </a>
+              </a> */}
 
               <Link
-                style={{
-                  borderRadius: "10px",
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "15px",
-                  width: "80px",
-                  backgoround: "#2b7870",
-                }}
+                // style={{
+                //   borderRadius: "10px",
+                //   textDecoration: "none",
+                //   color: "black",
+                //   fontSize: "15px",
+                //   width: "80px",
+                //   backgoround: "#2b7870",
+                // }}
                 // className="btn btn-primary btn-block btn-squared"
-                className="m-2 waves-effect waves-light btn-floating "
+                // className="m-2 waves-effect waves-light btn-floating "
                 to={`/comments/${activity._id}`}
               >
-                Comments
+                <img className="dash-btn" alt="comment buttnn" src={bubble} />
               </Link>
             </div>
           </div>
@@ -107,5 +111,11 @@ const DashboardList = ({ activities }) => {
     </div>
   );
 };
+
+// {/* <div id="reminder-title">
+// {/* Add for loop */}
+// {activity.reminders[0].title} ~ completed 
+// {activity.reminders[0].complete_count} times! <br />
+// </div> */}
 
 export default DashboardList;
