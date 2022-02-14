@@ -80,9 +80,9 @@ function App() {
                   <Setup />
                 </Route>
 
-                {/* <Route exact path="/activity/:activityId">
+                <Route exact path="/activity/:activityId">
                   <Countdown />
-                </Route>  */}
+                </Route> 
 
                 {/* <Route exact path="/proplan/:username">
                   <ProPlan />
