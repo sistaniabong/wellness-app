@@ -3,11 +3,28 @@ import React, { useState } from "react";
 import bubble from "../../assets/comment.png";
 import like from "../../assets/heart.png";
 import { Link } from "react-router-dom";
+import { ADD_LIKE_ACTIVITY } from '../../utils/mutations'
+import { useMutation } from '@apollo/client';
 
 const DashboardList = ({ activities }) => {
   // * function for the like count button
   const [likeState, setlikeState] = useState(0);
-  console.log(activities);
+  const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
+
+  const handleLikeBtn = async (activityId) => {
+
+    // On form submit, perform mutation and pass in form data object as arguments
+    // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
+    try {
+      const { data } = await addlike({
+        variables: { ...likeState, activityId},
+      });
+
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 //   const handleLikeBtn = (activityId) => {
 //     event.preventDefault();
@@ -15,7 +32,6 @@ const DashboardList = ({ activities }) => {
 
 //     //addLike mutation and pass in activityId
 
-//     setlikeState(likeState++)
 //     console.log(likeState)
 //     }
 
@@ -37,18 +53,12 @@ const DashboardList = ({ activities }) => {
                 during {activity.duration} minute work period
               </span>
             </h6>
-
-            <div id="reminder-title">
-              {/* Add for loop */}
-              {activity.reminders[0].title} ~ completed 
-              {activity.reminders[0].complete_count} times! <br />
-            </div>
             <div className="teal lighten-2 flex-row align-center">
               <a href="">
                 <img
                   className="dash-btn"
                   alt="like button"
-                //   onClick={handleLikeBtn}
+                  onClick={handleLikeBtn}
                   src={like}
                 />
               </a>
