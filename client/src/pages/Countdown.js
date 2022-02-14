@@ -1,8 +1,8 @@
 import React, { useState }from 'react';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import Timer from '../components/Countdown.js/Timer';
-import ToDosForActivity from '../components/Countdown.js/ToDosForActivity';
+import Timer from '../components/Countdown/Timer';
+import ToDosForActivity from '../components/Countdown/ToDosForActivity';
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
 
 const Countdown = () =>{
