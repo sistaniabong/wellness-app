@@ -8,6 +8,8 @@ import CommentList from '../components/Comment/CommentList';
 import CommentForm from '../components/Comment/CommentForm';
 
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
+import like from "../assets/heart.png";
+
 
 const Comment = () => {
     // Use `useParams()` to retrieve value of the route parameter `:profileId`
@@ -25,14 +27,34 @@ const Comment = () => {
     }
     return (
         <div className="my-3">
-            <Link style={{ textDecoration: 'none', color: 'black', fontSize:'20px'}} className="mb-4 align-center" to="/dashboard">← Dashboard</Link>
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-                {activity.user} <br />
-                <span style={{ fontSize: '1rem' }}>
-                    accomplished {activity.title} for {activity.duration} min
-                </span> <br/>
-                <CommentForm />
-            </h4>
+            <Link style={{ textDecoration: 'none', color: 'black', fontSize: '20px' }} className="mb-4 align-center" to="/dashboard">← Dashboard</Link>
+
+
+            <div style={{ width: "300px" }} className="card">
+                <h6
+                    id="cardHeader"
+                    className="card-header teal lighten-2 text-light"
+                >
+                    {activity.user} <br />
+                    <span style={{ fontSize: "10px" }}>
+                        completed {activity.title} <br />
+                        on {activity.createdAt} <br />
+                        {activity.duration} minutes work period
+                    </span>
+                </h6>
+
+
+                <div className="teal lighten-2 flex-row align-center">
+                    <a href="">
+                        <img
+                            className="dash-btn"
+                            alt="like button"
+                            //   onClick={handleLikeBtn}
+                            src={like}
+                        />
+                    </a>
+                </div>
+            </div>
             {/* <div className="bg-light py-4">
                 <blockquote
                     className="p-4"
@@ -46,10 +68,11 @@ const Comment = () => {
                     {thought.thoughtText}
                 </blockquote>
             </div> */}
-
+            <CommentForm
+                activityId={activity._id} />
             <div className="comments-list">
-                <CommentList 
-                comments={activity.comments} 
+                <CommentList
+                    comments={activity.comments}
                 />
             </div>
             {/* <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>

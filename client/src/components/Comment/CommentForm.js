@@ -22,15 +22,19 @@ const CommentForm = ({ activityId }) => {
       };
 
     // handle form function for adding a comment
-    const handleFormSubmit = async (thoughtId) => {
+    const handleFormSubmit = async (activityId) => {
         // event.preventDefault();
+        console.log("handleFormSubmit")
+        console.log(activityId)
     
         try {
           const { data } = await addComment({
-            variables: { thoughtId, commentText },
+            variables: { activityId, commentText },
           });
     
           setCommentText('');
+          setIsOpen(false);
+          
         } catch (err) {
           console.error(err);
         }
@@ -49,10 +53,10 @@ const CommentForm = ({ activityId }) => {
       <>
         <button
           className="m-6 waves-effect waves-light btn-floating"
-          style={{ borderRadius: "10px", width: "75px" }}
+          style={{ borderRadius: "10px", width: "100px", marginTop: '5px' }}
           onClick={showModal}
         >
-      Comment
+      Add Comment
         </button>
         <Modal show={isOpen} onHide={hideModal} dialogClassName="modal-90w">
           <Modal.Header>
@@ -69,7 +73,7 @@ const CommentForm = ({ activityId }) => {
                     </p>
                     <form
                         className="flex-row justify-center justify-space-between-md align-center"
-                        onSubmit={handleFormSubmit}
+                        // onSubmit={handleFormSubmit}
                     >
                         <div className="col-12 col-lg-9">
                         <textarea
@@ -95,6 +99,8 @@ const CommentForm = ({ activityId }) => {
             <button
               className="m-6 waves-effect waves-light btn-floating"
               style={{ borderRadius: "10px", width: "50px" }} type="submit"
+              // onClick={handleFormSubmit(activityId)}
+              onClick={() => handleFormSubmit(activityId)}
             >
               Post
             </button>

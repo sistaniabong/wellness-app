@@ -33,16 +33,13 @@ const DashboardList = ({ activities }) => {
             >
               {activity.user} <br />
               <span style={{ fontSize: "10px" }}>
-                completed on {activity.createdAt} <br />
-                during {activity.duration} minute work period
+                completed {activity.title} <br />
+                on {activity.createdAt} <br />
+                {activity.duration} minute work period
               </span>
             </h6>
 
-            <div id="reminder-title">
-              {/* Add for loop */}
-              {activity.reminders[0].title} ~ completed 
-              {activity.reminders[0].complete_count} times! <br />
-            </div>
+
             <div className="teal lighten-2 flex-row align-center">
               <a href="">
                 <img
@@ -52,24 +49,24 @@ const DashboardList = ({ activities }) => {
                   src={like}
                 />
               </a>
-              <a>
+              {/* <a>
                 <img className="dash-btn" alt="comment buttnn" src={bubble} />
-              </a>
+              </a> */}
 
               <Link
-                style={{
-                  borderRadius: "10px",
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "15px",
-                  width: "80px",
-                  backgoround: "#2b7870",
-                }}
+                // style={{
+                //   borderRadius: "10px",
+                //   textDecoration: "none",
+                //   color: "black",
+                //   fontSize: "15px",
+                //   width: "80px",
+                //   backgoround: "#2b7870",
+                // }}
                 // className="btn btn-primary btn-block btn-squared"
-                className="m-2 waves-effect waves-light btn-floating "
+                // className="m-2 waves-effect waves-light btn-floating "
                 to={`/comments/${activity._id}`}
               >
-                Comments
+                <img className="dash-btn" alt="comment buttnn" src={bubble} />
               </Link>
             </div>
           </div>
@@ -107,5 +104,11 @@ const DashboardList = ({ activities }) => {
     </div>
   );
 };
+
+// {/* <div id="reminder-title">
+// {/* Add for loop */}
+// {activity.reminders[0].title} ~ completed 
+// {activity.reminders[0].complete_count} times! <br />
+// </div> */}
 
 export default DashboardList;
