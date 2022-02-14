@@ -26,16 +26,6 @@ const DashboardList = ({ activities }) => {
     }
   };
 
-//   const handleLikeBtn = (activityId) => {
-//     event.preventDefault();
-//     // activites._id.
-
-//     //addLike mutation and pass in activityId
-
-//     console.log(likeState)
-//     }
-
-//  pass activity and then use mutation
 
   return (
     <div id="dashboard-list">
