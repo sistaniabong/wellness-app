@@ -35,7 +35,7 @@ footer {
 /* Dashboard list styling */
 #reminder-title{
     color: black;
-    padding: 5px;
+    padding: 10px;
 
 }
 
@@ -50,8 +50,16 @@ footer {
 }
 
 .card-header {
-    padding: 40px;
+    padding: 10px;
     color: white;
+}
+
+#cardHeader {
+    padding: 10px;
+}
+
+#dashboard-list{
+    margin-top: 50px;
 }
 
 /* Another page */
