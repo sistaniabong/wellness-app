@@ -2,6 +2,8 @@ import CommentList from '../Comment/CommentList'
 import React, { useState } from 'react';
 import bubble from '../../assets/comment.png'
 import like from '../../assets/heart.png'
+import { Link } from 'react-router-dom';
+
 
 const DashboardList = ({ activities }) => {
 
@@ -101,12 +103,21 @@ const DashboardList = ({ activities }) => {
                                 <a href=""><img className="dash-btn" alt="like button" src={like}/></a>
                                 <a><img className="dash-btn" alt="comment buttnn" src={bubble}/></a>
                             </div>
+                            <Link
+                                style={{ borderRadius: '10px', textDecoration: 'none', color: 'black', fontSize: '15px', width: '80px', backgoround: '#2b7870' }}
+                                // className="btn btn-primary btn-block btn-squared"
+                                className="m-2 waves-effect waves-light btn-floating "
+                                to={`/comments/${activity._id}`}
+                            >
+                                Comments
+                            </Link>
 
                         </div>
                     ))}
                     <div className="card-header rg-primary text-light p-2 m-0">
                                 <p>fff</p>
                             </div>
+                      
             </div>
             {/* SB task */}
             {/* add links to each activity card and that page shows comments and commentform (maybe) */}
@@ -125,7 +136,7 @@ const DashboardList = ({ activities }) => {
     //             {activities.map(activity => (
     //                 {activity.user}
     //             ))}
-                
+
     //         </ul>  
     //     </div> 
     // )

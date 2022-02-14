@@ -8,6 +8,7 @@ import Activity from './pages/Activity';
 import Countdown from './pages/Countdown';
 import Setup from './pages/Setup';
 import Summary from './pages/Summary';
+import Comment from './pages/Comment';
 // import Login from ...
 
 import Header from './components/Header';
@@ -64,11 +65,14 @@ function App() {
                   <Home />  
                 </Route>
 
-                <Route exact path="/dashboard">
+                <Route exact path="/dashboard/">
                   <Dashboard />
                 </Route>
+                <Route exact path="/comments/:activityId">
+                  <Comment />
+                </Route>
 
-                <Route exact path="/activitysetup/:username">
+                <Route exact path="/activitycreate/:username">
                   <Activity />
                 </Route>
 
