@@ -90,7 +90,6 @@ const ReminderForm = ({ activity }) =>{
                       setFormState({ ...formState, title: selectedType });
                       // setTypeState(selectedType);
                     }}
-
                     >
                     <option value="">Types</option>
                     <option value="Drink">Drink</option>
@@ -122,7 +121,7 @@ const ReminderForm = ({ activity }) =>{
                   </select>
             
                   <button 
-                    className="m-1 waves-effect waves-light btn-floating" 
+                    className="m-3 waves-effect waves-light btn-floating" 
                     id="add-reminder" 
                     style={{borderRadius: '10px' }}
                     onClick={addReminderHandler}  
