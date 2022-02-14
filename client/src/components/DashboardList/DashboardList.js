@@ -11,19 +11,20 @@ const DashboardList = ({ activities }) => {
   const [likeState, setlikeState] = useState(0);
   const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
 
-  const handleLikeBtn = async (activityId) => {
-    try {
-      const { data } = await addlike({
-        variables: { ...likeState, activityId},
-      });
+//   const handleLikeBtn = async (activityId) => {
+//     // const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
+//     try {
+//       const { data } = await addlike({
+//         variables: { ...likeState, activityId},
+//       });
 
-      setlikeState(addlike);
+//     //   setlikeState(addlike);
 
-      window.location.reload();
-    } catch (err) {
-      console.error(err);
-    }
-  };
+//       window.location.reload();
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
 
   return (
@@ -52,7 +53,7 @@ const DashboardList = ({ activities }) => {
                 <img
                   className="dash-btn"
                   alt="like button"
-                  onClick={handleLikeBtn}
+                //   onClick={handleLikeBtn}
                   src={like}
                 />
               </a>
@@ -61,14 +62,14 @@ const DashboardList = ({ activities }) => {
               </a> */}
 
               <Link
-                // style={{
-                //   borderRadius: "10px",
-                //   textDecoration: "none",
-                //   color: "black",
-                //   fontSize: "15px",
-                //   width: "80px",
-                //   backgoround: "#2b7870",
-                // }}
+                style={{
+                  borderRadius: "10px",
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "15px",
+                  width: "30px",
+                  backgoround: "#2b7870",
+                }}
                 // className="btn btn-primary btn-block btn-squared"
                 // className="m-2 waves-effect waves-light btn-floating "
                 to={`/comments/${activity._id}`}
@@ -88,7 +89,7 @@ const DashboardList = ({ activities }) => {
             backgoround: "#2b7870",
           }}
           className="m-2 waves-effect waves-light btn-floating "
-          to={`/proplan/${activity._id}`}
+          to={`/proplan/${username}`}
         >
           Performance Tracker
         </Link>
