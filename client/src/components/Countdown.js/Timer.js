@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState }from 'react';
 import { useMutation } from '@apollo/client';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Timer = ({duration}) =>{
     const [timerHours, setTimerHours] = useState('00');
@@ -12,6 +13,7 @@ const Timer = ({duration}) =>{
         
             // distance is the duration of the activity
             // set duration=125.5 (2h5min30s) for example
+            // distance will equal to duration finally
             const distance = 125.5;
             const hours = Math.floor(distance/60); //2
             const minutes = Math.floor(distance%60);// distance%60 == 5.5 floor is 5
@@ -20,6 +22,8 @@ const Timer = ({duration}) =>{
             if (distance < 0){
                 // stop timer
                 clearInterval(interval);
+                // jump to the summary page
+                <Redirect to={'/summary/:activityId'} />
             }else{
                 // update timer
                 setTimerHours(hours);
@@ -52,9 +56,7 @@ const Timer = ({duration}) =>{
                 <span type="minute">{timerMinutes}</span>
                 <span>:</span>
                 <span type="second">{timerSeconds}</span>
-            </div>
-            
-            
+            </div>  
         </main>
         
     )
