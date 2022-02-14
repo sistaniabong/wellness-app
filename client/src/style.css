@@ -1,5 +1,5 @@
 header{
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
 }
@@ -32,6 +32,37 @@ footer {
     }
 }
 
+/* Dashboard list styling */
+#reminder-title{
+    color: black;
+    padding: 10px;
+
+}
+
+.dash-btn{
+    width: 27px;
+    height: 27px;
+    padding: 5px;
+}
+
+.container-fluid{
+    border-radius: 20px;
+}
+
+.card-header {
+    padding: 10px;
+    color: white;
+}
+
+#cardHeader {
+    padding: 10px;
+}
+
+#dashboard-list{
+    margin-top: 50px;
+}
+
+/* Another page */
 .true1 {
     text-decoration: line-through;
     opacity: 1.0;
@@ -44,5 +75,4 @@ footer {
     list-style-position: inside;
     font-size: 20px;
 }
-
 

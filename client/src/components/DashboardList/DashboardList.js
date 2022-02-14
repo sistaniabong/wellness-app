@@ -1,64 +1,114 @@
-import CommentList from '../components/Comment/CommentList'
-import React, { useState } from 'react';
-import bubble from '../../../Sample/comment.png'
-import like from '../../../Sample/thumb-up.png'
+import CommentList from "../Comment/CommentList";
+import React, { useState } from "react";
+import bubble from "../../assets/comment.png";
+import like from "../../assets/heart.png";
+import { Link } from "react-router-dom";
 
-const DashboardList = () => {
-    // * function for the like count button
-    const [likeState, setlikeState] = useState(0)
+const DashboardList = ({ activities }) => {
+  // * function for the like count button
+  const [likeState, setlikeState] = useState(0);
+  console.log(activities);
 
-    const handleLikeBtn = (event) => {
-        event.preventDefault();
-        setlikeState(likeState++) 
-    }
+//   const handleLikeBtn = (activityId) => {
+//     event.preventDefault();
+//     // activites._id.
 
-    // outline for the cntainers and the list 
+//     //addLike mutation and pass in activityId
 
-    // will have the comment list function for props and useState
+//     setlikeState(likeState++)
+//     console.log(likeState)
+//     }
 
-    // handle comment button will trigger comment form modal
-    // const handleCommentBtn = () => {
-    //     <CommentForm />
-    // } 
-    
-    return (
-        <div>
-            <div class="container-fluid">
-            <h3>{title}</h3>
-                {users &&
-                    users.map((user) => (
-                    <div key={users._id} className="card mb-3">
-                        <h4 className="card-header bg-primary text-light p-2 m-0">
-                        {user} <br />
-                        <span style={{ fontSize: '1rem' }}>
-                            accomplished this goal on {users.reminders.createdAt}
-                        </span>
-                         </h4>
-            <div className="card-body bg-light p-2">{users &&
-                    users.map((user) => (
-                        <div key={users.reminders}>
-                            <p>{user.reminders}</p>
-              <p>{users.reminders.complete_count}</p>
-                        </div>
-                    ))} 
-            </div>
-            <div>
-                {/* comment and like button */}
-                <img src={like}><p>{likeState}</p></img>
-                <button onClick={(event) => <CommentForm />}><img src={bubble}></img></button>
+//  pass activity and then use mutation
+
+  return (
+    <div id="dashboard-list">
+      <div className="container-fluid">
+        <h3>Hi, welcome!</h3>
+        {activities.map((activity) => (
+          <div key={activity._id} className="card">
+            <h6
+              id="cardHeader"
+              className="card-header teal lighten-2 text-light"
+            >
+              {activity.user} <br />
+              <span style={{ fontSize: "10px" }}>
+                completed {activity.title} <br />
+                on {activity.createdAt} <br />
+                {activity.duration} minute work period
+              </span>
+            </h6>
+
+
+            <div className="teal lighten-2 flex-row align-center">
+              <a href="">
+                <img
+                  className="dash-btn"
+                  alt="like button"
+                //   onClick={handleLikeBtn}
+                  src={like}
+                />
+              </a>
+              {/* <a>
+                <img className="dash-btn" alt="comment buttnn" src={bubble} />
+              </a> */}
+
+              <Link
+                // style={{
+                //   borderRadius: "10px",
+                //   textDecoration: "none",
+                //   color: "black",
+                //   fontSize: "15px",
+                //   width: "80px",
+                //   backgoround: "#2b7870",
+                // }}
+                // className="btn btn-primary btn-block btn-squared"
+                // className="m-2 waves-effect waves-light btn-floating "
+                to={`/comments/${activity._id}`}
+              >
+                <img className="dash-btn" alt="comment buttnn" src={bubble} />
+              </Link>
             </div>
           </div>
         ))}
-            </div>  
-            <a className="comments" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Comments</a>
-               <div class="collapse multi-collapse" id="multiCollapseExample1">
-                   <CommentList /> 
-               </div>
-            
-            
-             
-        </div>
-    )
-}
+        {/* <Link
+          style={{
+            borderRadius: "10px",
+            textDecoration: "none",
+            color: "black",
+            fontSize: "15px",
+            width: "80px",
+            backgoround: "#2b7870",
+          }}
+          className="m-2 waves-effect waves-light btn-floating "
+          to={`/proplan/${activity._id}`}
+        >
+          Performance Tracker
+        </Link>
+        <Link
+          style={{
+            borderRadius: "10px",
+            textDecoration: "none",
+            color: "black",
+            fontSize: "15px",
+            width: "80px",
+            backgoround: "#2b7870",
+          }}
+          className="m-2 waves-effect waves-light btn-floating "
+          to={`/activitycreate/${username}`}
+        >
+          Add Activity
+        </Link> */}
+      </div>
+     
+    </div>
+  );
+};
+
+// {/* <div id="reminder-title">
+// {/* Add for loop */}
+// {activity.reminders[0].title} ~ completed 
+// {activity.reminders[0].complete_count} times! <br />
+// </div> */}
 
 export default DashboardList;
