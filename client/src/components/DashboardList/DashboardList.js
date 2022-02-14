@@ -9,22 +9,23 @@ import { useMutation } from '@apollo/client';
 const DashboardList = ({ activities }) => {
   // * function for the like count button
   const [likeState, setlikeState] = useState(0);
-  const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
+  const [addLike, { error}] = useMutation(ADD_LIKE_ACTIVITY);
 
-//   const handleLikeBtn = async (activityId) => {
-//     // const [addLike, {error}] = useMutation(ADD_LIKE_ACTIVITY);
-//     try {
-//       const { data } = await addlike({
-//         variables: { ...likeState, activityId},
-//       });
 
-//     //   setlikeState(addlike);
+  const handleLikeBtn = async (activityId) => {
+    
+    try {
+      const { data } = await addLike({
+        variables: { ...likeState, activityId,},
+      });
 
-//       window.location.reload();
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
+      setlikeState(1);
+
+    //   window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
   return (
@@ -53,7 +54,7 @@ const DashboardList = ({ activities }) => {
                 <img
                   className="dash-btn"
                   alt="like button"
-                //   onClick={handleLikeBtn}
+                  onClick={handleLikeBtn}
                   src={like}
                 />
               </a>
@@ -71,7 +72,7 @@ const DashboardList = ({ activities }) => {
                   backgoround: "#2b7870",
                 }}
                 // className="btn btn-primary btn-block btn-squared"
-                // className="m-2 waves-effect waves-light btn-floating "
+                // className="m-6 waves-effect waves-light btn-floating"
                 to={`/comments/${activity._id}`}
               >
                 <img className="dash-btn" alt="comment buttnn" src={bubble} />
@@ -79,34 +80,36 @@ const DashboardList = ({ activities }) => {
             </div>
           </div>
         ))}
-        {/* <Link
+        <Link
           style={{
             borderRadius: "10px",
             textDecoration: "none",
-            color: "black",
+            color: "white",
             fontSize: "15px",
-            width: "80px",
-            backgoround: "#2b7870",
+            width: "130px",
+            // background: "#2b7870",
+            // position: "fixed",
           }}
           className="m-2 waves-effect waves-light btn-floating "
-          to={`/proplan/${username}`}
+        //   to={`/proplan/${username}`}
         >
-          Performance Tracker
+          Progress Tracker
         </Link>
         <Link
           style={{
             borderRadius: "10px",
             textDecoration: "none",
-            color: "black",
+            color: "white",
             fontSize: "15px",
-            width: "80px",
-            backgoround: "#2b7870",
+            width: "130px",
+            // background: "#2b7870",
+            // position: "fixed",
           }}
           className="m-2 waves-effect waves-light btn-floating "
-          to={`/activitycreate/${username}`}
+        //   to={`/activitycreate/${username}`}
         >
           Add Activity
-        </Link> */}
+        </Link>
       </div>
      
     </div>
