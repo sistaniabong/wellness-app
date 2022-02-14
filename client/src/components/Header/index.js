@@ -8,6 +8,11 @@ const Header = () => {
             <h1 className="m-0">⏰ Blockout</h1>
             <span className="m-0" >Live each day as if it were a gift. </span>
         </div>
+        <button
+        className="m-6 waves-effect waves-light btn-floating"
+        style={{ borderRadius: "10px", width: "50px" }}
+        
+      >Logout</button>
       </div>
     </header>
   );
