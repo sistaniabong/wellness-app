@@ -18,30 +18,20 @@ const ToDosForActivity = ({todos}) =>{
             <h1>📝 To Do List</h1>
                 <div className='todos-container'>
                     <ul className='todos-list'>
-                    {/* This is the Option 1 for when the todo.status == true */}
+
+                    {/* This is the test for when the todo.status == true */}
                     <div className='green lighten-2 row p-2' style={{borderRadius: '10px'}}>
-                            <li className={`card-content white-text col-10 true1`}><h4>This is a test.</h4></li>
-                            <button 
-                                className='col-2 card-action' 
-                                style={{borderRadius: '10px'}}
-                                // status={todo.status}
-                                onClick={changeStatusHandler}
-                            >
-                                ✔️
-                            </button>
-                        </div>
-                        {/* This is Option 2 for when the todo.status ==true */}
-                        <div className='row p-2' style={{borderRadius: '10px'}}>
-                                <li className={`card-content col-10 true2`}>This is a test.</li>
-                            <button 
-                                className='col-2 card-action' 
-                                style={{borderRadius: '10px'}}
-                                // status={todo.status}
-                                onClick={changeStatusHandler}
-                            >
-                                ✔️
-                            </button>
-                        </div>
+                        <li className={`card-content white-text col-10 true`}><h4>This is a test.</h4></li>
+                        <button 
+                            className='col-2 card-action' 
+                            style={{borderRadius: '10px'}}
+                            // status={todo.status}
+                            onClick={changeStatusHandler}
+                        >
+                            ✔️
+                        </button>
+                    </div>
+                        
 
                         {/* Here is the real coding for each todos */}
                         {todos.map(todo => {
@@ -62,6 +52,7 @@ const ToDosForActivity = ({todos}) =>{
                             </button>
                         </div>
                         })}
+                        
                     </ul>
                 </div>
             </div>

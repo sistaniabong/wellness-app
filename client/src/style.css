@@ -62,17 +62,11 @@ footer {
     margin-top: 50px;
 }
 
-/* Another page */
-.true1 {
+/* Countdown page todo list styling */
+.true {
     text-decoration: line-through;
     opacity: 1.0;
 }
 
-.true2{
-    color:black;
-    display: list-item;          /* This has to be "list-item"                                               */
-    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
-    list-style-position: inside;
-    font-size: 20px;
-}
+
 
