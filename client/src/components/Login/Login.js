@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import AuthService from "../../utils/auth"
 
 const Login = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -28,6 +29,7 @@ const Login = () => {
       });
       const token = mutationResponse.data.login.token;
       // Auth.login(token); // route to the dashboard //had to comment this out because Auth is not added yet
+      AuthService.login(token);
     } catch (e) {
       console.log(e);
     }
