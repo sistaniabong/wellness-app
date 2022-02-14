@@ -3,10 +3,11 @@ import { Redirect, useParams } from 'react-router-dom';
 
 
 
+
 // component for comment modal
 const CommentList = ({ comments = [] }) => {
 
-  const { activityId } = useParams();
+  // const { activityId } = useParams();
 
   console.log(comments);
   if (!comments.length) {
@@ -16,7 +17,7 @@ const CommentList = ({ comments = [] }) => {
   }
 
   return (
-    <>
+    <div>
       <div className="flex-row my-4">
         {comments &&
           comments.map((comment) => (
@@ -32,8 +33,12 @@ const CommentList = ({ comments = [] }) => {
               </div>
             </div>
           ))}
+          
       </div>
-    </>
+      <div>
+      </div>
+      
+    </div>
   );
 }
 

@@ -30,7 +30,8 @@ const Comment = () => {
                 {activity.user} <br />
                 <span style={{ fontSize: '1rem' }}>
                     accomplished {activity.title} for {activity.duration} min
-                </span>
+                </span> <br/>
+                <CommentForm />
             </h4>
             {/* <div className="bg-light py-4">
                 <blockquote
