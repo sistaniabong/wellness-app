@@ -11,14 +11,16 @@ const DashboardList = ({ activities }) => {
     console.log(activities)
 
     // commented out because of infinite loop err - checking later
-    const handleLikeBtn = (event) => {
-        event.preventDefault();
-        activites._id.
+    const handleLikeBtn = (activityId) => {
+        // event.preventDefault();
+        // // activites._id.
 
-        setlikeState(likeState++)
-        console.log(likeState)
+        // //addLike mutation and pass in activityId
+
+        // setlikeState(likeState++)
+        // console.log(likeState)
     }
-    console.log(likeState)
+    // console.log(likeState)
 
     return (
         <div id="dashboard-list">
@@ -34,14 +36,9 @@ const DashboardList = ({ activities }) => {
                                 </span>
                             </h6>
                             
-                            <div id='reminder-title'>
-                                {/* Add for loop */}
-                                {activity.reminders[0].title} --
-                                complete_count :{activity.reminders[0].complete_count}  <br/>
-            
-                            </div>
+
                             <div className="teal lighten-2 flex-row align-center">
-                                <a href=""><img className="dash-btn" alt="like button" onClick={handleLikeBtn} src={like}/></a>
+                                <a href=""><img className="dash-btn" alt="like button" onClick={handleLikeBtn(activity._id)} src={like}/></a>
                                 <a><img className="dash-btn" alt="comment buttnn" src={bubble}/></a>
                                 <Link
                                 style={{ borderRadius: '10px', textDecoration: 'none', color: 'black', fontSize: '15px', width: '80px', backgoround: '#2b7870' }}
@@ -65,9 +62,16 @@ const DashboardList = ({ activities }) => {
             add heart/thumbs up and comments bubble on each card 
             */}
 
+
         </div>
     )
 
+//     <div id='reminder-title'>
+//     {/* Add for loop */}
+//     {activity.reminders[0].title} --
+//     complete_count :{activity.reminders[0].complete_count}  <br/>
+
+// </div>
     // return (
     //     <div className='activities-container'>
     //         <h3>Hi, welcome!</h3>
