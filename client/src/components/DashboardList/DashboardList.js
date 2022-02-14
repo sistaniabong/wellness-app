@@ -9,12 +9,15 @@ const DashboardList = ({ activities }) => {
   const [likeState, setlikeState] = useState(0);
   console.log(activities);
 
-  // commented out because of infinite loop err - checking later
-//   const handleLikeBtn = (event) => {
+//   const handleLikeBtn = (activityId) => {
 //     event.preventDefault();
-//     activities._id.setlikeState(likeState++);
-//     console.log(likeState);
-//   };
+//     // activites._id.
+
+//     //addLike mutation and pass in activityId
+
+//     setlikeState(likeState++)
+//     console.log(likeState)
+//     }
 
 //  pass activity and then use mutation
 
@@ -100,26 +103,9 @@ const DashboardList = ({ activities }) => {
           Add Activity
         </Link> */}
       </div>
-      {/* SB task */}
-      {/* add links to each activity card and that page shows comments and commentform (maybe) */}
-      {/* reagin task */}
-      {/* clean up dashboard list, add new activity and performance buttons
-            add heart/thumbs up and comments bubble on each card 
-            */}
+     
     </div>
   );
-
-  // return (
-  //     <div className='activities-container'>
-  //         <h3>Hi, welcome!</h3>
-  //         <ul className='activities-list'>
-  //             {activities.map(activity => (
-  //                 {activity.user}
-  //             ))}
-
-  //         </ul>
-  //     </div>
-  // )
 };
 
 export default DashboardList;
