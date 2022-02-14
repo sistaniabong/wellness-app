@@ -66,44 +66,47 @@ const DashboardList = ({ activities }) => {
     //     </div>
     // )
 
-    const displayReminders = () =>{
-        const remind = activities.reminders[i]
-        for (var i=0; i < remind.length; i++){
-            return `
-                {activity.reminders[0].title} --
-                                complete_count :{activity.reminders[0].complete_count}  <br/>
+    // const displayReminders = () =>{
+    //     const remind = activities.reminders[i]
+    //     for (var i=0; i < remind.length; i++){
+    //         return `
+    //             {activity.reminders[0].title} --
+    //                             complete_count :{activity.reminders[0].complete_count}  <br/>
             
-            `
-        }
-    }
+    //         `
+    //     }
+    // }
 
     return (
         <div>
-            <div class="container-fluid">
+            <div className="container-fluid">
                 <h3>Hi, welcome!</h3>
                     {activities.map((activity) => (
-                        <div key={activity._id} className="card mb-3">
-                            <h4 className="card-header bg-primary text-light p-2 m-0">
+                        <div key={activity._id} className="card">
+                            <h6 className="card-header teal lighten-2 text-light">
                                 {activity.user} <br />
-                                <span style={{ fontSize: '1rem' }}>
+                                <span style={{ fontSize: '10px' }}>
                                     completed on {activity.createdAt} <br/>
                                     for {activity.duration} mintues
                                 </span>
-                                
-                            </h4>
-                            <div id='reminder-title' onLoad={displayReminders}>
-                            {/* {reminders.map((reminders) => (
-                                <div key={reminders._id} id="reminder-title"> */}
+                            </h6>
+                            
+                            <div id='reminder-title'>
                                 {/* Add for loop */}
-                                {/* {activity.reminders[0].title} --
-                                complete_count :{activity.reminders[0].complete_count}  <br/> */}
+                                {activity.reminders[0].title} --
+                                complete_count :{activity.reminders[0].complete_count}  <br/>
             
-                                {/* </div>
-                            ))} */}
+                            </div>
+                            <div className="teal lighten-2 flex-row align-center">
+                                <a href=""><img className="dash-btn" alt="like button" src={like}/></a>
+                                <a><img className="dash-btn" alt="comment buttnn" src={bubble}/></a>
                             </div>
 
                         </div>
                     ))}
+                    <div className="card-header rg-primary text-light p-2 m-0">
+                                <p>fff</p>
+                            </div>
             </div>
             {/* SB task */}
             {/* add links to each activity card and that page shows comments and commentform (maybe) */}

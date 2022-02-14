@@ -32,9 +32,29 @@ footer {
     }
 }
 
+/* Dashboard list styling */
 #reminder-title{
     color: black;
+    padding: 5px;
+
 }
+
+.dash-btn{
+    width: 27px;
+    height: 27px;
+    padding: 5px;
+}
+
+.container-fluid{
+    border-radius: 20px;
+}
+
+.card-header {
+    padding: 40px;
+    color: white;
+}
+
+/* Another page */
 .true1 {
     text-decoration: line-through;
     opacity: 1.0;
@@ -47,5 +67,4 @@ footer {
     list-style-position: inside;
     font-size: 20px;
 }
-
 
