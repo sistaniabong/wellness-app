@@ -16,7 +16,7 @@ const Login = () => {
     setIsOpen(false);
   };
 
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ username: "", password: "" });
   // will take login from mutations when finished
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -25,7 +25,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: { username: formState.username, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
       // Auth.login(token); // route to the dashboard //had to comment this out because Auth is not added yet
@@ -42,10 +42,6 @@ const Login = () => {
       [name]: value,
     });
   };
-
-  setFormState({
-    email:
-  })
 
   return (
     <>
