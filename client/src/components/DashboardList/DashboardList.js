@@ -58,9 +58,6 @@ const DashboardList = ({ activities }) => {
                   src={like}
                 />
               </a>
-              {/* <a>
-                <img className="dash-btn" alt="comment buttnn" src={bubble} />
-              </a> */}
 
               <Link
                 style={{
@@ -80,46 +77,10 @@ const DashboardList = ({ activities }) => {
             </div>
           </div>
         ))}
-        <Link
-          style={{
-            borderRadius: "10px",
-            textDecoration: "none",
-            color: "white",
-            fontSize: "15px",
-            width: "130px",
-            // background: "#2b7870",
-            // position: "fixed",
-          }}
-          className="m-2 waves-effect waves-light btn-floating "
-        //   to={`/proplan/${username}`}
-        >
-          Progress Tracker
-        </Link>
-        <Link
-          style={{
-            borderRadius: "10px",
-            textDecoration: "none",
-            color: "white",
-            fontSize: "15px",
-            width: "130px",
-            // background: "#2b7870",
-            // position: "fixed",
-          }}
-          className="m-2 waves-effect waves-light btn-floating "
-        //   to={`/activitycreate/${username}`}
-        >
-          Add Activity
-        </Link>
       </div>
      
     </div>
   );
 };
-
-// {/* <div id="reminder-title">
-// {/* Add for loop */}
-// {activity.reminders[0].title} ~ completed 
-// {activity.reminders[0].complete_count} times! <br />
-// </div> */}
 
 export default DashboardList;
