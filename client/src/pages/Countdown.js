@@ -4,6 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import Timer from '../components/Countdown/Timer';
 import ToDosForActivity from '../components/Countdown/ToDosForActivity';
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
+import Alert from '../components/Countdown.js/Alert'
 
 const Countdown = () =>{
     // grab the activityId here. and pass to the component below
@@ -22,6 +23,9 @@ const Countdown = () =>{
       const todos = data?.activity.todos || [];
       console.log('todos:')
       console.log(todos);
+      const reminders = data?.reminders || [];
+      console.log('reminder:')
+      console.log(reminders);
 
     return (
         <main>
@@ -34,6 +38,7 @@ const Countdown = () =>{
                 />
 
             {/* Reminder Popup thing */}
+                <Alert  reminders={reminders}/>
                 {/* Add a visible and invisible attribtue for the reminder card*/}
         </main>
         

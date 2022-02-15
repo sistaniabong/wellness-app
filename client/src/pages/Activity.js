@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_ACTIVITY } from '../utils/mutations';
 import { useParams } from 'react-router-dom';
 
-
 function Activity () {
   // Grab the username(str) from url 
     const { username } = useParams(); 
