@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ADD_COMMENT_ACTIVITY} from '../../utils/mutations';
-import { usemutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // component for comment modal
 const CommentForm = ({ activityId }) => {
@@ -10,16 +12,29 @@ const CommentForm = ({ activityId }) => {
     // function to use mutation to add a comment
     const [addComment, { error}] = useMutation(ADD_COMMENT_ACTIVITY);
 
+    const [isOpen, setIsOpen] = React.useState(false);
+    const showModal = () => {
+        setIsOpen(true);
+      };
+    
+      const hideModal = () => {
+        setIsOpen(false);
+      };
+
     // handle form function for adding a comment
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    const handleFormSubmit = async (activityId) => {
+        // event.preventDefault();
+        console.log("handleFormSubmit")
+        console.log(activityId)
     
         try {
           const { data } = await addComment({
-            variables: { thoughtId, commentText },
+            variables: { activityId, commentText },
           });
     
           setCommentText('');
+          setIsOpen(false);
+          
         } catch (err) {
           console.error(err);
         }
@@ -34,24 +49,21 @@ const CommentForm = ({ activityId }) => {
         }
     };
 
-    // do I need a function for opening the modal
     return (
-        <div>
-             {/* Button trigger modal  */}
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Comment
-            </button>
-
-            {/* Modal */}
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title" id="staticBackdropLabel">Add your comment</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                    <p
+      <>
+        <button
+          className="m-6 waves-effect waves-light btn-floating"
+          style={{ borderRadius: "10px", width: "100px", marginTop: '5px' }}
+          onClick={showModal}
+        >
+      Add Comment
+        </button>
+        <Modal show={isOpen} onHide={hideModal} dialogClassName="modal-90w">
+          <Modal.Header>
+            <Modal.Title>Add your Comment</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p
                       className={`m-0 ${
                       characterCount === 280 || error ? 'text-danger' : ''
                       }`}
@@ -61,7 +73,7 @@ const CommentForm = ({ activityId }) => {
                     </p>
                     <form
                         className="flex-row justify-center justify-space-between-md align-center"
-                        onSubmit={handleFormSubmit}
+                        // onSubmit={handleFormSubmit}
                     >
                         <div className="col-12 col-lg-9">
                         <textarea
@@ -75,18 +87,27 @@ const CommentForm = ({ activityId }) => {
                         </div>
                       {/* Does a button have to be in the form in order to work? */}
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    {/* add handle event for post button */}
-                    <button type="submit" className="btn btn-primary">Post</button>
-                </div>
-                </div>
-            </div>
-            </div>
-            
-        </div>
-    )
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              className="m-6 waves-effect waves-light btn-floating"
+              style={{ borderRadius: "10px", width: "65px" }}
+              onClick={hideModal}
+            >
+              Cancel
+            </button>
+            <button
+              className="m-6 waves-effect waves-light btn-floating"
+              style={{ borderRadius: "10px", width: "50px" }} type="submit"
+              // onClick={handleFormSubmit(activityId)}
+              onClick={() => handleFormSubmit(activityId)}
+            >
+              Post
+            </button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
 }
 
 export default CommentForm;

@@ -8,10 +8,12 @@ import Activity from './pages/Activity';
 import Countdown from './pages/Countdown';
 import Setup from './pages/Setup';
 import Summary from './pages/Summary';
+import Comment from './pages/Comment';
 // import Login from ...
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Dashboard from './pages/Dashboard';
 
 // for authentication
 // const httpLink = createHttpLink({
@@ -57,15 +59,19 @@ function App() {
             {/* <Activity /> */}
             {/* <Countdown /> */}
             {/* <Setup /> */}
+            {/* <Dashboard /> */}
               <Switch>
                 <Route exact path="/">
                   <Home />  
                 </Route>
 
-                {/* <Route exact path="/dashboard/:username">
+                <Route exact path="/dashboard/">
                   <Dashboard />
-                </Route>  */}
-                 {/* change activitysetup with activitycreate  */}
+                </Route>
+                <Route exact path="/comments/:activityId">
+                  <Comment />
+                </Route>
+
                 <Route exact path="/activitycreate/:username">
                   <Activity />
                 </Route>
@@ -85,7 +91,7 @@ function App() {
                 <Route exact path="/summary/:activityId">
                   <Summary />
                 </Route>
-              </Switch>
+              </Switch> 
 
             <Footer />
           </div>   

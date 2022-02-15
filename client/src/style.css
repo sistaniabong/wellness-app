@@ -1,5 +1,5 @@
 header{
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
 }
@@ -32,17 +32,41 @@ footer {
     }
 }
 
-.true1 {
+/* Dashboard list styling */
+#reminder-title{
+    color: black;
+    padding: 10px;
+
+}
+
+.dash-btn{
+    width: 27px;
+    height: 27px;
+    padding: 5px;
+}
+
+.container-fluid{
+    border-radius: 20px;
+}
+
+.card-header {
+    padding: 10px;
+    color: white;
+}
+
+#cardHeader {
+    padding: 10px;
+}
+
+#dashboard-list{
+    margin-top: 50px;
+}
+
+/* Countdown page todo list styling */
+.true {
     text-decoration: line-through;
     opacity: 1.0;
 }
 
-.true2{
-    color:black;
-    display: list-item;          /* This has to be "list-item"                                               */
-    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
-    list-style-position: inside;
-    font-size: 20px;
-}
 
 

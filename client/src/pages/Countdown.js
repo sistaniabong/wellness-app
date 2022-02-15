@@ -1,26 +1,26 @@
 import React, { useState }from 'react';
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
-import Timer from '../components/Countdown.js/Timer';
-import Alert from '../components/Countdown.js/Alert';
-import ToDosForActivity from '../components/Countdown.js/ToDosForActivity';
+import { Link , useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+import Timer from '../components/Countdown/Timer';
+import ToDosForActivity from '../components/Countdown/ToDosForActivity';
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
+import Alert from '../components/Countdown.js/Alert'
 
 const Countdown = () =>{
     // grab the activityId here. and pass to the component below
-    const activityId = "62090c30b9a9ef3fddb08f75";
+    const { activityId } = useParams();
+    console.log(activityId)
 
     const { loading, data } = useQuery(GET_SINGLE_ACTIVITY,
         {
           variables: { activityId: activityId },
         }
-        
     );
       console.log(data);
-      const duration = data?.duration || [];
+      const duration = data?.activity.duration || [];
       console.log('duration:')
       console.log(duration)
-      const todos = data?.todos || [];
+      const todos = data?.activity.todos || [];
       console.log('todos:')
       console.log(todos);
       const reminders = data?.reminders || [];
@@ -30,10 +30,12 @@ const Countdown = () =>{
     return (
         <main>
             {/* CountdownTimer */}
-                <Timer duration={duration}/>
+                <Timer duration={duration} activityId={activityId}/>
                 
-            {/* Todo List */}
-                <ToDosForActivity todos={todos}/>
+            {/* Todo List todos={todos} */}
+                <ToDosForActivity 
+                    todos={todos}
+                />
 
             {/* Reminder Popup thing */}
                 <Alert  reminders={reminders}/>

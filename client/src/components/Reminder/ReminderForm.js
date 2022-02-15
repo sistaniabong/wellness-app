@@ -12,7 +12,7 @@ const ReminderForm = ({ activity }) =>{
   const [formState, setFormState] = useState({
     activityId: activity,
     title:'',
-    time_interval:'',
+    time_interval:0,
   });
   
   // Set up  addReminder mutation with an option to handle errors
@@ -57,7 +57,7 @@ const ReminderForm = ({ activity }) =>{
           const { data } = await addReminder({
             variables: { ...formState },
           });
-          setFormState({ activityId: '', title: '', time_interval:'' });
+          setFormState({ activityId: '', title: '', time_interval:0 });
           window.location.reload();
           
         } catch (err) {
@@ -88,9 +88,7 @@ const ReminderForm = ({ activity }) =>{
                     onChange={(e)=>{
                       const selectedType = e.target.value;
                       setFormState({ ...formState, title: selectedType });
-                      // setTypeState(selectedType);
                     }}
-
                     >
                     <option value="">Types</option>
                     <option value="Drink">Drink</option>
@@ -108,13 +106,17 @@ const ReminderForm = ({ activity }) =>{
                     // }}
                     onChange={(e)=>{
                       const selectedTime = parseInt(e.target.value);
-                      console.log(selectedTime)
                       setFormState({ ...formState, time_interval: selectedTime });
                     }}
                     >
                     <option value="">Times</option>
-                    <option value="0.08">5 Sec</option>
-                    <option value='0.16'>10 Sec</option>
+                    {/* <option value="5">5 Sec</option>
+                    <option value='10'>10 Sec</option>
+                    <option value="300"> 5 Mins</option>
+                    <option value="900"> 15 Mins</option>
+                    <option value="1800"> 30 Mins</option>
+                    <option value="3600"> 1 Hour</option> */}
+                    <option value="1">1 Min</option>
                     <option value="5"> 5 Mins</option>
                     <option value="15"> 15 Mins</option>
                     <option value="30"> 30 Mins</option>
@@ -122,7 +124,7 @@ const ReminderForm = ({ activity }) =>{
                   </select>
             
                   <button 
-                    className="m-1 waves-effect waves-light btn-floating" 
+                    className="m-3 waves-effect waves-light btn-floating" 
                     id="add-reminder" 
                     style={{borderRadius: '10px' }}
                     onClick={addReminderHandler}  

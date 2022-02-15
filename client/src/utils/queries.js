@@ -146,6 +146,7 @@ export const GET_SINGLE_ACTIVITY = gql`
       title
       duration
       user
+      createdAt
       comments {
         _id
         commentText
