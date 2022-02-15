@@ -17,7 +17,7 @@ const Signup = () => {
     setIsOpen(false);
   };
 
-  const [formState, setFormState] = useState({ email: "", password: "" }); // change to username?
+  const [formState, setFormState] = useState({ username: "", password: "" }); // change to username?
   const [addUser] = useMutation(ADD_USER);
   // handles signup submit btn
   const handleSignupBtn = async (event) => {
@@ -25,7 +25,7 @@ const Signup = () => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email,
+        username: formState.username,
         password: formState.password,
       },
     });

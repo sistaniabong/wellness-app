@@ -31,7 +31,7 @@ const DashboardList = ({ activities }) => {
   return (
     <div id="dashboard-list">
       <div className="container-fluid">
-        <h3>Hi, welcome!</h3>
+        <h3 id="welcome">Hi, welcome!</h3>
         {activities.map((activity) => (
           <div key={activity._id} className="card">
             <h6
@@ -78,7 +78,7 @@ const DashboardList = ({ activities }) => {
           </div>
         ))}
       </div>
-     
+                
     </div>
   );
 };

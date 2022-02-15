@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthService from "../../utils/auth"
+import Auth from "../../utils/auth";
 
 const Header = () => {
   // function for logout button
-  
+
   return (
     <header className="teal lighten-2 mb-4 py-5 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
@@ -13,13 +13,13 @@ const Header = () => {
         </div>
       </div>
       {/* ternary for logout button */}
-        {loggedIn? (
+        {Auth.loggedIn? (
             <button
             className="m-6 waves-effect waves-light btn-floating"
             style={{ borderRadius: "10px", width: "50px" }}
             
           >Logout</button>
-        ): (<p>Welcome!</p>)}  
+        ): (<p></p>)}  
       
     </header>
   );

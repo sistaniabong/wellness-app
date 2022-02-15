@@ -42,7 +42,7 @@ const Dashboard = () => {
       >
         Progress Tracker
       </Link>
-      <Link
+      <Link id="linkbtn"
         style={{
           borderRadius: "10px",
           textDecoration: "none",
