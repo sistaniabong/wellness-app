@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import Timer from '../components/Countdown/Timer';
 import ToDosForActivity from '../components/Countdown/ToDosForActivity';
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
-import Alert from '../components/Countdown.js/Alert'
+import Alert from '../components/Countdown/Alert'
 
 const Countdown = () =>{
     // grab the activityId here. and pass to the component below

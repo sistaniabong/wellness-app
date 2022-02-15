@@ -13,13 +13,13 @@ const Header = () => {
         </div>
       </div>
       {/* ternary for logout button */}
-        {loggedIn? (
+        {/* {loggedIn? (
             <button
             className="m-6 waves-effect waves-light btn-floating"
             style={{ borderRadius: "10px", width: "50px" }}
             
           >Logout</button>
-        ): (<p>Welcome!</p>)}  
+        ): (<p>Welcome!</p>)}   */}
       
     </header>
   );
