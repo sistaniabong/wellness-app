@@ -24,14 +24,17 @@ class AuthService {
   }
 
   login(idToken) {
+    console.log('authservice login')
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    window.location.assign('/dashboard');
   }
 
   logout() {
     localStorage.removeItem('id_token');
-    window.location.reload();
+    window.location.assign("/");
   }
 }
 
-export default new AuthService();
+export default new AuthService;
+
+// module.exports = AuthService;

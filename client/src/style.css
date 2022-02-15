@@ -43,6 +43,7 @@ footer {
     width: 27px;
     height: 27px;
     padding: 5px;
+    flex: align-center;
 }
 
 .container-fluid{

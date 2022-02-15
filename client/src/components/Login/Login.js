@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth"
 
 const Login = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -15,22 +16,32 @@ const Login = () => {
     setIsOpen(false);
   };
 
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ username: '', password: '' });
   // will take login from mutations when finished
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // handles login submit btn
   const handleLoginBtn = async (event) => {
     event.preventDefault();
+    console.log('handleLoginBtn')
     try {
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+      const { data } = await login({
+        variables: { ...formState },
       });
-      const token = mutationResponse.data.login.token;
+      // const token = data.login.token;
+      console.log('data')
+      console.log(data)
       // Auth.login(token); // route to the dashboard //had to comment this out because Auth is not added yet
+      Auth.login(data.login.token);
     } catch (e) {
       console.log(e);
     }
+
+        // clear form values
+      setFormState({
+        email: '',
+        password: '',
+      });
   };
 
   const handleChange = (event) => {
@@ -55,16 +66,18 @@ const Login = () => {
           <Modal.Title>LOGIN</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleLoginBtn}>
+          <form>
             <div className="input-group mb-3">
               <span className="input-group-text" id="inputGroup-sizing-default">
                 Username
               </span>
               <input
                 type="text"
+                name="username"
                 className="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                value={formState.username}
                 onChange={handleChange}
               ></input>
             </div>
@@ -80,17 +93,18 @@ const Login = () => {
                 name="password"
                 type="password"
                 id="pwd"
+                value={formState.password}
                 onChange={handleChange}
               ></input>
             </div>
-            {error ? (
+          </form>
+          {error ? (
               <div>
                 <p className="error-text">
                   The provided credentials are incorrect
                 </p>
               </div>
             ) : null}
-          </form>
         </Modal.Body>
         <Modal.Footer>
           <button
@@ -103,6 +117,7 @@ const Login = () => {
           <button
             className="m-6 waves-effect waves-light btn-floating"
             style={{ borderRadius: "10px", width: "50px" }}
+            onClick={handleLoginBtn}
           >
             Login
           </button>
