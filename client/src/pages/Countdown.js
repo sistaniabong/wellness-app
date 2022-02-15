@@ -2,6 +2,7 @@ import React, { useState }from 'react';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import Timer from '../components/Countdown.js/Timer';
+import Alert from '../components/Countdown.js/Alert';
 import ToDosForActivity from '../components/Countdown.js/ToDosForActivity';
 import { GET_SINGLE_ACTIVITY } from '../utils/queries';
 
@@ -22,6 +23,9 @@ const Countdown = () =>{
       const todos = data?.todos || [];
       console.log('todos:')
       console.log(todos);
+      const reminders = data?.reminders || [];
+      console.log('reminder:')
+      console.log(reminders);
 
     return (
         <main>
@@ -32,6 +36,7 @@ const Countdown = () =>{
                 <ToDosForActivity todos={todos}/>
 
             {/* Reminder Popup thing */}
+                <Alert  reminders={reminders}/>
                 {/* Add a visible and invisible attribtue for the reminder card*/}
         </main>
         

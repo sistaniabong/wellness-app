@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_ACTIVITY } from '../utils/mutations';
 import { Redirect, useParams } from 'react-router-dom';
 
-
 function Activity () {
     const { username } = useParams(); //grab the username from url
     console.log(username)
@@ -22,10 +21,9 @@ function Activity () {
         duration: '', //change this '' once we have the value of the form 
         user: username, //pass the username to the user field
       });
-    
+    const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
     const addActivityHandler= async(e)=>{
         e.preventDefault();
-        const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
         try {
             console.log('init add activity name')
             const { data } = await addActivity({
