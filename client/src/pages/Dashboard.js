@@ -14,7 +14,8 @@ const Dashboard = () => {
 
   
     // const { data } = useQuery(GET_SINGLE_USER)
-    const username = data?.user || [];
+    const username = data?.user; 
+    // || [];
     
 
   // *function to get all the data for the accomplishment from the completion page

@@ -21,6 +21,7 @@ const DashboardList = ({ activities, username}) => {
     }
   };
 
+  console.log(username);
   return (
     <div id="dashboard-list">
       <div className="container-fluid">
