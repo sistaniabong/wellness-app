@@ -19,7 +19,7 @@ const Header = () => {
             style={{ borderRadius: "10px", width: "50px" }}
             
           >Logout</button>
-        ): (<p></p>)}  
+        ): (<p>Welcome!</p>)} 
       
     </header>
   );
