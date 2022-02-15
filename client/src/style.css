@@ -21,6 +21,16 @@ footer {
     z-index: -2;
 }
 
+#root {
+    z-index: -100;
+    position: relative;
+}
+
+body {
+    position: relative;
+    z-index: -99;
+}
+
 @keyframes change {
     0%{
         background-position: 0 50%;
@@ -73,9 +83,9 @@ footer {
     margin-bottom: auto;
 } */
 
-.card{
+/* .card{
     z-index: -1;
-}
+} */
 
 /* Countdown page todo list styling */
 .true {

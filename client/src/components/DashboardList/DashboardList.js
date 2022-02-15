@@ -3,30 +3,23 @@ import React, { useState } from "react";
 import bubble from "../../assets/comment.png";
 import like from "../../assets/heart.png";
 import { Link } from "react-router-dom";
-import { ADD_LIKE_ACTIVITY } from '../../utils/mutations'
-import { useMutation } from '@apollo/client';
+import { ADD_LIKE_ACTIVITY } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
-const DashboardList = ({ activities }) => {
+const DashboardList = ({ activities, username}) => {
   // * function for the like count button
-  const [likeState, setlikeState] = useState(0);
-  const [addLike, { error}] = useMutation(ADD_LIKE_ACTIVITY);
-
+  const [addLike, { error }] = useMutation(ADD_LIKE_ACTIVITY);
 
   const handleLikeBtn = async (activityId) => {
-    
     try {
       const { data } = await addLike({
-        variables: { ...likeState, activityId,},
+        variables: { activityId },
       });
-
-      setlikeState(1);
-
-    //   window.location.reload();
+      console.log(activityId);
     } catch (err) {
       console.error(err);
     }
   };
-
 
   return (
     <div id="dashboard-list">
@@ -47,17 +40,13 @@ const DashboardList = ({ activities }) => {
             </h6>
 
             <div className="teal lighten-2 flex-row align-center">
-              <a href="">
-                  <div id="likecount">
-                    {activity.likes}
-                  </div>
-                <img
-                  className="dash-btn"
-                  alt="like button"
-                  onClick={handleLikeBtn}
-                  src={like}
-                />
-              </a>
+              <div id="likecount">{activity.likes}</div>
+              <img
+                className="dash-btn"
+                alt="like button"
+                onClick={() => handleLikeBtn(activity._id)}
+                src={like}
+              />
 
               <Link
                 style={{
@@ -78,7 +67,39 @@ const DashboardList = ({ activities }) => {
           </div>
         ))}
       </div>
-                
+      <div key={username}>
+      <Link
+        style={{
+          borderRadius: "10px",
+          textDecoration: "none",
+          color: "white",
+          fontSize: "15px",
+          width: "130px",
+          // background: "#2b7870",
+          // position: "fixed",
+        }}
+        className="m-2 waves-effect waves-light btn-floating "
+        to={`/proplan/${username}`}
+      >
+        Progress Tracker
+      </Link>
+      <Link
+        id="linkbtn"
+        style={{
+          borderRadius: "10px",
+          textDecoration: "none",
+          color: "white",
+          fontSize: "15px",
+          width: "130px",
+          // background: "#2b7870",
+          // position: "fixed",
+        }}
+        className="m-2 waves-effect waves-light btn-floating "
+        to={`/activitycreate/${username}`}
+      >
+        Add Activity
+      </Link>
+      </div>
     </div>
   );
 };
