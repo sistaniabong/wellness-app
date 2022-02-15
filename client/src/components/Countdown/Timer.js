@@ -2,11 +2,16 @@ import React, { useEffect, useRef, useState }from 'react';
 import { useMutation } from '@apollo/client';
 
 const Timer = ({duration, activityId}) =>{
+    console.log('init countdown')
+    // console.log(duration)
+    // console.log(activityId)
     const [timerHours, setTimerHours] = useState("00");
     const [timerMinutes, setTimerMinutes] =useState("00");
     const [timerSeconds, setTimerSeconds] =useState("00");
     // transfer duration to milliseconds, and countdown later
     const [distance, setDistanceState] = useState(duration*60*1000)
+    console.log('distance')
+    console.log(distance)
     let interval = useRef();
     const startTimer = () => {
         interval = setInterval(()=>{
@@ -26,6 +31,10 @@ const Timer = ({duration, activityId}) =>{
             if (distance < 0){
                 // stop timer
                 clearInterval(interval.current);
+                setDistanceState(0)
+                setTimerHours("00")
+                setTimerMinutes("00")
+                setTimerSeconds("00")
                 // jump to the summary page
                 window.location.href = '/summary/' + activityId;
             }else{
