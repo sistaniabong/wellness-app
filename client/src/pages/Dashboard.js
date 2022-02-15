@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   
     // const { data } = useQuery(GET_SINGLE_USER)
-    const username = data?.user; 
+    // const username = data?.user; 
     // || [];
     
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
           <DashboardList activities={data?.allActivities || [] } username={username}/>
           
 
-          <button style={{
+          {/* <button style={{
               borderRadius: "10px",
               textDecoration: "none",
               color: "white",
@@ -57,7 +57,7 @@ const Dashboard = () => {
               // position: "fixed",
             }} className="m-2 waves-effect waves-light btn-floating " onClick={logout}>
             Logout
-          </button>
+          </button> */}
           <Link
             style={{
               borderRadius: "10px",

@@ -1,14 +1,17 @@
 import React from 'react'; 
 import Carousel from 'react-bootstrap/Carousel'
+import stressed from '../../assets/feelingstressed.gif'
+import like from '../../assets/heart.png'
 
 const Carousel1 = () => {
 
     return(
+      <>
         <Carousel fade>
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
+      src={stressed}
       alt="First slide"
     />
     <Carousel.Caption>
@@ -19,7 +22,7 @@ const Carousel1 = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
+      src={like}
       alt="Second slide"
     />
 
@@ -41,6 +44,7 @@ const Carousel1 = () => {
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
+</>
     )
 }
 

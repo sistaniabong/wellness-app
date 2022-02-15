@@ -69,22 +69,7 @@ const DashboardList = ({ activities, username}) => {
         ))}
       </div>
       <div key={username}>
-      <Link
-        style={{
-          borderRadius: "10px",
-          textDecoration: "none",
-          color: "white",
-          fontSize: "15px",
-          width: "130px",
-          // background: "#2b7870",
-          // position: "fixed",
-        }}
-        className="m-2 waves-effect waves-light btn-floating "
-        to={`/proplan/${username}`}
-      >
-        Progress Tracker
-      </Link>
-      <Link
+      {/* <Link
         id="linkbtn"
         style={{
           borderRadius: "10px",
@@ -99,7 +84,7 @@ const DashboardList = ({ activities, username}) => {
         to={`/activitycreate/${username}`}
       >
         Add Activity
-      </Link>
+      </Link> */}
       </div>
     </div>
   );
