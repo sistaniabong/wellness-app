@@ -3,10 +3,10 @@ import Auth from "../../utils/auth";
 
 const Header = () => {
   // function for logout button
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+  // const logout = (event) => {
+  //   event.preventDefault();
+  //   Auth.logout();
+  // };
 
   return (
     <header className="teal lighten-2 mb-4 py-5 flex-row align-center">
@@ -17,14 +17,14 @@ const Header = () => {
         </div>
       </div>
       {/* ternary for logout button */}
-        {Auth.loggedIn? (
-            <button
+        {/* {Auth.loggedIn? ( */}
+            {/* <button
             className="m-6 waves-effect waves-light btn-floating"
             style={{ borderRadius: "10px", width: "50px" }}
             onClick={logout}
             
-          >Logout</button>
-        ): null } 
+          >Logout</button> */}
+        {/* ): null }  */}
       
     </header>
   );

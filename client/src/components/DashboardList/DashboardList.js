@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { ADD_LIKE_ACTIVITY } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-const DashboardList = ({ activities, username}) => {
+const DashboardList = ({ activities, username }) => {
   // * function for the like count button
   const [addLike, { error }] = useMutation(ADD_LIKE_ACTIVITY);
 
@@ -54,7 +54,6 @@ const DashboardList = ({ activities, username}) => {
                   borderRadius: "10px",
                   textDecoration: "none",
                   color: "black",
-                  fontSize: "15px",
                   width: "30px",
                   backgoround: "#2b7870",
                 }}

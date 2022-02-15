@@ -88,13 +88,17 @@ body {
     z-index: -1;
 }
 
+#fixedbtns{
+    margin-top: 100px;
+    position: fixed;
+    display: flex;
+}
 /* Countdown page todo list styling */
 .true {
     text-decoration: line-through;
     opacity: 1.0;
 }
 
-/* .d-block{
-    z-index: 100;
-} */
+
+
 
