@@ -123,6 +123,10 @@ body {
     background-color: #EE7752;
 }
 
+/* Alert */
+.hidden{
+    display: none;
+}
 
 
 

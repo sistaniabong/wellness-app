@@ -20,7 +20,7 @@ const CommentList = ({ comments = [] }) => {
       <div className="flex-row my-4">
         {comments &&
           comments.map((comment) => (
-            <div key={comment._id} className="col-12 mb-3 pb-3">
+            <div key={comment._id} className="col-12 mb-3 pb-3" style={{ borderRadius:"25px"}}>
               <div style={{ background: 'teal' }} className="waves-effect waves-light text-light flex-row">
                 <p className="card-body">{comment.commentText}</p>
                 <h5 className="card-header">
