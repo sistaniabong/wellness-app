@@ -7,9 +7,12 @@ const Home = () => {
  
   return (
     <div className="container">
-      <Carousel1 />
-      <Signup />
-      <Login />
+      {/* <Carousel1 /> */}
+      <div style={{paddingLeft: "30%"}}>
+        <Signup />
+        <Login />
+      </div>
+      
     </div>
   );
 };

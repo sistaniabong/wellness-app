@@ -58,6 +58,7 @@ const Login = () => {
         className="m-6 waves-effect waves-light btn-floating"
         style={{ borderRadius: "10px", width: "50px" }}
         onClick={showModal}
+        id="loginBtn"
       >
         Login
       </button>

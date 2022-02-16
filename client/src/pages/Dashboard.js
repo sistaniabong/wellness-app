@@ -14,9 +14,7 @@ const Dashboard = () => {
   // const username = data?.user;
   // || [];
 
-  const username = Auth.getProfile().data.username;
-  console.log(username);
-  
+  const username = Auth.getProfile().data.username;  
 
   // *function to get all the data for the accomplishment from the completion page
   // const [dashList, { error}] = useQuery(GET_SINGLE_USER. {
@@ -46,9 +44,10 @@ const Dashboard = () => {
                 color: "white",
                 fontSize: "13px",
                 width: "70px",
-                height: "30px"
-                // background: "#2b7870",
-                // position: "fixed",
+                height: "32px",
+                background: "#E73C7E",
+                
+                
               }}
               className="m-2 waves-effect waves-light btn-floating "
               onClick={logout}
@@ -62,10 +61,10 @@ const Dashboard = () => {
                 color: "white",
                 fontSize: "13px",
                 width: "90px",
-                height: "30px",
-                // justifyContent: "center"
-                // background: "#2b7870",
-                // position: "fixed",
+                height: "32px",
+                paddingLeft: "8px",
+                background: "#E73C7E",
+                
               }}
               id="add-activity"
               className="m-2 waves-effect waves-light btn-floating "
@@ -74,6 +73,7 @@ const Dashboard = () => {
               Add Activity
             </Link>
           </div>
+
           <DashboardList
             activities={data?.allActivities || []}
             username={username}

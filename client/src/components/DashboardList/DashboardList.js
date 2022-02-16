@@ -21,13 +21,13 @@ const DashboardList = ({ activities, username }) => {
     }
   };
 
-  console.log(username);
   return (
     <div id="dashboard-list">
       <div className="container-fluid">
-        <h3 id="welcome">Hi, welcome!</h3>
+        <h3 id="welcome" style={{textAlign: "center"}}>Hi, welcome!</h3>
         {activities.map((activity) => (
-          <div key={activity._id} className="card">
+          <div key={activity._id} className="card" 
+          id="cardBlock">
             <h6
               id="cardHeader"
               className="card-header teal lighten-2 text-light"
@@ -40,7 +40,7 @@ const DashboardList = ({ activities, username }) => {
               </span>
             </h6>
 
-            <div className="teal lighten-2 flex-row align-center">
+            <div className="teal lighten-2 flex-row align-center cardFooter">
               <div id="likecount">{activity.likes}</div>
               <img
                 className="dash-btn"
@@ -54,8 +54,6 @@ const DashboardList = ({ activities, username }) => {
                   borderRadius: "10px",
                   textDecoration: "none",
                   color: "black",
-                  width: "30px",
-                  backgoround: "#2b7870",
                 }}
                 // className="btn btn-primary btn-block btn-squared"
                 // className="m-6 waves-effect waves-light btn-floating"
@@ -67,8 +65,8 @@ const DashboardList = ({ activities, username }) => {
           </div>
         ))}
       </div>
-      <div key={username}>
-      {/* <Link
+      {/* <div key={username}>
+      <Link
         id="linkbtn"
         style={{
           borderRadius: "10px",
@@ -83,8 +81,8 @@ const DashboardList = ({ activities, username }) => {
         to={`/activitycreate/${username}`}
       >
         Add Activity
-      </Link> */}
-      </div>
+      </Link>
+      </div> */}
     </div>
   );
 };
