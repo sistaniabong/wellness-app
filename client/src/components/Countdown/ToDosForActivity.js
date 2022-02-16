@@ -3,8 +3,8 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_TODO } from '../../utils/mutations';
 
 const ToDosForActivity = ({ todos }) => {
-    console.log('init todo list')
-    console.log(todos)
+    // console.log('init todo list')
+    // console.log(todos)
 
 
     const [updateTodo, { error, data }] = useMutation(UPDATE_TODO);
