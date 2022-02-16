@@ -51,7 +51,7 @@ const Timer = ({duration, activityId}) =>{
 
     useEffect(() => {
         startTimer();
-        return () => {clearInterval(interval)}
+        // return () => {clearInterval(interval)}
      })
 
     return(
