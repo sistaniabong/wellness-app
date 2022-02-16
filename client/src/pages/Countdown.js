@@ -23,7 +23,7 @@ const Countdown = () =>{
       const todos = data?.activity.todos || [];
       console.log('todos:')
       console.log(todos);
-      const reminders = data?.reminders || [];
+      const reminders = data?.activity.reminders || [];
       console.log('reminder:')
       console.log(reminders);
 
