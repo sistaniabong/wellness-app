@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState }from 'react';
 import { useMutation } from '@apollo/client';
 
 const Timer = ({duration, activityId}) =>{
-    console.log('init countdown')
+    // console.log('init countdown')
     // console.log(duration)
     // console.log(activityId)
     const [timerHours, setTimerHours] = useState("00");
@@ -10,8 +10,8 @@ const Timer = ({duration, activityId}) =>{
     const [timerSeconds, setTimerSeconds] =useState("00");
     // transfer duration to milliseconds, and countdown later
     const [distance, setDistanceState] = useState(duration*60*1000)
-    console.log('distance')
-    console.log(distance)
+    // console.log('distance')
+    // console.log(distance)
     let interval = useRef();
     const startTimer = () => {
         interval = setInterval(()=>{
@@ -56,17 +56,20 @@ const Timer = ({duration, activityId}) =>{
 
     return(
         <main>
-            <h1>🕰 Countdown Timer</h1>
-            <div 
-                className="d-flex justify-content-around p-3 m-3"
-                style={{borderStyle: "double", borderRadius: "10px"}}
-            >
-                <h1 type="number">{timerHours}</h1>
-                <h1>:</h1>
-                <h1 type="number">{timerMinutes}</h1>
-                <h1>:</h1>
-                <h1 type="number">{timerSeconds}</h1>
-            </div>  
+            <div className="justify-center align-center text-center">
+                <h1>🕰 Countdown Timer</h1>
+                <div 
+                    className="d-flex justify-content-around p-3 m-3"
+                    style={{borderStyle: "double", borderRadius: "10px"}}
+                >
+                    <h2 type="number">{timerHours}</h2>
+                    <h2>:</h2>
+                    <h2 type="number">{timerMinutes}</h2>
+                    <h2>:</h2>
+                    <h2 type="number">{timerSeconds}</h2>
+                </div>  
+            </div>
+            
         </main>
         
     )
