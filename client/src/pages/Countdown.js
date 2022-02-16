@@ -38,7 +38,7 @@ const Countdown = () =>{
                 />
 
             {/* Reminder Popup thing */}
-                <Alert  reminders={reminders}/>
+                {/* <Alert  reminders={reminders}/> */}
                 {/* Add a visible and invisible attribtue for the reminder card*/}
         </main>
         

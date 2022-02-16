@@ -30,7 +30,7 @@ const Comment = () => {
             <Link style={{ textDecoration: 'none', color: 'black', fontSize: '20px' }} className="mb-4 align-center" to="/dashboard">← Dashboard</Link>
 
 
-            <div style={{ width: "300px" }} className="card">
+            <div style={{ width: "300px", borderRadius:"10px" }} className="card">
                 <h6
                     id="cardHeader"
                     className="card-header teal lighten-2 text-light"
@@ -44,7 +44,9 @@ const Comment = () => {
                 </h6>
 
 
-                <div className="teal lighten-2 flex-row align-center">
+                <div 
+                style={{ borderBottomRightRadius:"10px",borderBottomLeftRadius:"10px" }}
+                className="teal lighten-2 flex-row align-center">
                     <a href="">
                         <img
                             className="dash-btn"

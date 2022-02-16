@@ -6,13 +6,21 @@ import stressed from "../assets/feelingstressed.gif";
 const Home = () => {
   return (
     <div className="container">
-      {/* <img
+      <div className="justify-center align-center text-center">
+      <img
         src={stressed}
-        style={{ textAlign: "center", width: "500px", height: "auto" }}
-      /> */}
-      <div style={{ paddingLeft: "30%" }}>
+        style={{ textAlign: "center", width: "355px", height: "auto", marginBottom:"10px"  }}
+      />
+      </div>
+      <div 
+      className ="d-flex"
+      style={{ paddingLeft: "30%" }}>
+        <div className="m-2">
         <Signup />
+        </div>
+        <div className="m-2">
         <Login />
+        </div>
       </div>
     </div>
   );
