@@ -76,5 +76,3 @@ const Timer = ({duration, activityId}) =>{
 };
 
 export default Timer;
-
- 

@@ -157,7 +157,6 @@ export const GET_SINGLE_ACTIVITY = gql`
         title
         time_interval
         complete_count
-        skip_count
         createdAt
       }
       todos {
@@ -263,10 +262,6 @@ export const GET_ALL_REMINDERS = gql`
       time_interval
       complete_count
       createdAt
-      activity {
-        _id
-        title
-      }
     }
   }
 `;

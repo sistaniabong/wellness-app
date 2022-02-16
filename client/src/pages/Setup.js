@@ -17,17 +17,54 @@ const Setup = () => {
     // get activityId
     const { activityId } = useParams();
 
-    const { loading, data } = useQuery(GET_SINGLE_ACTIVITY,
+
+    // const queryMultiple = () => {
+    //   const res1 = useQuery(GET_SINGLE_ACTIVITY_REMINDERS,
+    //     {
+    //       variables: { activityId: activityId },
+    //     });
+    //   const res2 = useQuery(GET_SINGLE_ACTIVITY_TODOS,
+    //     {
+    //       variables: { activityId: activityId },
+    //     });
+    //   return [res1, res2];
+    // }
+
+    const { data: dataR, error: errorR, loading: landingR } = useQuery(GET_SINGLE_ACTIVITY_REMINDERS,
       {
         variables: { activityId: activityId },
-      }
-    );
-    const reminders = data?.activity.reminders || [];
-    const todos = data?.activity.todos || [];
-    console.log('reminders:')
-    console.log(reminders);
-    console.log('todos:')
-    console.log(todos);
+      });
+    const { data, error, loading } = useQuery(GET_SINGLE_ACTIVITY_TODOS,
+      {
+        variables: { activityId: activityId },
+      });
+    const activityReminders = dataR?.activityReminders || [];
+    console.log('activityReminders',activityReminders)
+
+    const activityTodos = data?.activityTodos || [];
+    console.log('activityTodos',activityTodos)
+
+
+    // const { loading, data } = useQuery(GET_SINGLE_ACTIVITY_REMINDERS,
+    //   {
+    //     variables: { activityId: activityId },
+    //   }
+    // );
+    // console.log(data?.activityReminders.length, "data")
+    // const initialState = data?.activityReminders.length ? data.activityReminders : [];
+    // console.log(initialState)
+    // const [activityReminders, setActivityRemindersState] = useState(initialState)
+
+    // const setActivityRemindersState = () => {}
+    // const activityReminders = data?.activityReminders || [];
+    // const reminders = data?.activity.reminders || [];
+    // const todos = data?.activity.todos || [];
+    // console.log('reminders:')
+    // console.log(reminders);
+    // console.log('todos:')
+    // console.log(todos);
+
+    
 
 
     return(
@@ -38,18 +75,19 @@ const Setup = () => {
 
           {/* Reminder Selector */}
           <ReminderForm 
-            activity={activityId}
+            // activity={activityId}
           />
 
           {/* Reminder List */}
             <ReminderList 
-              reminders={reminders} 
+              reminders={activityReminders} 
+              // setActivityRemindersState={setActivityRemindersState}
             // setReminders={setReminders}
           /> 
             
             {/* for Todo Setup */}
             <ToDoForm 
-              activity={activityId}
+              // activity={activityId}
               // todos={todos}
               // setTodos={setTodos}
               // todoState={todoState}
@@ -58,11 +96,9 @@ const Setup = () => {
 
             {/* Todos List */}
             <ToDoList 
-              todos={todos}
+              todos={activityTodos}
               // setTodos={setTodos}
             />
-
-            {/* The START Button for final generate all the reminders and todos */}
 
             <Link
               to={`/activity/${activityId}`}

@@ -7,18 +7,19 @@ const ReminderList=({reminders})=>{
     console.log(reminders)
     
 
-    if (!reminders.length) {
-        return <h3></h3>;
-    }
+    // if (!reminders.length) {
+    //     return <h3></h3>;
+    // }
     return(
         <div className='reminders-container'>
             <ul className='reminders-list'>
-                {reminders.map(reminder => (
+                {reminders.map((reminder, index, reminder_array) => (
                     <Reminder 
-                        // reminder = {reminder}
+                        // setActivityRemindersState={setActivityRemindersState}
                         reminderId={reminder._id} 
                         text={`${reminder.title} every ${reminder.time_interval} mins.`}
-
+                        // index={index}
+                        // reminderArray={reminder_array}
                     />
                 ))}
                 

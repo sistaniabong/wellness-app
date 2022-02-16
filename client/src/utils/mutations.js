@@ -84,12 +84,11 @@ export const ADD_REMINDER = gql`
             title
             time_interval
             complete_count
-            skip_count
             createdAt
-            activity{
+            activity {
                 _id
                 title
-            }
+              }
         }
     }
 `

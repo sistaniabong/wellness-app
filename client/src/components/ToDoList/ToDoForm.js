@@ -1,20 +1,52 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TODO } from '../../utils/mutations';
+import { GET_SINGLE_ACTIVITY_TODOS } from '../../utils/queries';
+import { Link , useParams } from 'react-router-dom';
+
 
 
 // const ToDoForm=({todos, setTodos, todoState, setTodoState})=>{
-const ToDoForm = ({ activity }) => {
+const ToDoForm = () => {
     console.log('init adding todo form')
-    console.log(activity)
+    const { activityId } = useParams();
+
+    console.log(activityId)
 
     const [todo, setTodoState] = useState({
-        activityId: activity,
+        activityId: activityId,
         name: '',
     });
 
-    // Set up  addTodo mutation with an option to handle errors
-    const [addTodo, { error, data }] = useMutation(ADD_TODO);
+    // const [addTodo, { error, data }] = useMutation(ADD_TODO);
+
+    const [addTodo, { error }] = useMutation(ADD_TODO, {
+        update(cache, { data: { addTodo } }) {
+          try {
+    
+            console.log(activityId)
+    
+            const { activityTodos } = cache.readQuery({
+              query: GET_SINGLE_ACTIVITY_TODOS,
+              variables: {
+                activityId: activityId,
+              },
+            });
+            console.log('todos cache')
+    
+            cache.writeQuery({
+              query: GET_SINGLE_ACTIVITY_TODOS,
+              variables: {
+                activityId: activityId,
+              },
+              data: { activityTodos: [addTodo, ...activityTodos] },
+            });
+          } catch (e) {
+            console.error(e);
+          }
+        },
+      });
+
 
 
     const addTodoHandler = async (e) => {
@@ -26,8 +58,8 @@ const ToDoForm = ({ activity }) => {
                 variables: { ...todo },
             });
             console.log(data)
-            setTodoState({ activityId: '', name: '' });
-            window.location.reload();
+            setTodoState({ activityId: activityId, name: '' });
+            // window.location.reload();
 
         } catch (err) {
             console.error(err);
