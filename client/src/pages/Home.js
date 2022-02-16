@@ -1,14 +1,14 @@
 import React from "react";
 import Signup from "../components/Signup/Signup";
 import Login from "../components/Login/Login";
-import stressed from "../assets/Block.gif";
+import blockout from "../assets/Block.gif";
 
 const Home = () => {
   return (
     <div className="container">
       <div className="justify-center align-center text-center">
       <img
-        src={stressed}
+        src={blockout}
         style={{ textAlign: "center", width: "325px", height: "auto", marginBottom:"10px", marginTop: "80px"  }}
       />
       </div>
