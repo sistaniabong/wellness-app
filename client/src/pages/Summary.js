@@ -42,10 +42,17 @@ function Summary() {
 
   let count = 0;
   let complete_todo = [];
+   
+  let countUndone =0;
+  let unfinished_todo = [];
+
   const x = todos?.map(todo => {
     if (todo.status === true) {
-      complete_todo.push(todo)
-      count++
+      complete_todo.push(todo);
+      count++;
+    } else{
+      unfinished_todo.push(todo);
+      countUndone++;
     }
   });
   console.log(count)
@@ -106,6 +113,13 @@ function Summary() {
             <ul>
               {complete_todo.map(item => (
                 <li> ✅ {item.name}</li>
+              ))}
+            </ul>
+          </h2>
+          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}>📝 Todos for future:
+            <ul>
+              {unfinished_todo.map(unfinished_item => (
+                <li> ❓ {unfinished_item.name}</li>
               ))}
             </ul>
           </h2>
