@@ -14,18 +14,9 @@ function Summary () {
   //     top: 0,
   //     left: 0
 
-  // } !! TODO: fix Confetti, only displays in header -KP
-  
-  const [height, setHeight] = useState(null);
-  const [width, setWidth] = useState(null);
+  const width = '390px';
+  const height = '844px';
   const [show, setShow] = useState(false);
-  const confettiRef = useRef(null);
-
-  useEffect(() => {
-    setHeight(confettiRef.current.clientHeight);
-    setWidth(confettiRef.current.clientWidth);
-  }, [])
-
   const handleShow = toggle => {
     setShow(toggle);
   }
@@ -50,10 +41,8 @@ function Summary () {
         <div
         onMouseEnter={() => handleShow(true)}
         onMouseLeave={() => handleShow(false)}
-        className="confetti-wrap"
-        ref={confettiRef}>
-        <h3>Cycle Completed!
-           Let's Look At Your Report:</h3>
+        className="confetti-wrap">
+        <h3>Cycle Completed!</h3>
         <Confetti
           recycle={show}
           numberOfPieces={1000}
