@@ -43,7 +43,6 @@ function Summary() {
   let count = 0;
   let complete_todo = [];
   const x = todos?.map(todo => {
-    console.log('WTF!!!')
     if (todo.status === true) {
       complete_todo.push(todo)
       count++
@@ -53,13 +52,17 @@ function Summary() {
   console.log(complete_todo)
 
 
-  // let complete_count = 0;
-  // const y = reminders?.map(function(reminder){
-  //   return reminder.complete_count;
-  // });
+  const y = reminders?.map(function (reminder) {
+    return reminder.complete_count;
+  });
 
-  // console.log(y)
+  console.log(y, 'complete count')
+  let sum = 0;
 
+  for (let i = 0; i < y?.length; i++) {
+    sum += y[i];
+  }
+  console.log(sum, 'sum')
 
 
   // const [height, setHeight] = useState(null);
@@ -75,21 +78,6 @@ function Summary() {
   const handleShow = toggle => {
     setShow(toggle);
   }
-
-
-
-  // const dashboardHandler= async(e)=>{
-  //   e.preventDefault();
-  //   try {
-  //       const data  = await getUser({
-  //         // variables: { duration:activityDuration },
-  //       });
-  // const username = data.data.getUser._id 
-  // // console.log(userId);
-  // // Redirect on next page dashboard/:username
-  // window.location.href = '/dashboard/' + username
-  // {dashboardHandler}
-  // const todoList = todos.length
 
   return (
     <main className="flex-column justify-center align-center text-center">
@@ -109,7 +97,7 @@ function Summary() {
       <div>
         {/* <h3>Cycle Completed!</h3> */}
         <ul>
-          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 👉 {activity.duration} minutes of productivy ! </h2>
+          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 👉 {activity.duration} minutes of productivity ! </h2>
           {reminders?.map(reminder=>(
             <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 😄 {reminder.title} for every {reminder.time_interval} minutes !</h2>
           ))}
@@ -126,8 +114,8 @@ function Summary() {
       </div>
       <div>
         {/* Link to= {`/dashboard/${user.username}`}*/}
-        <button className="btn-floating btn-large red lighten-2" style={{width:'100px', height:'100px'}}>
-        <Link style={{textDecoration:'none', color: 'white'}} to='/dashboard'>PUBLISH</Link>
+        <button className="btn-floating btn-large red lighten-2" style={{ width: '100px', height: '100px' }}>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to='/dashboard'>PUBLISH</Link>
         </button>
       </div>
     </main>
