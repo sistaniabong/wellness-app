@@ -14,7 +14,7 @@ const Timer = ({duration, activityId}) =>{
     // console.log(distance)
     let interval = useRef();
     const startTimer = () => {
-        interval = setInterval(()=>{
+        interval = setTimeout(()=>{
             // transfer the time to milliseconds 
             const second = 1000;
             const minute = second * 60;

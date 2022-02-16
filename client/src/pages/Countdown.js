@@ -26,7 +26,10 @@ const Countdown = () =>{
       const reminders = data?.activity.reminders || [];
       console.log('reminder:')
       console.log(reminders);
-
+    
+    // Grab a single reminder for demo purpose
+        // const demoReminder = reminders[0];
+        // console.log(reminders[0])
     return (
         <main>
             {/* CountdownTimer */}
@@ -38,7 +41,7 @@ const Countdown = () =>{
                 />
 
             {/* Reminder Popup thing */}
-                {/* <Alert  reminders={reminders}/> */}
+                <Alert  reminders={reminders} />
                 {/* Add a visible and invisible attribtue for the reminder card*/}
         </main>
         
