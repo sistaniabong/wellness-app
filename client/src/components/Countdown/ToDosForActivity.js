@@ -27,27 +27,34 @@ const ToDosForActivity = ({ todos }) => {
     }
 
     return (
-        <div className="row justify-center align-center text-center">
-            <h1>📝 To Do List</h1>
-                {todos.map(todo => (
-                    
-                    <div key={todo._id} className='m-2'>
-                        <button
-                            className={`todo green lighten-2 p-2 justify-center align-center text-center ${todo.status ? 'complete' : ''}`}
-                            style={{ border:'none',borderRadius: '10px', }}
-                            status={todo.status}
-                            onClick={() => changeStatusHandler(todo)}
-                        >
-                        <h2
-                            // Decide the todo css format based on each todo.status (true? go with css style; false? do nothing for the styling)
-                            className={`todo-item card-content white-text ${todo.status ? true : ''}`}>
-                            {todo.name}
-                        </h2>  
-                        
-                        </button> 
-                    </div>
-                    
-                ))}
+        <div className="row">
+            <div className='col-12'>
+                <h1>📝 To Do List</h1>
+                <div className='todos-container'>
+                    <ul className='todos-list'>
+
+                        {todos.map(todo => (
+                            <div key={todo._id} className='todo green lighten-2 row p-2' style={{ borderRadius: '10px' }}>
+                                <li
+                                    // Decide the todo css format based on each todo.status (true? go with css style; false? do nothing for the styling)
+                                    className={`todo-item card-content white-text col-10 ${todo.status ? true : ''}`}                           >
+                                    <h4>{todo.name}</h4>
+                                </li>
+
+                                <button
+                                    className='col-2 card-action'
+                                    style={{ borderRadius: '10px' }}
+                                    status={todo.status}
+                                    // onClick={changeStatusHandler(todo)}
+                                    onClick={() => changeStatusHandler(todo)}
+                                >
+                                    ✔️
+                                </button>
+                            </div>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

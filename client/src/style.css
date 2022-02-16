@@ -67,12 +67,6 @@ footer {
 .true {
     text-decoration: line-through;
     opacity: 1.0;
-    text-decoration-thickness: 3px;
-    
-}
-
-.complete{
-    background-color: #EE7752;
 }
 
 
