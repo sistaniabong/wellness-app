@@ -41,7 +41,6 @@ function Summary() {
   let count = 0;
   let complete_todo = [];
   const x = todos?.map(todo => {
-    console.log('WTF!!!')
     if (todo.status === true) {
       complete_todo.push(todo)
       count++
@@ -51,13 +50,17 @@ function Summary() {
   console.log(complete_todo)
 
 
-  // let complete_count = 0;
-  // const y = reminders?.map(function(reminder){
-  //   return reminder.complete_count;
-  // });
+  const y = reminders?.map(function (reminder) {
+    return reminder.complete_count;
+  });
 
-  // console.log(y)
+  console.log(y, 'complete count')
+  let sum = 0;
 
+  for (let i = 0; i < y?.length; i++) {
+    sum += y[i];
+  }
+  console.log(sum, 'sum')
 
 
   // const [height, setHeight] = useState(null);
@@ -73,21 +76,6 @@ function Summary() {
   const handleShow = toggle => {
     setShow(toggle);
   }
-
-
-
-  // const dashboardHandler= async(e)=>{
-  //   e.preventDefault();
-  //   try {
-  //       const data  = await getUser({
-  //         // variables: { duration:activityDuration },
-  //       });
-  // const username = data.data.getUser._id 
-  // // console.log(userId);
-  // // Redirect on next page dashboard/:username
-  // window.location.href = '/dashboard/' + username
-  // {dashboardHandler}
-  // const todoList = todos.length
 
   return (
     <main className="flex-column justify-center align-center text-center">
@@ -108,10 +96,18 @@ function Summary() {
         {/* <h3>Cycle Completed!</h3> */}
         <ul>
           <li> {activity.duration} minutes of productivy! ⚡</li>
-          <li>Total tasks completed: {count}</li>
+          {/* <li>Total completion of reminders: {sum}</li> */}
+          <li>Reminders completed:
+            <ul>
+              {reminders?.map(item => (
+                <li>📝 {item.title} : {item.complete_count}</li>
+              ))}
+            </ul>
+          </li>
+          {/* <li>Total todos completed: {count}</li> */}
           <li>Todos completed:
             <ul>
-              {complete_todo.map(item => (
+              {complete_todo?.map(item => (
                 <li>📝 {item.name}</li>
               ))}
             </ul>
@@ -121,8 +117,8 @@ function Summary() {
       </div>
       <div>
         {/* Link to= {`/dashboard/${user.username}`}*/}
-        <button className="btn-floating btn-large red lighten-2" style={{width:'100px', height:'100px'}}>
-        <Link style={{textDecoration:'none', color: 'white'}} to='/dashboard'>PUBLISH</Link>
+        <button className="btn-floating btn-large red lighten-2" style={{ width: '100px', height: '100px' }}>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to='/dashboard'>PUBLISH</Link>
         </button>
       </div>
     </main>
