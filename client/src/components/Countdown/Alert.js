@@ -15,6 +15,8 @@ const Alert = ({ reminders }) => {
     startReminderInterval = setInterval(() => {
       // show card function
       setReminderStatus(true);
+      // sound here
+
       // stop the timer for 2 seconds for the reminder
       reminderStatusInterval = setTimeout(()=>{
         setReminderStatus(false);
