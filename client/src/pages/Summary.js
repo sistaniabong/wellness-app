@@ -37,6 +37,8 @@ function Summary() {
 
   const reminders = activity.reminders;
   console.log(reminders)
+  // const reminder = reminders[0];
+
 
   let count = 0;
   let complete_todo = [];
@@ -84,7 +86,7 @@ function Summary() {
         onMouseLeave={() => handleShow(false)}
         className="confetti-wrap"
         ref={confettiRef}>
-        <h3>{activity.title} Completed!</h3>
+        <h1>{activity.title} Completed!</h1>
         <Confetti
           recycle={show}
           numberOfPieces={1000}
@@ -95,23 +97,18 @@ function Summary() {
       <div>
         {/* <h3>Cycle Completed!</h3> */}
         <ul>
-          <li> {activity.duration} minutes of productivy! ⚡</li>
-          {/* <li>Total completion of reminders: {sum}</li> */}
-          <li>Reminders completed:
+          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 👉 {activity.duration} minutes of productivity ! </h2>
+          {reminders?.map(reminder=>(
+            <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 😄 {reminder.title} for every {reminder.time_interval} minutes !</h2>
+          ))}
+          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}> 🎯 Total tasks completed: {count} !</h2>
+          <h2 className="m-2 p-2" style={{border:'double', borderRadius:'25px'}}>📝 Todos completed:
             <ul>
-              {reminders?.map(item => (
-                <li>📝 {item.title} : {item.complete_count}</li>
+              {complete_todo.map(item => (
+                <li> ✅ {item.name}</li>
               ))}
             </ul>
-          </li>
-          {/* <li>Total todos completed: {count}</li> */}
-          <li>Todos completed:
-            <ul>
-              {complete_todo?.map(item => (
-                <li>📝 {item.name}</li>
-              ))}
-            </ul>
-          </li>
+          </h2>
 
         </ul>
       </div>
