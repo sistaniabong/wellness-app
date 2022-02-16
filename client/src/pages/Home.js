@@ -1,22 +1,19 @@
-import React from 'react';
-import Carousel1 from "../components/Carousel/Carousel"
-import Signup from '../components/Signup/Signup'
-import Login from '../components/Login/Login';
+import React from "react";
+import Signup from "../components/Signup/Signup";
+import Login from "../components/Login/Login";
+import stressed from "../assets/feelingstressed.gif";
 
 const Home = () => {
-  // const [token, setToken] = useState();
-
-  
-  
   return (
     <div className="container">
-      <Carousel1 />
-      <Signup />
-      {/* <Login setToken={setToken}
-        token={token}/> */}
-      <Login />
-      
-
+      {/* <img
+        src={stressed}
+        style={{ textAlign: "center", width: "500px", height: "auto" }}
+      /> */}
+      <div style={{ paddingLeft: "30%" }}>
+        <Signup />
+        <Login />
+      </div>
     </div>
   );
 };

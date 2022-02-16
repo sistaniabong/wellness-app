@@ -2,6 +2,8 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
+    height: 10.5rem;
+    z-index: 100;
 }
 footer {
     position: absolute;
@@ -18,6 +20,17 @@ footer {
     background-size: 400% 400%;
     position:relative;
     animation: change 20s ease-in-out infinite;
+    z-index: -2;
+}
+
+#root {
+    z-index: -100;
+    position: relative;
+}
+
+body {
+    position: relative;
+    z-index: -99;
 }
 
 @keyframes change {
@@ -53,16 +66,50 @@ footer {
 .card-header {
     padding: 10px;
     color: white;
+    border-top-left-radius: 10px;
+}
+
+#cardBlock{
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 #cardHeader {
     padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cardFooter{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #dashboard-list{
-    margin-top: 50px;
+    margin-top: 165px;
+    display: flex;
 }
 
+#likecount{
+    padding-left: 7px;
+}
+
+#fixedbtns{
+    z-index: 101;
+    margin-top: 100px;
+    position: fixed;
+    display: flex;
+    padding-left: 28px;
+}
+
+#signUpBtn{
+    text-align: center;
+}
+
+#add-activity{
+    
+    justify-content: center;
+}
 /* Countdown page todo list styling */
 .true {
     text-decoration: line-through;
@@ -74,6 +121,8 @@ footer {
 .complete{
     background-color: #EE7752;
 }
+
+
 
 
 

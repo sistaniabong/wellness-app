@@ -59,6 +59,7 @@ const Signup = () => {
         className="m-6 waves-effect waves-light btn-floating"
         style={{ borderRadius: "10px", width: "65px" }}
         onClick={showModal}
+        id="signUpBtn"
       >
         Sign up
       </button>
