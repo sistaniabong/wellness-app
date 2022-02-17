@@ -7,23 +7,28 @@ const Alert = ({ reminders }) => {
   // console.log(reminders);
   // hide the reminder when the page start
   const [reminderStatus, setReminderStatus] = useState(false);
-
+  let singleReminder; 
+  for(let i=0; i<reminders.length; i++){
+    singleReminder = reminders[i];
+  }
+  console.log(singleReminder);
   let startReminderInterval = useRef();
   let reminderStatusInterval;
 
-  const startReminder = () => {
-    startReminderInterval = setInterval(() => {
-      // show card function
-      setReminderStatus(true);
-      // sound here
+    const startReminder = () => {
+        startReminderInterval = setInterval(() => {
+          // show card function
+          setReminderStatus(true);
+          // sound here
 
-      // stop the timer for 2 seconds for the reminder
-      reminderStatusInterval = setTimeout(()=>{
-        setReminderStatus(false);
-      }, 2000);
-      // clearTimeout(reminderStatusInterval);
-    }, 58000);
+          // stop the timer for 2 seconds for the reminder
+          reminderStatusInterval = setTimeout(()=>{
+            setReminderStatus(false);
+          }, 2000);
+          // clearTimeout(reminderStatusInterval);
+        }, singleReminder.time_interval*60*1000);
   }
+  
 
 
 
